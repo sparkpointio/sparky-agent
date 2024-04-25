@@ -12,6 +12,11 @@ html, body {
 * {
     font-family: "Montserrat", sans-serif;
 }
+.bebas-neue {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
 .text-black {
     color:#000000!important;
 }
@@ -30,9 +35,9 @@ a:hover {
 }
 .btn-custom-1 {
     border-radius:0;
-    background-color:#000000;
+    background-color:#222222;
     color:#ffffff;
-    border:2px solid #000000;
+    border:2px solid #222222;
 }
 .btn-custom-1:hover, .btn-custom-1:active, .btn-custom-1:focus, .btn-custom-1:disabled {
     background-color: #000000 !important;
@@ -99,13 +104,13 @@ a:hover {
     font-size:0.9em;
 }
 .app .navbar .navbar-brand img {
-    height:36px;
+    height:48px;
 }
 .app .navbar.has-transition .navbar-brand img {
     transition:0.5s;
 }
 .app .navbar.scrolled .navbar-brand img {
-    height:30px;
+    height:40px;
 }
 .sidebar .nav-item.active .nav-link {
     background-color: #BB9329 !important;
@@ -124,6 +129,15 @@ a:hover {
 
 .text-justify {
     text-align: justify;
+}
+.h-custom-1 {
+    font-size: 2.7em;
+}
+.h-custom-2 {
+    font-size: 2em;
+}
+.h-custom-3 {
+    font-size: 1.1em;
 }
 
 /* SM */
@@ -145,6 +159,9 @@ a:hover {
     .text-lg-justify {
         text-align: justify!important;
     }
+    .h-custom-2 {
+        font-size: 2.1em;
+    }
 }
 
 /* XL */
@@ -152,11 +169,26 @@ a:hover {
     .text-xl-justify {
         text-align: justify!important;
     }
+    .h-custom-1 {
+        font-size: 3.3em;
+    }
+    .h-custom-2 {
+        font-size: 2.7em;
+    }
+    .h-custom-3 {
+        font-size: 1.2em;
+    }
 }
 
 /* XXL */
 @media(min-width:1400px) {
     .text-xxl-justify {
         text-align: justify!important;
+    }
+    .h-custom-1 {
+        font-size: 3.7em;
+    }
+    .h-custom-2 {
+        font-size: 2.9em;
     }
 }
