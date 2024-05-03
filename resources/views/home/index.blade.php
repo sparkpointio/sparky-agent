@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-
+    {{-- Test commit --}}
     <div class="background-image-cover" style="background-image:url('{{ asset('img/home/bg.png') }}')">
         <div style="background: linear-gradient(270deg, rgba(206,212,218,1) 50%, rgba(255,255,255,0) 100%)">
             <div class="container">
