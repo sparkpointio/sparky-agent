@@ -5,7 +5,7 @@
 @section('content')
 <div>
     @include('home.includes.nav')
-
+    {{-- Test commit --}}
     <div class="tw-pt-[74px]">
         <div class="background-image-cover" style="background-image:url('{{ asset('img/home/bg.png') }}')">
             <div style="background: rgb(206,212,218); background: linear-gradient(90deg, rgba(206,212,218,1) 50%, rgba(255,255,255,0) 100%)">
