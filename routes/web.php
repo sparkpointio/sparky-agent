@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EmailSubscriptionController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/try', [HomeController::class, 'try']);
+
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('under-construction', [HomeController::class, 'underConstruction'])->name('home.underConstruction');
+
+Route::resource('email-subscriptions', EmailSubscriptionController::class);
 
 Route::middleware(['guest'])->group(function() {
     Route::post('/forgot-password', [AuthenticationController::class, 'forgotPassword'])->name('password.request');
@@ -33,7 +38,6 @@ Route::middleware(['guest'])->group(function() {
 
 Route::prefix('contact')->group(function () {
     Route::get('/', [ContactController::class, 'index'])->name('contact.index');
-    Route::post('/subscribeEmail', [ContactController::class, 'subscribeEmail'])->name('contact.subscribeEmail');
     Route::post('/sendMessage', [ContactController::class, 'sendMessage'])->name('contact.sendMessage');
 });
 

@@ -2,24 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmailSubscription;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class EmailSubscriptionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('home.index');
-    }
-
-    public function underConstruction()
-    {
-        return view('underConstruction.index');
-    }
-
-    public function try()
     {
         //
     }
@@ -37,7 +28,37 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        $emailSubscription = EmailSubscription::where('email', $request->email)
+            ->first();
+
+        if($emailSubscription) {
+            $data = [];
+
+            if($request->name) {
+                $data['name'] = $request->name;
+            }
+
+            $emailSubscription->data = json_encode($data);
+            $emailSubscription->update();
+        } else {
+            $data = [];
+
+            if($request->name) {
+                $data['name'] = $request->name;
+            }
+
+            $emailSubscription = new EmailSubscription();
+            $emailSubscription->email = $request->email;
+            $emailSubscription->data = json_encode($data);
+
+            $emailSubscription->save();
+        }
+
+        return response()->json();
     }
 
     /**

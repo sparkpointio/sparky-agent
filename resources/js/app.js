@@ -94,6 +94,14 @@ let initializeReloadButton = function(link) {
 
     modalSuccess.find("button").attr("data-link", link);
 };
+let showSuccessModal = function(title = null, message = null) {
+    // Success! Awesome! Great! Fantastic! Excellent! Superb! Wonderful! Amazing! Spectacular! Marvelous! Outstanding! Terrific! Brilliant! Phenomenal! Splendid! Remarkable! Magnificent! Glorious! Stellar! Impressive!
+
+    $("#modal-success .title").text(title ? title : 'Great!');
+    $("#modal-success .message").text(message ? message : 'Your request has been completed successfully.');
+
+    $("#modal-success").modal("show");
+};
 let initializeDataTables = function() {
     $(".data-table").DataTable({
         aaSorting: [],
@@ -131,7 +139,7 @@ let initializeDataTables = function() {
     $(".data-table").removeClass("d-none");
 };
 let showRequestError = function(error) {
-    let content = "Something went wrong.";
+    let content = '';
 
     if(error.response) {
         if(error.response.data) {
@@ -149,7 +157,10 @@ let showRequestError = function(error) {
         return 0;
     }
 
-    $("#modal-error .message").html(content);
+    if(content !== '') {
+        $("#modal-error .message").html(content);
+    }
+
     $("#modal-error").modal("show");
 };
 function getOffset(el) {
@@ -220,7 +231,7 @@ $(document).on("input", ".numeric-only", function() {
     $(this).val(inputValue.replace(/[^0-9]/g, ''));
 });
 
-// Contact Form
+// Under Construction
 $(document).on("submit", "#email-subscription-form", function(e) {
     e.preventDefault();
 
@@ -237,8 +248,7 @@ $(document).on("submit", "#email-subscription-form", function(e) {
             form.find('input[type="text"]').val("");
             form.find('input[type="email"]').val("");
 
-            $("#modal-success .message").html("Success! You're subscribed. Get ready for the latest launches, insider tips, and exclusive offers straight to your inbox.");
-            $("#modal-success").modal("show");
+            showSuccessModal("Awesome!", "You're subscribed. Get ready for the latest launches, insider tips, and exclusive offers straight to your inbox.");
         }).catch((error) => {
             showRequestError(error);
         }).then(() => {
@@ -249,6 +259,7 @@ $(document).on("submit", "#email-subscription-form", function(e) {
         });
 });
 
+// Contact Form
 $(document).on("submit", "#contact-form", function(e) {
     e.preventDefault();
 
