@@ -19,8 +19,8 @@ chmod -R 775 bootstrap/cache
 
 /usr/bin/php8.1 /usr/local/bin/composer install --no-interaction
 
-/usr/bin/php8.1 artisan migrate --force
 /usr/bin/php8.1 artisan config:cache
+/usr/bin/php8.1 artisan migrate --force
 /usr/bin/php8.1 artisan view:cache
 
 npm install
