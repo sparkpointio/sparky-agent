@@ -2,7 +2,7 @@
 PROJECT_DIR="/var/www/laravel-boilerplate"
 
 # Log file path
-LOG_FILE="$(PROJECT_DIR)/storage/logs/deployment.log"
+LOG_FILE="/var/www/laravel-boilerplate/storage/logs/deployment.log"
 
 # Navigate to the project directory
 cd $PROJECT_DIR
