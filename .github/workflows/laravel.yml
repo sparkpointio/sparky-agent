@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          node-version: '20'
 
       - name: Install SSH key
         uses: webfactory/ssh-agent@v0.5.3
