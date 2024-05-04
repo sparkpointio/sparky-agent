@@ -23,6 +23,7 @@ chmod -R 775 bootstrap/cache
 /usr/bin/php8.1 artisan config:cache
 /usr/bin/php8.1 artisan view:cache
 
+npm install
 npm run build
 
 # Log deployment
