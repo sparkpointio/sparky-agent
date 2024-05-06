@@ -68,12 +68,12 @@
                         </div>
                     </a>
 
-                    <a href="mailto:bellynstudio@gmail.com" target="_blank" rel="noreferrer" class="d-flex text-decoration-none text-black mb-4">
+                    <a href="mailto:username@gmail.com" target="_blank" rel="noreferrer" class="d-flex text-decoration-none text-black mb-4">
                         <div class="tw-min-w-[23px] text-center">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <div class="ps-4">
-                            bellynstudio@gmail.com
+                            username@gmail.com
                         </div>
                     </a>
 
@@ -82,37 +82,17 @@
                             <i class="fa-solid fa-map-marker-alt"></i>
                         </div>
                         <div class="ps-4">
-                            123 Main Street, Barangay San Roque, Quezon City, Metro Manila, Philippines
+                            123 Main Street, Anytown, USA 12345
                         </div>
                     </a>
 
                     <div class="text-center d-block d-md-none">
                         <div class="">
-                            &copy; 2024  {{ config('app.name') }}.<br class="d-block d-lg-none" /> All rights reserved
+                            &copy; {{ Carbon\Carbon::now()->format('Y') }}  {{ config('app.name') }}.<br class="d-block d-lg-none" /> All rights reserved
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="bg-dark-subtle py-3 font-size-70" style="border:1px solid #3c527d">
-    <div class="container">
-        <div class="d-flex justify-content-center">
-            <a href="mailto:hello@wearehonu.com" class="d-flex align-items-center justify-content-center text-decoration-none font-size-120">
-                <div class="pe-2">
-                    <img src="{{ asset('img/home/honu.webp') }}" class="tw-h-[18px]" alt="HONU" style="filter: invert(100%);">
-                </div>
-
-                <div class="text-black text-center pe-1">Website designed and developed by</div>
-
-                <div class="tw-pe-[1px]">
-                    <img src="{{ asset('img/home/honu-text.webp') }}" class="tw-h-[9px]" alt="HONU" style="filter: invert(100%);">
-                </div>
-
-                <div class="text-black text-center">.</div>
-            </a>
         </div>
     </div>
 </div>

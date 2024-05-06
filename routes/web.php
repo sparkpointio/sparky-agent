@@ -34,6 +34,11 @@ Route::middleware(['guest'])->group(function() {
         Route::get('/', [AuthenticationController::class, 'index'])->name('login.index');
         Route::post('/submit', [AuthenticationController::class, 'login'])->name('login.submit');
     });
+
+    Route::prefix('register')->group(function () {
+        Route::get('/', [AuthenticationController::class, 'registerPage'])->name('register.index');
+        Route::post('/submit', [AuthenticationController::class, 'register'])->name('register.submit');
+    });
 });
 
 Route::prefix('contact')->group(function () {

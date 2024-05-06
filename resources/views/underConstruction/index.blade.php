@@ -28,13 +28,13 @@
                             </div>
                         </form>
 
-                        <a href="mailto:bellynstudio@gmail.com" class="d-flex align-items-center justify-content-center text-black text-decoration-none">
+                        <a href="mailto:username@gmail.com" class="d-flex align-items-center justify-content-center text-black text-decoration-none">
                             <div class="d-flex align-items-center justify-content-center bg-white rounded-circle email-icon">
                                 <div class="line-height-90">
                                     <i class="fa-solid fa-envelope font-size-md-120 font-size-xl-130"></i>
                                 </div>
                             </div>
-                            <div class="h-custom-3 ps-2">bellynstudio@gmail.com</div>
+                            <div class="h-custom-3 ps-2">username@gmail.com</div>
                         </a>
                     </div>
                 </div>
