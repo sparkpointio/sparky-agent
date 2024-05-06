@@ -17,12 +17,16 @@ sudo chown -R $USER:www-data bootstrap/cache
 chmod -R 775 storage
 chmod -R 775 bootstrap/cache
 
+/usr/bin/php8.1 /usr/local/bin/composer dump-autoload
 /usr/bin/php8.1 /usr/local/bin/composer install --no-interaction
 
+/usr/bin/php8.1 artisan cache:clear
 /usr/bin/php8.1 artisan config:cache
 /usr/bin/php8.1 artisan migrate --force
 /usr/bin/php8.1 artisan view:cache
 /usr/bin/php8.1 artisan route:cache
+/usr/bin/php8.1 artisan optimize
+/usr/bin/php8.1 artisan event:cache
 
 npm install
 npm run build
