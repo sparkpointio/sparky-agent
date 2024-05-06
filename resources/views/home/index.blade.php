@@ -14,11 +14,11 @@
                         <div class="col-md-9 col-lg-6 py-5">
                             <div class="text-center text-md-start pt-4 pb-5 py-sm-5">
                                 <h1 class="bebas-neue tw-leading-[1em] h-custom-1 px-4 px-md-0 mb-4">Lorem Ipsum is Placeholder<br class="d-none d-lg-block" /> Text Commonly Used in the Graphic Industries</h1>
-                                <p class="text-body-secondary h-custom-3 px-4 px-md-0 mb-3">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.</p>
-                                <p class="text-body-secondary h-custom-3 px-4 px-md-0 mb-5">The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets.</p>
+                                <p class="text-body-secondary h-custom-4 px-4 px-md-0 mb-3">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.</p>
+                                <p class="text-body-secondary h-custom-4 px-4 px-md-0 mb-5">The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets.</p>
 
                                 <div class="">
-                                    <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-1 px-5 py-2 h-custom-3">Call to Action</a>
+                                    <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-1 px-5 py-2 h-custom-4">Call to Action</a>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                             <p class="bebas-neue tw-tracking-[-0.05em] tw-leading-[1.2em] lg:tw-leading-[1.1em] h-custom-2 px-4 px-md-0 mb-5">Until recently, the prevailing view assumed lorem ipsum was born as a nonsense text. “It's not Latin, though it looks like it, and it actually says nothing,” Before & After magazine answered a curious reader,</p>
 
                             <div class="">
-                                <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-1 px-5 py-2 h-custom-3">Call to Action</a>
+                                <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-1 px-5 py-2 h-custom-4">Call to Action</a>
                             </div>
                         </div>
                     </div>
@@ -55,11 +55,11 @@
                             <div class="py-5 pe-md-5 text-center text-md-start">
                                 <div class="py-5">
                                     <p class="bebas-neue tw-tracking-[-0.05em] tw-leading-[1.2em] lg:tw-leading-[1.1em] h-custom-2 mb-4">The placeholder text,<br class="d-none d-lg-block" /> beginning with the line “Lorem ipsum dolor <br class="d-none d-lg-block" /> consectetur adipiscing elit”</p>
-                                    <p class="text-body-secondary tw-leading-[1.2em] h-custom-3 px-4 px-md-0 mb-4">It's a period filled with uncertainty and tough decisions. That's why we're here, offering steady support and expert legal guidance. Our team is committed to standing by your side throughout the process, ensuring your rights are protected and your voice is heard.</p>
-                                    <p class="text-body-secondary tw-leading-[1.2em] h-custom-3 px-4 px-md-0 mb-5">We believe in preserving family bonds and will work hard to reach a fair resolution that prioritizes your well-being and that of your loved ones. With our experience and dedication, you can trust us to navigate the challenges of divorce effectively.</p>
+                                    <p class="text-body-secondary tw-leading-[1.2em] h-custom-4 px-4 px-md-0 mb-4">It's a period filled with uncertainty and tough decisions. That's why we're here, offering steady support and expert legal guidance. Our team is committed to standing by your side throughout the process, ensuring your rights are protected and your voice is heard.</p>
+                                    <p class="text-body-secondary tw-leading-[1.2em] h-custom-4 px-4 px-md-0 mb-5">We believe in preserving family bonds and will work hard to reach a fair resolution that prioritizes your well-being and that of your loved ones. With our experience and dedication, you can trust us to navigate the challenges of divorce effectively.</p>
 
                                     <div class="">
-                                        <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-1 px-5 py-2 font-size-130 h-custom-3 tw-pt-[0.55em!important]">Call to Action</a>
+                                        <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-1 px-5 py-2 font-size-130 h-custom-4 tw-pt-[0.55em!important]">Call to Action</a>
                                     </div>
                                 </div>
                             </div>
@@ -79,9 +79,9 @@
                     <div class="d-flex align-items-center bg-dark-subtle h-100 px-4 py-5 p-md-5">
                         <div class="text-center text-lg-start">
                             <p class="bebas-neue tw-tracking-[-0.05em] tw-leading-[1.2em] lg:tw-leading-[1.1em] h-custom-2 mb-4">Creation timelines for the lorem ipsum passage vary, with some citing the 15th century and others the 20th.</p>
-                            <p class="text-body-secondary tw-leading-[1.2em] h-custom-3 px-md-0 mb-4">It's difficult to find examples of lorem ipsum in use before Letraset made it popular as a dummy text in the 1960s.</p>
-                            <p class="text-body-secondary tw-leading-[1.2em] h-custom-3 px-md-0 mb-4">So how did the classical Latin become so incoherent? According to McClintock, a 15th century typesetter likely scrambled part of Cicero's De Finibus in order to provide placeholder text to mockup various fonts for a type specimen book.</p>
-                            <p class="text-body-secondary tw-leading-[1.2em] h-custom-3 px-md-0 mb-0">Although McClintock says he remembers coming across the lorem ipsum passage in a book of old metal type samples.</p>
+                            <p class="text-body-secondary tw-leading-[1.2em] h-custom-4 px-md-0 mb-4">It's difficult to find examples of lorem ipsum in use before Letraset made it popular as a dummy text in the 1960s.</p>
+                            <p class="text-body-secondary tw-leading-[1.2em] h-custom-4 px-md-0 mb-4">So how did the classical Latin become so incoherent? According to McClintock, a 15th century typesetter likely scrambled part of Cicero's De Finibus in order to provide placeholder text to mockup various fonts for a type specimen book.</p>
+                            <p class="text-body-secondary tw-leading-[1.2em] h-custom-4 px-md-0 mb-0">Although McClintock says he remembers coming across the lorem ipsum passage in a book of old metal type samples.</p>
                         </div>
                     </div>
                 </div>
@@ -104,11 +104,11 @@
                             <div class="py-5 ps-md-5 text-center text-md-start">
                                 <div class="py-5">
                                     <p class="bebas-neue tw-tracking-[-0.05em] tw-leading-[1.2em] lg:tw-leading-[1.1em] h-custom-2 mb-4">Lorem ipsum was popularized in the 1960s with Letraset's dry-transfer sheets</p>
-                                    <p class="text-body-secondary tw-leading-[1.2em] h-custom-3 mb-4">Nick Richardson described the translation “like extreme Mallarmé, or a Burroughsian cut-up, or a paragraph of Finnegans Wake.</p>
-                                    <p class="text-body-secondary tw-leading-[1.2em] h-custom-3 mb-5">Bits of it have surprising power: the desperate insistence on loving and pursuing sorrow. for instance, that is cheated out of its justification – an incomplete object that has been either fished for, or wished for.</p>
+                                    <p class="text-body-secondary tw-leading-[1.2em] h-custom-4 mb-4">Nick Richardson described the translation “like extreme Mallarmé, or a Burroughsian cut-up, or a paragraph of Finnegans Wake.</p>
+                                    <p class="text-body-secondary tw-leading-[1.2em] h-custom-4 mb-5">Bits of it have surprising power: the desperate insistence on loving and pursuing sorrow. for instance, that is cheated out of its justification – an incomplete object that has been either fished for, or wished for.</p>
 
                                     <div class="">
-                                        <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-1 px-5 py-2 h-custom-3 tw-pt-[0.55em!important]">Call to Action</a>
+                                        <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-1 px-5 py-2 h-custom-4 tw-pt-[0.55em!important]">Call to Action</a>
                                     </div>
                                 </div>
                             </div>
@@ -152,8 +152,8 @@
                                                         <div class="carousel-inner">
                                                             <div class="carousel-item active">
                                                                 <p class="articulat-bold tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-black h-custom-2 mb-4">"Lorem ipsum is so ubiquitous because it is so versatile."</p>
-                                                                <p class="text-black tw-leading-[1.2em] h-custom-3 mb-4">I’ve heard the argument that “lorem ipsum” is effective in wireframing or design because it helps people focus on the actual layout, or color scheme, or whatever. What kills me here is that we’re talking about creating a user experience that will (whether we like it or not) be DRIVEN by words. The entire structure of the page or app flow is FOR THE WORDS.</p>
-                                                                <p class="text-black tw-leading-[1.2em] h-custom-3 mb-4">- P.Y.</p>
+                                                                <p class="text-black tw-leading-[1.2em] h-custom-4 mb-4">I’ve heard the argument that “lorem ipsum” is effective in wireframing or design because it helps people focus on the actual layout, or color scheme, or whatever. What kills me here is that we’re talking about creating a user experience that will (whether we like it or not) be DRIVEN by words. The entire structure of the page or app flow is FOR THE WORDS.</p>
+                                                                <p class="text-black tw-leading-[1.2em] h-custom-4 mb-4">- P.Y.</p>
 
                                                                 <div class="d-flex justify-content-center justify-content-sm-start tw-text-[#ffda3f] font-size-170">
                                                                     <div class="pe-2">
@@ -176,9 +176,9 @@
 
                                                             <div class="carousel-item">
                                                                 <p class="articulat-bold tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-black h-custom-2 mb-4">"The strength of lorem ipsum is its weakness."</p>
-                                                                <p class="text-black tw-leading-[1.2em] h-custom-3 mb-4">Lorem ipsum is so ubiquitous because it is so versatile. Select how many paragraphs you want, copy, paste, and break the lines wherever it is convenient. Real copy doesn't work that way.</p>
-                                                                <p class="text-black tw-leading-[1.2em] h-custom-3 mb-4">But despite zealous cries for the demise of lorem ipsum, others, such as Karen McGrane, offer appeals for moderation.</p>
-                                                                <p class="text-black tw-leading-[1.2em] h-custom-3 mb-4">- G.P.</p>
+                                                                <p class="text-black tw-leading-[1.2em] h-custom-4 mb-4">Lorem ipsum is so ubiquitous because it is so versatile. Select how many paragraphs you want, copy, paste, and break the lines wherever it is convenient. Real copy doesn't work that way.</p>
+                                                                <p class="text-black tw-leading-[1.2em] h-custom-4 mb-4">But despite zealous cries for the demise of lorem ipsum, others, such as Karen McGrane, offer appeals for moderation.</p>
+                                                                <p class="text-black tw-leading-[1.2em] h-custom-4 mb-4">- G.P.</p>
 
                                                                 <div class="d-flex justify-content-center justify-content-sm-start tw-text-[#ffda3f] font-size-170">
                                                                     <div class="pe-2">

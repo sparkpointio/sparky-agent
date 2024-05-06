@@ -38,7 +38,7 @@
             <div class="col-md-6">
                 <div class="d-flex justify-content-center mb-4 mb-md-0">
                     <div class="px-4 px-lg-0">
-                        <div class="d-flex justify-content-center flex-wrap h-custom-3 mb-4 mb-lg-5">
+                        <div class="d-flex justify-content-center flex-wrap h-custom-4 mb-4 mb-lg-5">
                             <div class="px-2 mb-2 mb-lg-0">
                                 <a class="text-decoration-none text-black" href="{{ route('home.index') }}">Home</a>
                             </div>
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="text-center d-none d-md-block">
-                            <div class="h-custom-3">
+                            <div class="h-custom-4">
                                 &copy; 2024 {{ config('app.name') }}.<br class="d-block d-lg-none" /> All rights reserved
                             </div>
                         </div>
@@ -58,7 +58,7 @@
             </div>
 
             <div class="col-md-4">
-                <div class="h-custom-3">
+                <div class="h-custom-4">
                     <a href="tel:123-445-7890" target="_blank" rel="noreferrer" class="d-flex text-decoration-none text-black mb-4">
                         <div class="tw-min-w-[23px] text-center">
                             <i class="fa-solid fa-phone"></i>

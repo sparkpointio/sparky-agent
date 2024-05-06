@@ -34,7 +34,7 @@
                                     <i class="fa-solid fa-envelope font-size-md-120 font-size-xl-130"></i>
                                 </div>
                             </div>
-                            <div class="h-custom-3 ps-2">username@gmail.com</div>
+                            <div class="h-custom-4 ps-2">username@gmail.com</div>
                         </a>
                     </div>
                 </div>

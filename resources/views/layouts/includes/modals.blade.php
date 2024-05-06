@@ -7,9 +7,9 @@
                 </div>
 
                 <div class="font-size-120">
-                    <div class="text-center h-custom-3 font-weight-500 mb-2 title"></div>
+                    <div class="text-center h-custom-4 font-weight-500 mb-2 title"></div>
                 </div>
-                <div class="text-center h-custom-3 mb-1 message"></div>
+                <div class="text-center h-custom-4 mb-1 message"></div>
             </div>
             <div class="modal-footer justify-content-center py-4" style="border-color:#808080">
                 <button type="button" class="btn btn-custom-1 font-weight-500 px-5" data-bs-dismiss="modal">Okay</button>
@@ -27,9 +27,9 @@
                 </div>
 
                 <div class="font-size-120">
-                    <div class="text-center h-custom-3 font-weight-500 mb-2 title">Whoops!</div>
+                    <div class="text-center h-custom-4 font-weight-500 mb-2 title">Whoops!</div>
                 </div>
-                <div class="text-center h-custom-3 mb-1 message">Sorry, we couldn't process your request. Please try a different approach.</div>
+                <div class="text-center h-custom-4 mb-1 message">Sorry, we couldn't process your request. Please try a different approach.</div>
             </div>
             <div class="modal-footer justify-content-center py-4" style="border-color:#808080">
                 <button type="button" class="btn btn-custom-1 px-5" data-bs-dismiss="modal">Close</button>
