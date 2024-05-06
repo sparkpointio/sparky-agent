@@ -22,6 +22,7 @@ chmod -R 775 bootstrap/cache
 /usr/bin/php8.1 artisan config:cache
 /usr/bin/php8.1 artisan migrate --force
 /usr/bin/php8.1 artisan view:cache
+/usr/bin/php8.1 artisan route:cache
 
 npm install
 npm run build

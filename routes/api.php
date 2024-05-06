@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
-Route::resource('email-subscriptions', EmailSubscriptionController::class);
+Route::resource('email-subscriptions', EmailSubscriptionController::class)->names('api.email-subscriptions');
