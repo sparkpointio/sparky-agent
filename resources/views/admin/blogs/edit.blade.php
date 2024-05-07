@@ -1,6 +1,6 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
-@section('title', 'Admin Edit Blog')
+@section('title', 'Admin | Edit Blog')
 
 @section('content')
 <main class="main">

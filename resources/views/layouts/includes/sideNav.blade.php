@@ -10,17 +10,24 @@
 
     <hr class="sidebar-divider my-0">
 
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+    <li class="nav-item {{ (in_array(Route::currentRouteName(), ['admin.dashboard.index'])) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.dashboard.index') }}">
             <i class="fa-solid fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
     </li>
 
-    <li class="nav-item text-white {{ (in_array(Route::currentRouteName(), ['admin.items.index', 'admin.items.create'])) ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.items.index') }}">
-            <i class="fa-solid fa-fw fa-bag-shopping"></i>
-            <span>Items</span>
+    <li class="nav-item {{ (in_array(Route::currentRouteName(), ['admin.users.index', 'admin.users.show'])) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.users.index') }}">
+            <i class="fa-solid fa-fw fa-user"></i>
+            <span>Users</span>
+        </a>
+    </li>
+
+    <li class="nav-item {{ (in_array(Route::currentRouteName(), ['admin.email-subscriptions.index'])) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.email-subscriptions.index') }}">
+            <i class="fa-solid fa-fw fa-envelope"></i>
+            <span>Email Subscriptions</span>
         </a>
     </li>
 

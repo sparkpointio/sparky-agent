@@ -13,7 +13,7 @@
         <div class="container position-relative" style="top:0; left:0; opacity:0.9; z-index:2">
             <div class="d-flex justify-content-center align-items-center min-vh-100 py-5">
                 <div class="w-100 py-5">
-                    <h1 class="text-center h-custom-2 pt-5 mb-5">Ready to Join?<br class="d-block d-sm-none"/> Start Here!</h1>
+                    <h1 class="text-center h-custom-2 pt-5 mb-5">We're Delighted to Have You!<br/> Register Here.</h1>
 
                     <div class="row justify-content-center">
                         <div class="col-sm-10 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
@@ -21,11 +21,11 @@
                             <form id="register-form" class="mb-4">
                                 <input type="hidden" name="url" value="{{ route('register.submit') }}" />
 
-                                <input type="text" name="name" class="form-control form-control-1 mb-3 py-2 tw-h-[45px]" placeholder="Your name" required />
-                                <input type="email" name="email" class="form-control form-control-1 mb-3 py-2 tw-h-[45px]" placeholder="Your email address" required />
+                                <input type="text" name="name" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your name" required />
+                                <input type="email" name="email" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your email address" required />
 
                                 <div class="position-relative">
-                                    <input type="password" name="password" class="form-control form-control-1 mb-3 py-2 tw-h-[45px]" placeholder="Your password" required />
+                                    <input type="password" name="password" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your password" required />
 
                                     <div class="position-absolute cursor-pointer tw-top-[11px] tw-right-[15px] toggle-password-show">
                                         <i class="fa-solid fa-eye font-size-110"></i>
@@ -33,7 +33,7 @@
                                 </div>
 
                                 <div class="position-relative">
-                                    <input type="password" name="password_confirmation" class="form-control form-control-1 mb-3 py-2 tw-h-[45px]" placeholder="Confirm your password" required />
+                                    <input type="password" name="password_confirmation" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Confirm your password" required />
 
                                     <div class="position-absolute cursor-pointer tw-top-[11px] tw-right-[15px] toggle-password-show">
                                         <i class="fa-solid fa-eye font-size-110"></i>

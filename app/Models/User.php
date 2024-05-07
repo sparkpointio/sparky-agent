@@ -42,4 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function photo() {
+        return 'https://api.dicebear.com/7.x/avataaars/svg?seed=' . $this->id . '&mouth=smile&eyebrows=default&backgroundColor=d7dce0';
+    }
 }

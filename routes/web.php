@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\EmailSubscriptionController;
+use App\Http\Controllers\Admin\EmailSubscriptionController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,7 +52,9 @@ Route::middleware(['auth'])->group(function() {
 
     Route::middleware(['is_admin'])->group(function() {
         Route::prefix('admin')->group(function () {
-            Route::resource('users', UserController::class)->names('admin.users');
+            Route::resource('/', DashboardController::class)->names('admin.dashboard');
+            Route::resource('/users', UserController::class)->names('admin.users');
+            Route::resource('/email-subscriptions', EmailSubscriptionController::class)->names('admin.email-subscriptions');
         });
     });
 });
