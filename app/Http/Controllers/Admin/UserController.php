@@ -17,7 +17,7 @@ class UserController extends Controller
 
             return DataTables::of($data)
                 ->addColumn('date_time_registered', function ($row) {
-                    return Carbon::parse($row['created_at'])->isoFormat('llll');
+                    return Carbon::parse($row['created_at'])->setTimezone('Asia/Manila')->isoFormat('llll');
                 })
                 ->addColumn('user_role', function ($row) {
                     return userRole()[$row['role']];
@@ -42,7 +42,7 @@ class UserController extends Controller
                     return $content;
                 })
                 ->rawColumns(['date_time_registered', 'actions'])
-                ->make(true);
+                ->make();
         }
 
         return view('admin.users.index');

@@ -8,6 +8,8 @@ let pageOnload = async function() {
 
     if(currentRouteName === "admin.users.index") {
         adminUsersOnload();
+    } else if(currentRouteName === "admin.email-subscriptions.index") {
+        adminEmailSubscriptionsOnload();
     }
 };
 let allOnload = async function() {
@@ -33,24 +35,6 @@ let allOnload = async function() {
 
 let homeOnload = function() {
 
-};
-let adminUsersOnload = function() {
-    adminUsersTable = $('#users-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: $("#users-table").attr("data-url"),
-        columns: [
-            { data: 'name', name: 'name' },
-            { data: 'email', name: 'email' },
-            { data: 'date_time_registered', name: 'date_time_registered' },
-            { data: 'user_role', name: 'user_role' },
-            { data: 'actions' }
-        ],
-        search: "smart"
-    });
-
-    $(".loading-text").addClass("d-none");
-    $(".data-table").removeClass("d-none");
 };
 
 let numberFormat = function(x, decimal) {
@@ -399,3 +383,38 @@ $(document).on("submit", "#password-update-form", function(e) {
 
 // Admin Users
 let adminUsersTable;
+let adminUsersOnload = function() {
+    adminUsersTable = $('#users-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: $("#users-table").attr("data-url"),
+        columns: [
+            { data: 'name', name: 'name' },
+            { data: 'email', name: 'email' },
+            { data: 'date_time_registered', name: 'date_time_registered' },
+            { data: 'user_role', name: 'user_role' },
+            { data: 'actions' }
+        ]
+    });
+
+    $(".loading-text").addClass("d-none");
+    $(".data-table").removeClass("d-none");
+};
+
+// Admin Email Subscriptions
+let adminEmailSubscriptionsTable;
+let adminEmailSubscriptionsOnload = function() {
+    adminEmailSubscriptionsTable = $('#email-subscriptions-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: $("#email-subscriptions-table").attr("data-url"),
+        columns: [
+            { data: 'email', name: 'email' },
+            { data: 'name', name: 'name' },
+            { data: 'date_time_subscribed', name: 'date_time_subscribed' }
+        ]
+    });
+
+    $(".loading-text").addClass("d-none");
+    $(".data-table").removeClass("d-none");
+};
