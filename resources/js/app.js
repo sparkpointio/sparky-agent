@@ -412,6 +412,25 @@ let adminEmailSubscriptionsOnload = function() {
             { data: 'email', name: 'email' },
             { data: 'name', name: 'name' },
             { data: 'date_time_subscribed', name: 'date_time_subscribed' }
+        ],
+        buttons: [
+            {
+                text: 'Export to Excel',
+                action: function (e, dt, node, config) {
+                    $.ajax({
+                        url: '/export/excel', // Replace with your server-side export endpoint
+                        method: 'GET',
+                        success: function (response) {
+                            // Handle the Excel file received from the server
+                            // For example, you can prompt the user to download it
+                            // or handle it according to your application's needs
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Error exporting Excel:', error);
+                        }
+                    });
+                }
+            }
         ]
     });
 

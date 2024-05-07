@@ -25,7 +25,7 @@
     @endif
 
     {{--  DataTables  --}}
-    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.7/r-3.0.2/datatables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.0.7/datatables.min.css" rel="stylesheet">
 
     {{--  Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +57,7 @@
     @endif
 
     {{--  DataTables  --}}
-    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.7/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.0.7/datatables.min.js"></script>
 
     @vite('resources/js/app.js')
 </body>

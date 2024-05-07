@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\UsersExport;
 use App\Models\Item;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
@@ -20,7 +22,7 @@ class UserController extends Controller
                     return Carbon::parse($row['created_at'])->setTimezone('Asia/Manila')->isoFormat('llll');
                 })
                 ->addColumn('user_role', function ($row) {
-                    return userRole()[$row['role']];
+                    return userRoles()[$row['role']];
                 })
                 ->filterColumn('user_role', function ($query, $keyword) {
                     $keyword = strtolower($keyword);
@@ -46,5 +48,9 @@ class UserController extends Controller
         }
 
         return view('admin.users.index');
+    }
+
+    public function exportExcel() {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

@@ -53,7 +53,13 @@ Route::middleware(['auth'])->group(function() {
     Route::middleware(['is_admin'])->group(function() {
         Route::prefix('admin')->group(function () {
             Route::resource('/', DashboardController::class)->names('admin.dashboard');
-            Route::resource('/users', UserController::class)->names('admin.users');
+
+            Route::prefix('users')->group(function () {
+                Route::resource('/', UserController::class)->names('admin.users');
+                Route::get('/export/excel', [UserController::class, 'exportExcel'])->name('admin.users.export-excel');
+            });
+
+
             Route::resource('/email-subscriptions', EmailSubscriptionController::class)->names('admin.email-subscriptions');
         });
     });

@@ -9,7 +9,7 @@
     </div>
 
     <div class="animated fadeIn pb-5">
-        <div class="table-responsive font-size-90 p-1">
+        <div class="table-responsive font-size-90 p-1 mb-3">
             <div class="text-center py-5 my-5 loading-text">Loading</div>
             <table class="table table-bordered data-table d-none w-100" id="users-table" data-url="{{ route('admin.users.index') }}">
                 <thead>
@@ -24,6 +24,8 @@
                 <tbody></tbody>
             </table>
         </div>
+
+        <a href="{{ route('admin.users.export-excel') }}" class="btn btn-custom-1 font-size-90 px-4" id="export-users">Export to Excel</a>
     </div>
 </main>
 @endsection

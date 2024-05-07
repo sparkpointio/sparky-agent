@@ -18,8 +18,8 @@ if(!function_exists('ogDetails')) {
     }
 }
 
-if(!function_exists('userRole')) {
-    function userRole() {
+if(!function_exists('userRoles')) {
+    function userRoles() {
         return [
             'Standard',
             'Admin',
