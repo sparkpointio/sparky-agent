@@ -60,7 +60,10 @@ Route::middleware(['auth'])->group(function() {
             });
 
 
-            Route::resource('/email-subscriptions', EmailSubscriptionController::class)->names('admin.email-subscriptions');
+            Route::prefix('email-subscriptions')->group(function () {
+                Route::resource('/', EmailSubscriptionController::class)->names('admin.email-subscriptions');
+                Route::get('/export/excel', [EmailSubscriptionController::class, 'exportExcel'])->name('admin.email-subscriptions.export-excel');
+            });
         });
     });
 });

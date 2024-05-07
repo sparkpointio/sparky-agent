@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\EmailSubscriptionsExport;
 use App\Models\EmailSubscription;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\DataTables;
 
 class EmailSubscriptionController extends Controller
@@ -31,5 +33,9 @@ class EmailSubscriptionController extends Controller
         }
 
         return view('admin.email-subscriptions.index');
+    }
+
+    public function exportExcel() {
+        return Excel::download(new EmailSubscriptionsExport(), 'users.xlsx');
     }
 }
