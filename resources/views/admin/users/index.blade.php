@@ -9,25 +9,19 @@
     </div>
 
     <div class="animated fadeIn pb-5">
-        <div class="table-responsive font-size-90">
+        <div class="table-responsive font-size-90 p-1">
             <div class="text-center py-5 my-5 loading-text">Loading</div>
-            <table class="table table-bordered data-table d-none">
+            <table class="table table-bordered data-table d-none w-100" id="users-table" data-url="{{ route('admin.users.index') }}">
                 <thead>
                     <tr>
                         <th class="align-middle">Name</th>
                         <th class="align-middle">Email Address</th>
-                        <th class="align-middle tw-min-w-[99px]">Date &amp; Time Registered</th>
+                        <th class="align-middle">Date&nbsp;&amp; Time Registered</th>
+                        <th class="align-middle">Role</th>
+                        <th class="align-middle">Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach($users as $user)
-                    <tr>
-                        <td class="align-middle">{{ $user['name'] }}</td>
-                        <td class="align-middle">{{ $user['email'] }}</td>
-                        <td class="align-middle">{{ \Carbon\Carbon::parse($user['created_at'])->setTimezone('Asia/Manila')->isoFormat('llll') }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
     </div>

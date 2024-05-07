@@ -1,7 +1,7 @@
 <ul class="navbar-nav sidebar accordion bg-color-1" id="accordionSidebar" style="border-right:1px solid rgba(16,77,34,0.2)">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home.index') }}">
         <div class="sidebar-brand-icon">
-            <img src="{{ asset('img/home/logo.png') }}" alt="{{ config('app.name') }}" width="54" />
+            <img src="{{ asset('img/home/logo.png') }}" alt="{{ config('app.name') }}" width="36" />
         </div>
         <div class="sidebar-brand-text mx-3">
             <img src="{{ asset('img/home/logo.png') }}" alt="{{ config('app.name') }}" class="tw-max-h-[50px]" />

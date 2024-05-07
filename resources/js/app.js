@@ -6,10 +6,8 @@ let currentRouteName;
 let pageOnload = async function() {
     await allOnload();
 
-    if(currentRouteName === "admin.items.index") {
-        adminItemsOnload();
-    } else if(currentRouteName === "admin.items.create") {
-        adminItemsCreateOnload();
+    if(currentRouteName === "admin.users.index") {
+        adminUsersOnload();
     }
 };
 let allOnload = async function() {
@@ -36,14 +34,23 @@ let allOnload = async function() {
 let homeOnload = function() {
 
 };
-let adminItemsCreateOnload = function() {
-    $(".multiple-select-field").select2( {
-        theme: "bootstrap-5",
-        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-        closeOnSelect: false,
+let adminUsersOnload = function() {
+    adminUsersTable = $('#users-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: $("#users-table").attr("data-url"),
+        columns: [
+            { data: 'name', name: 'name' },
+            { data: 'email', name: 'email' },
+            { data: 'date_time_registered', name: 'date_time_registered' },
+            { data: 'user_role', name: 'user_role' },
+            { data: 'actions' }
+        ],
+        search: "smart"
     });
 
-    $("#new-item-form").removeClass("d-none");
+    $(".loading-text").addClass("d-none");
+    $(".data-table").removeClass("d-none");
 };
 
 let numberFormat = function(x, decimal) {
@@ -390,27 +397,5 @@ $(document).on("submit", "#password-update-form", function(e) {
         })
 });
 
-// Admin Log In
-$(document).on("submit", "#login-form", function(e) {
-    e.preventDefault();
-
-    let form = $(this);
-
-    let button = form.find("[type='submit']");
-    button.prop("disabled", true);
-    button.html('Logging In');
-
-    let url = $(this).attr("action");
-    let data = new FormData($(this)[0]);
-
-    axios.post(url, data)
-        .then((response) => {
-            button.html("Redirecting");
-            window.location = response.data.redirect;
-        }).catch((error) => {
-            button.prop("disabled",false);
-            button.html("Log In");
-
-            showRequestError(error);
-        });
-});
+// Admin Users
+let adminUsersTable;

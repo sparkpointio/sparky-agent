@@ -17,3 +17,12 @@ if(!function_exists('ogDetails')) {
         return $data;
     }
 }
+
+if(!function_exists('userRole')) {
+    function userRole() {
+        return [
+            'Standard',
+            'Admin',
+        ];
+    }
+}
