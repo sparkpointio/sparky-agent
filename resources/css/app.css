@@ -123,6 +123,9 @@ a:hover {
     background-color: #222222;
     border-color: #222222;
 }
+div.dataTables_processing>div:last-child>div {
+    background: #222222;
+}
 
 /*##################################################################*/
 
