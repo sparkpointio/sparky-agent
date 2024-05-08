@@ -4,12 +4,20 @@
 
 @section('content')
 <main class="main">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h6 class="h6 mb-0 text-gray-800">Email Subscriptions</h6>
+    <div class="d-flex justify-content-between flex-wrap tw-mx-[-16px]">
+        <ol class="breadcrumb align-items-end bg-white py-0 px-3 mb-3">
+            <li class="breadcrumb-item active" aria-current="page">
+                <h1 class="h3 mb-0 text-gray-800">Email Subscriptions</h1>
+            </li>
+        </ol>
+
+        <div class="px-3 mb-3">
+            <a href="{{ route('admin.email-subscriptions.export-excel') }}" class="btn btn-custom-1 font-size-80 px-3" id="export-users">Export to Excel</a>
+        </div>
     </div>
 
     <div class="animated fadeIn pb-5">
-        <div class="table-responsive font-size-90 p-1 mb-3">
+        <div class="table-responsive font-size-90 p-1">
             <div class="text-center py-5 my-5 loading-text">Loading</div>
             <table class="table table-bordered data-table d-none w-100" id="email-subscriptions-table" data-url="{{ route('admin.email-subscriptions.index') }}">
                 <thead>
@@ -22,8 +30,6 @@
                 <tbody></tbody>
             </table>
         </div>
-
-        <a href="{{ route('admin.email-subscriptions.export-excel') }}" class="btn btn-custom-1 font-size-90 px-4" id="export-users">Export to Excel</a>
     </div>
 </main>
 @endsection
