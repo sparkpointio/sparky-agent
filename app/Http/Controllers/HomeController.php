@@ -24,9 +24,9 @@ class HomeController extends Controller
 
     public function try()
     {
-        if(config('app.env') == 'production') {
-            abort(404);
-        }
+//        if(config('app.env') == 'production') {
+//            abort(404);
+//        }
 
         $user = User::find(1);
         $url = route('home.index') . '/' . Str::random(50);

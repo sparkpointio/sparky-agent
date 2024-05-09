@@ -14,7 +14,7 @@
             <div class="d-inline-block w-100" style="max-width:600px; background-color:#ffffff; border:1px solid #d7dce0">
                 <div class="bg-color-1 text-start ps-5 py-4">
                     <div class="py-2">
-                        <img src="{{ config('app.prod_url') . '/img/home/logo.png' }}" width="60" alt="{{ config('app.name') }}" />
+                        <img src="{{ config('app.prod_url') . '/img/home/logo-70.webp' }}" width="60" alt="{{ config('app.name') }}" />
                     </div>
                 </div>
 
@@ -26,7 +26,7 @@
                             <hr class="my-4 "/>
                         </div>
 
-                        <p class="mb-0"><img src="{{ config('app.prod_url') . '/img/home/logo.png' }}" width="20" alt="{{ config('app.name') }}" style="margin-top:-4px" />&nbsp;&nbsp; &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
+                        <p class="mb-0"><img src="{{ config('app.prod_url') . '/img/home/logo-70.webp' }}" width="20" alt="{{ config('app.name') }}" style="margin-top:-4px" />&nbsp;&nbsp; &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
                     </div>
                 </div>
             </div>
