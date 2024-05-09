@@ -28,6 +28,10 @@ chmod -R 775 bootstrap/cache
 /usr/bin/php8.1 artisan optimize
 /usr/bin/php8.1 artisan event:cache
 
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl start all
+
 npm install
 npm run build
 
