@@ -56,7 +56,6 @@
         </div>
     </div>
 
-
     @include('home.includes.footer')
     @include('login.includes.modalForgotPassword')
 

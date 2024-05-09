@@ -18,18 +18,8 @@ let allOnload = async function() {
 
     $(window).trigger('scroll');
 
-    if(currentRouteName === "home.index") {
-        // localStorage.removeItem('savedDate');
-
-        let savedDate = localStorage.getItem('savedDate');
-        let currentDate = new Date();
-
-        if (!savedDate || (currentDate - new Date(savedDate)) > (24 * 60 * 60 * 1000)) {
-            savedDate = currentDate.toString();
-            localStorage.setItem('savedDate', savedDate);
-
-            $("#modal-newsletter-subscription").modal("show");
-        }
+    if($("#modal-success .title").html() !== "" && $("#modal-success .message").html() !== "") {
+        $("#modal-success").modal("show");
     }
 };
 

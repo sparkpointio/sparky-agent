@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendVerificationEmail;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +51,8 @@ class AuthenticationController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
+
+        SendVerificationEmail::dispatch($request->user())->onQueue('emails');
 
         Auth::login($user);
 

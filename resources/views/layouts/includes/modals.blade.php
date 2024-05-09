@@ -5,11 +5,10 @@
                 <div class="text-center mt-3 mb-4">
                     <i class="fas fa-circle-check font-size-500"></i>
                 </div>
-
                 <div class="font-size-120">
-                    <div class="text-center h-custom-4 font-weight-500 mb-2 title"></div>
+                    <div class="text-center h-custom-4 font-weight-500 mb-2 title">{{ session()->has('success') ? 'Great!' : '' }}</div>
                 </div>
-                <div class="text-center h-custom-4 mb-1 message"></div>
+                <div class="text-center h-custom-4 mb-1 message">{{ session()->has('success') ? session('success') : '' }}</div>
             </div>
             <div class="modal-footer justify-content-center py-4" style="border-color:#808080">
                 <button type="button" class="btn btn-custom-1 font-weight-500 px-5" data-bs-dismiss="modal">Okay</button>

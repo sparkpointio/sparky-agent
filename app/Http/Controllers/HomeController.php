@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -21,7 +24,13 @@ class HomeController extends Controller
 
     public function try()
     {
-        //
+        if(config('app.env') == 'production') {
+            abort(404);
+        }
+
+        $user = User::find(1);
+        $url = route('home.index') . '/' . Str::random(50);
+        return view('emails.verification', compact('user', 'url'));
     }
 
     /**
