@@ -26,7 +26,7 @@
                             <hr class="my-4 "/>
                         </div>
 
-                        <p class="mb-0"><img src="{{ config('app.prod_url') . '/img/home/logo.png' }}" width="20" alt="{{ config('app.name') }}" style="margin-top:-4px" />&nbsp;&nbsp; &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
+                        <p class="mb-0"><img src="{{ config('app.email_assets_url') . '/img/home/logo.png' }}" width="20" alt="{{ config('app.name') }}" style="margin-top:-4px" />&nbsp;&nbsp; &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
                     </div>
                 </div>
             </div>
