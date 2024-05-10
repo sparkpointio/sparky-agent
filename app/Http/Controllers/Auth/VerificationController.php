@@ -51,15 +51,6 @@ class VerificationController extends Controller
 
         Mail::to($request->user()->email)->queue(new VerificationMail($request->user()));
 
-        $user = $request->user();
-
-        $url = URL::signedRoute(
-            'verification.verify', // Route name
-            ['id' => $user->getKey(), 'hash' => sha1($user->getEmailForVerification())] // Route parameters
-        );
-
-        info($url);
-
         return back()->with('success', 'Verification link sent to your email.');
     }
 }
