@@ -27,9 +27,11 @@ Route::get('under-construction', [HomeController::class, 'underConstruction'])->
 
 Route::resource('email-subscriptions', EmailSubscriptionController::class);
 
-Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
-Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
-Route::get('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+Route::prefix('email')->group(function () {
+    Route::get('/verify', [VerificationController::class, 'show'])->name('verification.notice');
+    Route::get('/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+    Route::get('/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+});
 
 Route::middleware(['guest'])->group(function() {
     Route::post('/forgot-password', [AuthenticationController::class, 'forgotPassword'])->name('password.request');

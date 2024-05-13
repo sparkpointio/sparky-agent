@@ -190,23 +190,6 @@ $(document).on("input", ".use-numeric-no-leading-zero-rule", function() {
     $(this).val(numericValue);
 });
 
-$(document).on("click", ".toggle-password-show", function() {
-    let input = $(this).closest(".position-relative").find("input");
-    let icon = $(this).find("i");
-
-    if(input.attr("type") === "text") {
-        input.attr("type", "password");
-
-        icon.addClass('fa-eye');
-        icon.removeClass('fa-eye-slash');
-    } else {
-        input.attr("type", "text");
-
-        icon.removeClass('fa-eye');
-        icon.addClass('fa-eye-slash');
-    }
-});
-
 $(document).on("input", ".numeric-only", function() {
     let inputValue = $(this).val();
     $(this).val(inputValue.replace(/[^0-9]/g, ''));
@@ -240,7 +223,7 @@ $(document).on("submit", "#email-subscription-form", function(e) {
         });
 });
 
-// Contact Form
+// Contact
 $(document).on("submit", "#contact-form", function(e) {
     e.preventDefault();
 
@@ -268,7 +251,7 @@ $(document).on("submit", "#contact-form", function(e) {
         });
 });
 
-// Authentication
+// Register
 $(document).on("submit", "#register-form", function(e) {
     e.preventDefault();
 
@@ -290,6 +273,24 @@ $(document).on("submit", "#register-form", function(e) {
 
             showRequestError(error);
         })
+});
+
+// Login
+$(document).on("click", ".toggle-password-show", function() {
+    let input = $(this).closest(".position-relative").find("input");
+    let icon = $(this).find("i");
+
+    if(input.attr("type") === "text") {
+        input.attr("type", "password");
+
+        icon.addClass('fa-eye');
+        icon.removeClass('fa-eye-slash');
+    } else {
+        input.attr("type", "text");
+
+        icon.removeClass('fa-eye');
+        icon.addClass('fa-eye-slash');
+    }
 });
 
 $(document).on("submit", "#user-login-form", function(e) {
@@ -315,6 +316,7 @@ $(document).on("submit", "#user-login-form", function(e) {
         })
 });
 
+// Reset Password
 $(document).on("submit", "#forgot-password-form", function(e) {
     e.preventDefault();
 

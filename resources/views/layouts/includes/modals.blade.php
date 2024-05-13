@@ -1,14 +1,15 @@
 <div class="modal fade" id="modal-success" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content tw-rounded-[15px]">
-            <div class="modal-body px-sm-5">
+        <div class="modal-content tw-rounded-[0]">
+            <div class="modal-body px-4 px-sm-5 py-4">
                 <div class="text-center mt-3 mb-4">
                     <i class="fas fa-circle-check font-size-500"></i>
                 </div>
+
                 <div class="font-size-120">
                     <div class="text-center h-custom-4 font-weight-500 mb-2 title">{{ session()->has('success') ? 'Great!' : '' }}</div>
                 </div>
-                <div class="text-center h-custom-4 mb-1 message">{{ session()->has('success') ? session('success') : '' }}</div>
+                <div class="text-center h-custom-4 mb-0 message">{{ session()->has('success') ? session('success') : '' }}</div>
             </div>
             <div class="modal-footer justify-content-center py-4" style="border-color:#808080">
                 <button type="button" class="btn btn-custom-1 font-weight-500 px-5" data-bs-dismiss="modal">Okay</button>
@@ -19,8 +20,8 @@
 
 <div class="modal fade" id="modal-error" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content tw-rounded-[15px]">
-            <div class="modal-body">
+        <div class="modal-content tw-rounded-[0]">
+            <div class="modal-body px-4 px-sm-5 py-4">
                 <div class="text-center mt-3 mb-3">
                     <i class="fas fa-exclamation-circle font-size-500"></i>
                 </div>
@@ -28,7 +29,7 @@
                 <div class="font-size-120">
                     <div class="text-center h-custom-4 font-weight-500 mb-2 title">Whoops!</div>
                 </div>
-                <div class="text-center h-custom-4 mb-1 message">Sorry, we couldn't process your request. Please try a different approach.</div>
+                <div class="text-center h-custom-4 mb-0 message">Sorry, we couldn't process your request. Please try a different approach.</div>
             </div>
             <div class="modal-footer justify-content-center py-4" style="border-color:#808080">
                 <button type="button" class="btn btn-custom-1 px-5" data-bs-dismiss="modal">Close</button>
@@ -67,11 +68,11 @@
                     </div>
 
                     <div class="font-size-110 font-size-md-100 font-size-lg-90">
-                        <p class="text-color-2 cerebri-sans-pro-medium font-size-110 font-size-md-120 font-size-lg-130 font-size-xl-140 font-size-xxl-150 mb-2">Forgot Password</p>
+                        <p class="text-color-2 font-size-110 font-size-md-120 font-size-lg-130 font-size-xl-140 font-size-xxl-150 mb-2">Forgot Password</p>
                     </div>
 
                     <div class="font-size-90 font-size-md-80 font-size-lg-70">
-                        <p class="text-color-2 cerebri-sans-pro-regular font-size-110 font-size-md-120 font-size-lg-130 font-size-xl-140 font-size-xxl-150 mb-4">Enter your email address below and we'll send you a link to reset your password.</p>
+                        <p class="text-color-2 font-size-110 font-size-md-120 font-size-lg-130 font-size-xl-140 font-size-xxl-150 mb-4">Enter your email address below and we'll send you a link to reset your password.</p>
                     </div>
                 </div>
 

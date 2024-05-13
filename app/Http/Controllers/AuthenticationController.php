@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SendVerificationEmail;
+use App\Mail\ResetPasswordMail;
 use App\Mail\VerificationMail;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
@@ -69,15 +72,13 @@ class AuthenticationController extends Controller
     }
 
     public function forgotPassword(Request $request) {
-        $request->validate(['email' => 'required|email']);
+        $request->validate([
+            'email' => 'required|email'
+        ]);
 
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
+        Mail::to($request->email)->queue(new ResetPasswordMail($request->email));
 
-        return $status === Password::RESET_LINK_SENT
-            ? back()->with(['status' => __($status)])
-            : back()->withErrors(['email' => __($status)]);
+        return response()->json();
     }
 
     public function resetPasswordView($token) {
@@ -91,20 +92,22 @@ class AuthenticationController extends Controller
             'password' => 'required|min:8|confirmed',
         ]);
 
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function (User $user, string $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password)
-                ])->setRememberToken(Str::random(60));
+        $passwordResetToken = DB::table('password_reset_tokens')
+            ->where('email', $request->email)
+            ->where('token', $request->token)
+            ->first();
 
-                $user->save();
+        abort_if(!$passwordResetToken, 422, 'Password reset is invalid.');
+        abort_if(Carbon::parse($passwordResetToken->created_at)->addHour() < Carbon::now(), 422, 'Password reset is expired. Please request another password reset.');
 
-                event(new PasswordReset($user));
-            }
-        );
+        $user = User::where('email', $request->email)
+            ->first();
 
-        abort_if($status !== Password::PASSWORD_RESET, 422, __($status));
+        abort_if(!$user, 422, 'User is invalid.');
+
+        $user->fill([
+            'password' => Hash::make($request->password)
+        ])->save();
 
         return  response()->json([
             'redirect' => route('login.index')
