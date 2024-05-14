@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
 class AuthenticationController extends Controller
@@ -35,7 +36,7 @@ class AuthenticationController extends Controller
         }
 
         return response()->json([
-            'redirect' => route('home.index')
+            'redirect' => Redirect::intended('/')->getTargetUrl()
         ]);
     }
 
