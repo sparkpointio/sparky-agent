@@ -1,7 +1,11 @@
 <nav class="navbar fixed-top navbar-expand-lg bg-dark-subtle py-2">
     <div class="container d-flex justify-content-between position-relative">
-        <a class="navbar-brand" href="{{ route('home.index') }}">
-            <img src="{{ asset('img/home/logo.png') }}" class="tw-duration-500" alt="{{ config('app.name') }}">
+        <a class="navbar-brand d-flex align-items-center" href="{{ route('home.index') }}">
+            <div>
+                <img src="{{ asset('img/home/logo.png') }}" class="tw-duration-500" alt="{{ config('app.name') }}">
+            </div>
+
+            <p class="text-black bebas-neue ps-4 mt-1 mb-0">{{ config('app.name') }}</p>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

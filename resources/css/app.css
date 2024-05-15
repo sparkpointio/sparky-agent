@@ -89,6 +89,9 @@ a:hover {
 .app .navbar .navbar-brand img {
     height:48px;
 }
+.app .navbar .navbar-brand {
+    font-size:1.7em;
+}
 .app .navbar.has-transition .navbar-brand img {
     transition:0.5s;
 }
