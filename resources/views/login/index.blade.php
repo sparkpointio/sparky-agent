@@ -45,7 +45,7 @@
 
                                 <div class="text-center">
                                     <a href="{{ route('register.index') }}" class="text-decoration-none text-black">
-                                        <div class="h-custom-4 ps-3">Don't have an account yet? <span class="helvetica-neue-light text-decoration-underline">Create one!</span></div>
+                                        <div class="h-custom-4 ps-3">Don't have an account yet? <span class="text-decoration-underline">Create one!</span></div>
                                     </a>
                                 </div>
                             </div>

@@ -59,7 +59,7 @@
                                     <p class="text-body-secondary tw-leading-[1.2em] h-custom-4 px-4 px-md-0 mb-5">We believe in preserving family bonds and will work hard to reach a fair resolution that prioritizes your well-being and that of your loved ones. With our experience and dedication, you can trust us to navigate the challenges of divorce effectively.</p>
 
                                     <div class="">
-                                        <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-1 px-5 py-2 font-size-130 h-custom-4 tw-pt-[0.55em!important]">Call to Action</a>
+                                        <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-1 px-5 py-2 h-custom-4 tw-pt-[0.55em!important]">Call to Action</a>
                                     </div>
                                 </div>
                             </div>

@@ -47,7 +47,7 @@
 
                             <div class="text-center">
                                 <a href="{{ route('login.index') }}" class="text-decoration-none text-black">
-                                    <div class="h-custom-4 ps-3">Already have an account? <span class="helvetica-neue-light text-decoration-underline">Log In!</span></div>
+                                    <div class="h-custom-4 ps-3">Already have an account? <span class="text-decoration-underline">Log In!</span></div>
                                 </a>
                             </div>
                         </div>

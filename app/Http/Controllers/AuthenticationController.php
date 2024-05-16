@@ -63,7 +63,7 @@ class AuthenticationController extends Controller
         Auth::login($user);
 
         return response()->json([
-            'redirect' => route('home.index')
+            'redirect' => route('verification.notice')
         ]);
     }
 
