@@ -35,7 +35,7 @@ class AuthenticationController extends Controller
             abort(422, 'Your provided credentials do not match the records in our system.');
         }
 
-        if(Auth::user()->email_verified_at) {
+        if(!Auth::user()->email_verified_at) {
             Mail::to(Auth::user()->email)->queue(new VerificationMail(Auth::user()));
             $redirect = route('verification.notice');
         } else {
