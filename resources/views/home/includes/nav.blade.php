@@ -22,9 +22,11 @@
                     <a class="nav-link {{ (Route::currentRouteName() == 'contact.index') ? 'font-weight-600' : 'font-weight-500' }} font-size-110 letter-spacing-5 px-lg-3 px-xl-4" href="{{ route('contact.index') }}">Contact</a>
                 </li>
 
+                @if(!Auth::check())
                 <li class="nav-item {{ Auth::check() ? 'ms-lg-3 ms-xl-4' : 'mx-lg-3 mx-xl-4' }} mt-2 mt-lg-0 mb-2 mb-lg-0">
                     <a href="{{ route('register.index') }}" class="btn btn-custom-1 font-size-100 tw-py-[5px] px-3">Register Now</a>
                 </li>
+                @endif
 
                 @if(Auth::check())
                 <li class="nav-item dropdown ms-lg-3 ms-xl-4 mt-2 mt-lg-0 mb-2 mb-lg-0">
