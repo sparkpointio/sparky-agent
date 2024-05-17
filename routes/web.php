@@ -27,12 +27,6 @@ Route::get('under-construction', [HomeController::class, 'underConstruction'])->
 
 Route::resource('email-subscriptions', EmailSubscriptionController::class);
 
-Route::prefix('email')->group(function () {
-    Route::get('/verify', [VerificationController::class, 'show'])->name('verification.notice');
-    Route::get('/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
-    Route::get('/resend', [VerificationController::class, 'resend'])->name('verification.resend');
-});
-
 Route::middleware(['guest'])->group(function() {
     Route::post('/forgot-password', [AuthenticationController::class, 'forgotPassword'])->name('password.request');
     Route::get('/reset-password/{token}', [AuthenticationController::class, 'resetPasswordView'])->name('password.reset');
@@ -56,6 +50,12 @@ Route::prefix('contact')->group(function () {
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout.index');
+
+    Route::prefix('email')->group(function () {
+        Route::get('/verify', [VerificationController::class, 'show'])->name('verification.notice');
+        Route::get('/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+        Route::get('/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+    });
 
     Route::middleware(['is_admin'])->group(function() {
         Route::prefix('admin')->group(function () {
