@@ -8,7 +8,7 @@
 
     <div class="tw-pt-[88px]">
         <div class="py-5 position-relative">
-            <div class="position-absolute w-100 tw-left-[0] tw-top-[0] background-image-cover tw-bg-[url('/img/home/bg.png')] tw-min-h-[calc(80vh-88px)] tw-z-[1]"></div>
+            <div class="position-absolute w-100 tw-left-[0] tw-top-[0] background-image-cover tw-min-h-[calc(80vh-88px)] tw-z-[1]"></div>
 
             <div class="container tw-z-[2] position-relative pb-sm-5">
                 <div class="pt-3">
@@ -25,7 +25,7 @@
                                 <p class="text-center text-md-start text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Notably, Ariel was Supreme Judicial Court Rule 3:03 Certified from 2016-2017, showcasing her dedication to excellence.</p>
                             </div>
 
-                            <div class="col-11 col-sm-10 col-md-6 p-0 background-image-cover tw-bg-[url('/img/home/bg.png')] tw-min-h-[calc(100vh-88px)] sm:tw-min-h-[calc(90vh-88px)] md:tw-min-h-[initial] tw-bg-[center_top_-70px] md:tw-bg-[center_top_50%] lg:tw-bg-[center_top_-80px] xl:tw-bg-[center_top_-100px]">
+                            <div class="col-11 col-sm-10 col-md-6 p-0 background-image-cover tw-min-h-[calc(100vh-88px)] sm:tw-min-h-[calc(90vh-88px)] md:tw-min-h-[initial] tw-bg-[center_top_-70px] md:tw-bg-[center_top_50%] lg:tw-bg-[center_top_-80px] xl:tw-bg-[center_top_-100px]">
 
                             </div>
                         </div>
@@ -37,7 +37,7 @@
 
     <div class="container-fluid">
         <div class="row tw-min-h-[calc(100vh-78px)] align-items-stretch">
-            <div class="col-md-6 col-lg-7 background-image-cover p-0 tw-bg-[url('/img/home/bg.png')] tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
+            <div class="col-md-6 col-lg-7 background-image-cover p-0 tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
 
             <div class="col-md-6 col-lg-5 d-flex justify-content-start">
                 <div class="md:tw-max-w-[calc((720px/12)*6)] lg:tw-max-w-[calc((960px/12)*5)] xl:tw-max-w-[calc((1140px/12)*5)] xxl:tw-max-w-[calc((1320px/12)*5)] w-100 tw-px-[8px]">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-5 background-image-cover p-0 tw-bg-[url('/img/home/bg.png')] tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
+                <div class="col-md-5 background-image-cover p-0 tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
             </div>
         </div>
     </div>

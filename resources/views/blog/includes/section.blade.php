@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <div class="col-md-5 background-image-cover p-0 tw-bg-[url('/img/home/bg.png')] tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
+            <div class="col-md-5 background-image-cover p-0 tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
         </div>
     </div>
 </div>

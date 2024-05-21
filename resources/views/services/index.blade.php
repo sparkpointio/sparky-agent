@@ -8,7 +8,7 @@
 
     <div class="tw-pt-[88px]">
         <div class="py-5 position-relative">
-            <div class="position-absolute w-100 tw-left-[0] tw-top-[0] background-image-cover tw-bg-[url('/img/home/bg.png')] tw-min-h-[calc(80vh-88px)] tw-z-[1]"></div>
+            <div class="position-absolute w-100 tw-left-[0] tw-top-[0] background-image-cover tw-min-h-[calc(80vh-88px)] tw-z-[1]"></div>
 
             <div class="container tw-z-[2] position-relative pb-sm-5">
                 <div class="pt-3">
@@ -24,7 +24,7 @@
                                 <p class="text-center text-md-start text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">From divorce and custody proceedings to mediation, move-away actions, and spousal and child support matters, our seasoned team is dedicated to providing steadfast advocacy and personalized legal solutions.</p>
                             </div>
 
-                            <div class="col-11 col-sm-10 col-md-6 p-0 background-image-cover tw-bg-[url('/img/home/bg.png')] tw-min-h-[calc(100vh-88px)] sm:tw-min-h-[calc(90vh-88px)] md:tw-min-h-[initial] tw-bg-[center_top_-70px] md:tw-bg-[center_top_50%]">
+                            <div class="col-11 col-sm-10 col-md-6 p-0 background-image-cover tw-min-h-[calc(100vh-88px)] sm:tw-min-h-[calc(90vh-88px)] md:tw-min-h-[initial] tw-bg-[center_top_-70px] md:tw-bg-[center_top_50%]">
 
                             </div>
                         </div>
@@ -104,7 +104,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -123,7 +123,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -142,7 +142,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -161,7 +161,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -180,7 +180,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -199,7 +199,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -218,7 +218,7 @@
 
             <div class="row align-items-center px-3 px-md-2">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -258,7 +258,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-5 background-image-cover p-0 tw-bg-[url('/img/home/bg.png')] tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
+                <div class="col-md-5 background-image-cover p-0 tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
             </div>
         </div>
     </div>

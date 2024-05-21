@@ -67,7 +67,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-5 background-image-cover p-0 tw-bg-[url('/img/home/img-5.webp')] tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]" style="background-image:url('{{ asset('img/home/bg.png') }}')"></div>
+                <div class="col-md-5 background-image-cover p-0 tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]" style="background-image:url('{{ asset('img/home/bg.png') }}')"></div>
             </div>
         </div>
     </div>
