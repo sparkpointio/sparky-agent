@@ -7,7 +7,7 @@
     @include('home.includes.nav')
 
     <div class="tw-pt-[88px]">
-        <div class="background-image-cover tw-bg-[url('/img/blog/bg-1.webp')] md:tw-bg-[url('/img/blog/bg-1.webp')] md:!tw-bg-[top_right_-15em] lg:!tw-bg-[top_right_-9em] xl:!tw-bg-center">
+        <div class="background-image-cover tw-bg-[url('/img/home/bg.png')] md:tw-bg-[url('/img/home/bg.png')] md:!tw-bg-[top_right_-15em] lg:!tw-bg-[top_right_-9em] xl:!tw-bg-center">
             <div class="container">
                 <div class="row align-items-center tw-min-h-[calc(100vh-88px)]">
                     <div class="col-md-9 col-lg-6 py-5">

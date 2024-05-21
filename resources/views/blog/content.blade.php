@@ -37,7 +37,7 @@
 
 {{--                <div class="row justify-content-center py-5">--}}
 {{--                    <div class="col-md-10 col-lg-9">--}}
-{{--                        <img src="{{ asset('img/blog/1/2.webp') }}" class="w-100" alt="{{ config('app.name') }}" />--}}
+{{--                        <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />--}}
 {{--                    </div>--}}
 {{--                </div>--}}
             </div>

@@ -8,7 +8,7 @@
 
     <div class="tw-pt-[88px]">
         <div class="py-5 position-relative">
-            <div class="position-absolute w-100 tw-left-[0] tw-top-[0] background-image-cover tw-bg-[url('/img/services/bg-1.webp')] tw-min-h-[calc(80vh-88px)] tw-z-[1]"></div>
+            <div class="position-absolute w-100 tw-left-[0] tw-top-[0] background-image-cover tw-bg-[url('/img/home/bg.png')] tw-min-h-[calc(80vh-88px)] tw-z-[1]"></div>
 
             <div class="container tw-z-[2] position-relative pb-sm-5">
                 <div class="pt-3">
@@ -24,7 +24,7 @@
                                 <p class="text-center text-md-start text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">From divorce and custody proceedings to mediation, move-away actions, and spousal and child support matters, our seasoned team is dedicated to providing steadfast advocacy and personalized legal solutions.</p>
                             </div>
 
-                            <div class="col-11 col-sm-10 col-md-6 p-0 background-image-cover tw-bg-[url('/img/services/img-3.webp')] tw-min-h-[calc(100vh-88px)] sm:tw-min-h-[calc(90vh-88px)] md:tw-min-h-[initial] tw-bg-[center_top_-70px] md:tw-bg-[center_top_50%]">
+                            <div class="col-11 col-sm-10 col-md-6 p-0 background-image-cover tw-bg-[url('/img/home/bg.png')] tw-min-h-[calc(100vh-88px)] sm:tw-min-h-[calc(90vh-88px)] md:tw-min-h-[initial] tw-bg-[center_top_-70px] md:tw-bg-[center_top_50%]">
 
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                 <div class="row justify-content-center">
                     <div class="col-6 col-md-4 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
                         <div class="mb-4">
-                            <img src="{{ asset('img/services/1.webp') }}" class="w-100" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Divorce and custody proceedings</p>
@@ -48,7 +48,7 @@
 
                     <div class="col-6 col-md-4 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
                         <div class="mb-4">
-                            <img src="{{ asset('img/services/2.webp') }}" class="w-100" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Mediation</p>
@@ -56,7 +56,7 @@
 
                     <div class="col-6 col-md-4 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
                         <div class="mb-4">
-                            <img src="{{ asset('img/services/3.webp') }}" class="w-100" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Move-away actions</p>
@@ -64,7 +64,7 @@
 
                     <div class="col-6 col-md-3 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
                         <div class="mb-4">
-                            <img src="{{ asset('img/services/4.webp') }}" class="w-100" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Spousal and child support</p>
@@ -72,7 +72,7 @@
 
                     <div class="col-6 col-md-3 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
                         <div class="mb-4">
-                            <img src="{{ asset('img/services/5.webp') }}" class="w-100" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Attorney fee disputes</p>
@@ -80,7 +80,7 @@
 
                     <div class="col-6 col-md-3 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
                         <div class="mb-4">
-                            <img src="{{ asset('img/services/6.webp') }}" class="w-100" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Prenuptial/<br />postnuptial agreements</p>
@@ -88,7 +88,7 @@
 
                     <div class="col-6 col-md-3 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
                         <div class="mb-4">
-                            <img src="{{ asset('img/services/7.webp') }}" class="w-100" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">High net worth cases</p>
@@ -104,7 +104,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/services/service-1.webp')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -112,7 +112,7 @@
                         <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Divorce and custody proceedings</p>
 
                         <div class="text-center text-lg-start">
-                            <img src="{{ asset('img/services/border.webp') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-black tw-leading-[1.2em] text-center text-md-start font-size-120 font-size-xl-130 mb-4">Our firm specializes in navigating the complexities of divorce and custody cases with a focus on protecting our clients' rights and preserving family relationships.</p>
@@ -123,7 +123,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/services/service-6.webp')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -131,7 +131,7 @@
                         <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Mediation</p>
 
                         <div class="text-center text-lg-start">
-                            <img src="{{ asset('img/services/border.webp') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-black tw-leading-[1.2em] text-center text-md-start font-size-120 font-size-xl-130 mb-4">Through our mediation services, we offer a collaborative approach to resolving family disputes, providing a neutral and constructive environment for parties to communicate and reach mutually beneficial agreements.</p>
@@ -142,7 +142,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/services/service-2.webp')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -150,7 +150,7 @@
                         <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Move-away actions</p>
 
                         <div class="text-center text-lg-start">
-                            <img src="{{ asset('img/services/border.webp') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-black tw-leading-[1.2em] text-center text-md-start font-size-120 font-size-xl-130 mb-4">When one parent seeks to relocate with the children, our firm offers experienced legal guidance to address the complex legal considerations involved in move-away actions.</p>
@@ -161,7 +161,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/services/service-3.webp')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -169,7 +169,7 @@
                         <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Spousal and child support</p>
 
                         <div class="text-center text-lg-start">
-                            <img src="{{ asset('img/services/border.webp') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-black tw-leading-[1.2em] text-center text-md-start font-size-120 font-size-xl-130 mb-4">We understand the financial implications of divorce and the importance of fair and sustainable support arrangements for both spouses and children.</p>
@@ -180,7 +180,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/services/service-4.webp')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -188,7 +188,7 @@
                         <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Attorney fee disputes</p>
 
                         <div class="text-center text-lg-start">
-                            <img src="{{ asset('img/services/border.webp') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-black tw-leading-[1.2em] text-center text-md-start font-size-120 font-size-xl-130 mb-4">In cases where disputes arise over attorney fees, our firm works diligently to resolve conflicts efficiently and fairly.</p>
@@ -199,7 +199,7 @@
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/services/service-5.webp')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -207,7 +207,7 @@
                         <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Prenuptial/postnuptial agreements</p>
 
                         <div class="text-center text-lg-start">
-                            <img src="{{ asset('img/services/border.webp') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-black tw-leading-[1.2em] text-center text-md-start font-size-120 font-size-xl-130 mb-4">For couples considering marriage or seeking to protect their assets, we offer comprehensive services for drafting and negotiating prenuptial and postnuptial agreements.</p>
@@ -218,7 +218,7 @@
 
             <div class="row align-items-center px-3 px-md-2">
                 <div class="col-md-6 col-lg-5 px-0">
-                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/services/service-7.webp')]"></div>
+                    <div class="w-100 tw-pt-[100%] background-image-cover tw-bg-[url('/img/home/bg.png')]"></div>
                 </div>
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
@@ -226,7 +226,7 @@
                         <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">High net worth cases</p>
 
                         <div class="text-center text-lg-start">
-                            <img src="{{ asset('img/services/border.webp') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
                         </div>
 
                         <p class="text-black tw-leading-[1.2em] text-center text-md-start font-size-120 font-size-xl-130 mb-4">At Peres Family Law, we specialize in high-net-worth divorce cases, offering unrivaled expertise in complex property division and asset protection.</p>
@@ -258,7 +258,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-5 background-image-cover p-0 tw-bg-[url('/img/blog/img-4.webp')] tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
+                <div class="col-md-5 background-image-cover p-0 tw-bg-[url('/img/home/bg.png')] tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
             </div>
         </div>
     </div>
