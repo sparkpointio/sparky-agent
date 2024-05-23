@@ -31,7 +31,7 @@
                 @if(Auth::check())
                 <li class="nav-item dropdown ms-lg-3 ms-xl-4 mt-2 mt-lg-0 mb-2 mb-lg-0">
                     <a class="nav-link text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ Auth::user()->photo() }}" class="tw-border-solid tw-border-[2px] tw-border-[rgba(0,0,0,0.1)] rounded-circle tw-w-[40px]" alt="{{ config('app.name') }}" />
+                        <img src="{{ Auth::user()->photo() }}" class="tw-border-solid tw-border-[2px] tw-border-[rgba(0,0,0,0.1)] rounded-circle" id="user-photo" alt="{{ config('app.name') }}" />
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end py-2 font-size-90">
                         <li>

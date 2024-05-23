@@ -98,6 +98,13 @@ a:hover {
 .app .navbar.scrolled .navbar-brand img {
     height:40px;
 }
+.app .navbar #user-photo {
+    width:40px;
+    transition:0.5s;
+}
+.app .navbar.scrolled #user-photo {
+    width:37px;
+}
 .sidebar .nav-item.active .nav-link {
     background-color: #222222 !important;
     font-weight: 500 !important;
