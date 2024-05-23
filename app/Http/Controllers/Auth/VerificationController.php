@@ -48,7 +48,7 @@ class VerificationController extends Controller
             event(new Verified($request->user()));
         }
 
-        Auth::login($request->user());
+        Auth::login($user);
 
         return redirect()->route('dashboard.index')->with('success', 'Email verified successfully.');
     }
