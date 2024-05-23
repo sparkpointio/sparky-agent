@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Jobs\SendVerificationEmail;
 use App\Mail\EmailReceived;
 use App\Mail\VerificationMail;
+use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -30,13 +32,19 @@ class VerificationController extends Controller
         return view('auth.verify');
     }
 
-    public function verify(EmailVerificationRequest $request)
+    public function verify(Request $request, $id, $hash)
     {
-        if ($request->user()->hasVerifiedEmail()) {
+        $user = User::findOrFail($id);
+
+        if (!hash_equals((string) $hash, sha1($user->getEmailForVerification()))) {
+            throw new AuthorizationException;
+        }
+
+        if ($user->hasVerifiedEmail()) {
             return redirect()->route('home.index')->with('success', 'Email already verified.');
         }
 
-        if ($request->user()->markEmailAsVerified()) {
+        if ($user->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
 
