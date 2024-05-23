@@ -9,6 +9,7 @@ use App\Mail\VerificationMail;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 
@@ -40,7 +41,9 @@ class VerificationController extends Controller
             event(new Verified($request->user()));
         }
 
-        return redirect()->route('home.index')->with('success', 'Email verified successfully.');
+        Auth::login($request->user());
+
+        return redirect()->route('dashboard.index')->with('success', 'Email verified successfully.');
     }
 
     public function resend(Request $request)
