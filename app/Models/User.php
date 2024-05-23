@@ -44,6 +44,6 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     public function photo() {
-        return 'https://api.dicebear.com/7.x/avataaars/svg?seed=' . $this->id . '&mouth=smile&eyebrows=default&backgroundColor=d7dce0';
+        return 'https://api.dicebear.com/7.x/avataaars/svg?seed=' . $this->id . '&mouth=smile&eyebrows=default&backgroundColor=d7dce0&top=dreads01,dreads02,frizzle,hat,shaggy,shortCurly,shortFlat,shortRound,shortWaved,theCaesar,theCaesarAndSidePart,winterHat1,winterHat02,winterHat03,winterHat04';
     }
 }
