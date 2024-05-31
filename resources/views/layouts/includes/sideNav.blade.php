@@ -32,7 +32,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ config('log-viewer.route.attributes.prefix') }}">
+        <a class="nav-link" href="/{{ config('log-viewer.route.attributes.prefix') }}">
             <i class="fa-solid fa-fw fa-book"></i>
             <span>Log Viewer</span>
         </a>
