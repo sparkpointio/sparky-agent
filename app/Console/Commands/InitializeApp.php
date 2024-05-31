@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -69,6 +70,7 @@ class InitializeApp extends Command
             [
                 'name' => 'Bernard Historillo',
                 'email' => 'bernardhistorillo1@gmail.com',
+                'email_verified_at' => Carbon::now(),
                 'password' => Hash::make('Password1'),
                 'role' => 1,
             ]
@@ -79,6 +81,7 @@ class InitializeApp extends Command
             $user->name = $userItem['name'];
             $user->email = $userItem['email'];
             $user->password = $userItem['password'];
+            $user->email_verified_at = $userItem['email_verified_at'];
             $user->role = $userItem['role'];
             $user->save();
 
