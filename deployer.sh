@@ -17,6 +17,8 @@ sudo chown -R $USER:www-data bootstrap/cache
 chmod -R 775 storage
 chmod -R 775 bootstrap/cache
 
+export COMPOSER_ALLOW_SUPERUSER=1
+
 /usr/bin/php8.1 /usr/local/bin/composer dump-autoload --no-interaction
 /usr/bin/php8.1 /usr/local/bin/composer install --no-interaction
 
@@ -30,7 +32,7 @@ chmod -R 775 bootstrap/cache
 
 sudo supervisorctl reread
 sudo supervisorctl update
-sudo supervisorctl start all
+sudo supervisorctl restart all
 
 npm install
 npm run build
