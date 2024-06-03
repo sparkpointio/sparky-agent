@@ -32,7 +32,7 @@ export COMPOSER_ALLOW_SUPERUSER=1
 
 sudo supervisorctl reread
 sudo supervisorctl update
-sudo supervisorctl restart laravel-boilerplate
+sudo supervisorctl restart laravel-boilerplate-worker:*
 
 npm install
 npm run build
