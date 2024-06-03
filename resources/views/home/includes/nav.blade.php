@@ -30,13 +30,16 @@
 
                 @if(Auth::check())
                 <li class="nav-item dropdown ms-lg-3 ms-xl-4 mt-2 mt-lg-0 mb-2 mb-lg-0">
-                    <a class="nav-link text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ Auth::user()->photo() }}" class="tw-border-solid tw-border-[2px] tw-border-[rgba(0,0,0,0.1)] rounded-circle" id="user-photo" alt="{{ config('app.name') }}" />
+                    <a class="nav-link d-flex justify-content-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="tw-w-[40px] tw-h-[40px] tw-border-solid tw-border-[2px] tw-border-[#777777] rounded-circle background-image-cover" id="user-photo" style="background-image:url('{{ Auth::user()->photo() }}')"></div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end py-2 font-size-90">
+                        <li class="mb-2 pb-2" style="border-bottom:1px solid #ced4da">
+                            <div class="dropdown-item text-center font-size-90 text-break text-wrap">{{ Auth::user()->fullName() }}</div>
+                        </li>
                         <li>
                             @if(Auth::user()->role == 1)
-                            <a class="dropdown-item text-center text-lg-start pe-4" href="{{ route('admin.dashboard.index') }}">
+                            <a class="dropdown-item text-center text-lg-start py-2 pe-4" href="{{ route('admin.dashboard.index') }}">
                                 <div class="d-flex">
                                     <div class="tw-w-[16px] text-center">
                                         <i class="fa-solid fa-tachometer-alt"></i>
@@ -47,7 +50,21 @@
                                 </div>
                             </a>
                             @endif
-                            <a class="dropdown-item text-center text-lg-start pe-4" href="{{ route('logout.index') }}">
+                        </li>
+                        <li>
+                            <a class="dropdown-item text-center text-lg-start py-2 pe-4" href="{{ route('profile.index') }}">
+                                <div class="d-flex">
+                                    <div class="tw-w-[16px] text-center">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        Profile
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item text-center text-lg-start py-2 pe-4" href="{{ route('logout.index') }}">
                                 <div class="d-flex">
                                     <div class="tw-w-[16px] text-center">
                                         <i class="fa-solid fa-sign-out"></i>

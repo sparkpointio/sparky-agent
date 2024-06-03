@@ -373,6 +373,137 @@ $(document).on("submit", "#password-update-form", function(e) {
         })
 });
 
+// Profile
+$(document).on("click", "#update-profile", function() {
+    $("#update-profile").addClass("d-none");
+    $("#save-profile").removeClass("d-none");
+    $("#cancel-update-profile").removeClass("d-none");
+
+    let formattedBirthdate = $("#birthdate").val();
+    $("#birthdate").val($("#birthdate").attr("data-value"));
+    $("#birthdate").attr("data-value", formattedBirthdate);
+    $("#birthdate").attr("type", "date");
+
+    $("#profile-form input").prop("disabled", false);
+});
+
+$(document).on("click", "#cancel-update-profile", function() {
+    $("#update-profile").removeClass("d-none");
+    $("#save-profile").addClass("d-none");
+    $("#cancel-update-profile").addClass("d-none");
+
+    let birthdate = $("#birthdate").val();
+    $("#birthdate").attr("type", "text");
+    $("#birthdate").val($("#birthdate").attr("data-value"));
+    $("#birthdate").attr("data-value", birthdate);
+
+    $("#profile-form input").prop("disabled", true);
+});
+
+$(document).on("click", "#save-profile", function() {
+    let hasRequired = false;
+    $("#profile-form input").each(function() {
+        if($(this).val() === "") {
+            $(this).focus()
+            hasRequired = true;
+
+            return false;
+        }
+    });
+
+    if(hasRequired) {
+        return 0;
+    }
+
+    let button = $(this);
+    button.prop("disabled", true);
+    button.html('Processing');
+
+    let data = new FormData();
+    let url = $("#profile-form [name='url']").val();
+
+    data.append('first_name', $("#profile-form [name='first_name']").val());
+    data.append('last_name', $("#profile-form [name='last_name']").val());
+    data.append('birthdate', $("#profile-form [name='birthdate']").val());
+    data.append('contact_number', $("#profile-form [name='contact_number']").val());
+    data.append('address', $("#profile-form [name='address']").val());
+
+    axios.post(url, data)
+        .then((response) => {
+            $("#birthdate").attr("type", "text");
+            $("#birthdate").val(response.data.formattedBirthdate);
+            $("#birthdate").attr("data-value", response.data.birthdate);
+
+            $("#profile-form input").prop("disabled", true);
+
+            $("#update-profile").removeClass("d-none");
+            $("#save-profile").addClass("d-none");
+            $("#cancel-update-profile").addClass("d-none");
+
+            showSuccessModal("Nice!", "You have successfully updated your profile.");
+        }).catch((error) => {
+            showRequestError(error);
+        }).then(() => {
+            button.prop("disabled", false);
+            button.html('Save Changes');
+        });
+});
+
+$(document).on("click", "#select-user-photo", function() {
+    $("[name='photo']").trigger("click");
+});
+
+$(document).on("change", "[name='photo']", function() {
+    let input = $(this)[0];
+    let reader = new FileReader();
+
+    reader.onload = function(event) {
+        let img = new Image();
+
+        img.onload = function() {
+            $("#profile-photo").css("background-image", "url('" + img.src + "')");
+
+            $("#update-profile-photo-actions").removeClass("d-none");
+        };
+
+        img.src = event.target.result;
+    };
+
+    reader.readAsDataURL(input.files[0]);
+});
+
+$(document).on("click", "#cancel-update-profile-photo", function() {
+    $("[name='photo']").val("");
+    $("#update-profile-photo-actions").addClass("d-none")
+    $("#profile-photo").css("background-image", "url('" + $("#profile-photo").attr("data-value") + "')");
+});
+
+$(document).on("click", "#save-profile-photo", function() {
+    let button = $(this);
+    button.prop("disabled", true);
+    button.html('Processing');
+
+    let data = new FormData($("#update-user-photo-form")[0]);
+    let url = data.get('url').toString();
+
+    axios.post(url, data)
+        .then((response) => {
+            $("#profile-photo").attr("data-value", response.data.photo);
+            $("#user-photo").css("background-image", "url('" + response.data.photo + "')");
+
+            $("[name='photo']").val("");
+            $("#update-profile-photo-actions").addClass("d-none")
+
+            showSuccessModal("Nice!", "You have successfully updated your profile photo.");
+        }).catch((error) => {
+            showRequestError(error);
+        }).then(() => {
+            button.prop("disabled", false);
+            button.html('Save Photo');
+        });
+});
+
+
 // Admin Users
 let adminUsersTable;
 let adminUsersOnload = function() {

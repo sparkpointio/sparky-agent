@@ -68,7 +68,8 @@ class InitializeApp extends Command
 
         $users = [
             [
-                'name' => 'Bernard Historillo',
+                'first_name' => 'Bernard',
+                'last_name' => 'Historillo',
                 'email' => 'bernardhistorillo1@gmail.com',
                 'email_verified_at' => Carbon::now(),
                 'password' => Hash::make('Password1'),
@@ -78,7 +79,8 @@ class InitializeApp extends Command
 
         foreach($users as $i => $userItem) {
             $user = new User();
-            $user->name = $userItem['name'];
+            $user->first_name = $userItem['first_name'];
+            $user->last_name = $userItem['last_name'];
             $user->email = $userItem['email'];
             $user->password = $userItem['password'];
             $user->email_verified_at = $userItem['email_verified_at'];

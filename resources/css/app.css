@@ -48,6 +48,17 @@ a:hover {
     color:#ffffff!important;
     border:2px solid #000000;
 }
+.btn-custom-1-outline {
+    border-radius:0;
+    background-color:#ffffff;
+    color:#000000;
+    border:2px solid #222222;
+}
+.btn-custom-1-outline:hover, .btn-custom-1-outline:active, .btn-custom-1-outline:focus, .btn-custom-1-outline:disabled {
+    background-color: #000000 !important;
+    color:#ffffff!important;
+    border:2px solid #000000;
+}
 .bg-color-1 {
     background-color:#d7dce0!important;
 }
@@ -138,6 +149,9 @@ a:hover {
 }
 div.dt-processing>div:last-child>div {
     background: #222222;
+}
+#profile-form input:disabled {
+    background-color:rgba(206,212,218,0.3);
 }
 
 /*##################################################################*/

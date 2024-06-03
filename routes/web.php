@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\EmailSubscriptionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,6 +57,16 @@ Route::middleware(['auth'])->group(function() {
     Route::prefix('email')->group(function () {
         Route::get('/verify', [VerificationController::class, 'show'])->name('verification.notice');
         Route::get('/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+    });
+
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+        Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::post('/update/photo', [ProfileController::class, 'updatePhoto'])->name('profile.update-photo');
+    });
+
+    Route::middleware(['verified'])->group(function() {
+
     });
 
     Route::middleware(['is_admin'])->group(function() {
