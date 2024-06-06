@@ -14,8 +14,8 @@ git pull origin master
 sudo chown -R $USER:www-data storage
 sudo chown -R $USER:www-data bootstrap/cache
 
-chmod -R 775 storage
-chmod -R 775 bootstrap/cache
+sudo chmod -R 775 storage
+sudo chmod -R 775 bootstrap/cache
 
 export COMPOSER_ALLOW_SUPERUSER=1
 
