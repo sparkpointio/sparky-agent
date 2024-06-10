@@ -12,14 +12,14 @@
 
             <div class="container tw-z-[2] position-relative pb-sm-5">
                 <div class="pt-3">
-                    <h1 class="cardo-bold text-center tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-white font-size-200 font-size-lg-210 font-size-xl-270 font-size-xxl-290 px-4 px-md-0 mb-5 pb-3">Services</h1>
+                    <h1 class="text-center tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-white font-size-200 font-size-lg-210 font-size-xl-270 font-size-xxl-290 px-4 px-md-0 mb-5 pb-3">Services</h1>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-11 col-xxl-10">
                         <div class="row justify-content-center align-items-stretched">
                             <div class="col-11 col-sm-10 col-md-6 py-5 px-4 p-sm-5 bg-color-1">
-                                <p class="text-center text-md-start cardo-bold tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-white font-size-200 font-size-lg-210 font-size-xl-270 font-size-xxl-290 mb-4">Safeguard your rights and protect your family's well-being</p>
+                                <p class="text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-white font-size-200 font-size-lg-210 font-size-xl-270 font-size-xxl-290 mb-4">Safeguard your rights and protect your family's well-being</p>
                                 <p class="text-center text-md-start text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-4">Catering to the diverse needs of our clients, Peres Family Law offers a comprehensive range of services tailored to address various aspects of family law.</p>
                                 <p class="text-center text-md-start text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">From divorce and custody proceedings to mediation, move-away actions, and spousal and child support matters, our seasoned team is dedicated to providing steadfast advocacy and personalized legal solutions.</p>
                             </div>
@@ -100,7 +100,7 @@
 
     <div class="container py-5">
         <div class="pb-5">
-            <p class="cardo-bold text-color-1 text-center tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 px-4 px-md-0 mb-5 pb-5">Discover Our Range of Services</p>
+            <p class="text-color-1 text-center tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 px-4 px-md-0 mb-5 pb-5">Discover Our Range of Services</p>
 
             <div class="row align-items-center px-3 px-md-2 mb-5">
                 <div class="col-md-6 col-lg-5 px-0">
@@ -109,7 +109,7 @@
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
                     <div class="px-3 py-5 p-sm-5">
-                        <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Divorce and custody proceedings</p>
+                        <p class="text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Divorce and custody proceedings</p>
 
                         <div class="text-center text-lg-start">
                             <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
@@ -128,7 +128,7 @@
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
                     <div class="px-3 py-5 p-sm-5">
-                        <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Mediation</p>
+                        <p class="text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Mediation</p>
 
                         <div class="text-center text-lg-start">
                             <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
@@ -147,7 +147,7 @@
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
                     <div class="px-3 py-5 p-sm-5">
-                        <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Move-away actions</p>
+                        <p class="text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Move-away actions</p>
 
                         <div class="text-center text-lg-start">
                             <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
@@ -166,7 +166,7 @@
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
                     <div class="px-3 py-5 p-sm-5">
-                        <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Spousal and child support</p>
+                        <p class="text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Spousal and child support</p>
 
                         <div class="text-center text-lg-start">
                             <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
@@ -185,7 +185,7 @@
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
                     <div class="px-3 py-5 p-sm-5">
-                        <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Attorney fee disputes</p>
+                        <p class="text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Attorney fee disputes</p>
 
                         <div class="text-center text-lg-start">
                             <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
@@ -204,7 +204,7 @@
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
                     <div class="px-3 py-5 p-sm-5">
-                        <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Prenuptial/postnuptial agreements</p>
+                        <p class="text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">Prenuptial/postnuptial agreements</p>
 
                         <div class="text-center text-lg-start">
                             <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
@@ -223,7 +223,7 @@
 
                 <div class="col-md-6 col-lg-7 px-0 bg-color-2">
                     <div class="px-3 py-5 p-sm-5">
-                        <p class="cardo-bold text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">High net worth cases</p>
+                        <p class="text-color-3 text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] font-size-200 font-size-lg-210 font-size-xl-270 mb-0">High net worth cases</p>
 
                         <div class="text-center text-lg-start">
                             <img src="{{ asset('img/home/bg.png') }}" class="py-4 my-2 tw-w-[250px] sm:tw-w-[260px] md:tw-w-[220px] lg:tw-w-[200px] xl:tw-w-[245px] xxl:tw-w-[260px]" alt="{{ config('app.name') }}" />
@@ -245,7 +245,7 @@
                         <div class="h-100 d-flex align-items-center">
                             <div class="py-5 pe-md-5 text-center text-md-start">
                                 <div class="py-5">
-                                    <p class="cardo-bold tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-white font-size-200 font-size-lg-210 font-size-xl-270 font-size-xxl-290 mb-4">Peres Family Law is here to provide you with personalized legal solutions tailored to your unique situation.</p>
+                                    <p class="tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-white font-size-200 font-size-lg-210 font-size-xl-270 font-size-xxl-290 mb-4">Peres Family Law is here to provide you with personalized legal solutions tailored to your unique situation.</p>
                                     <p class="text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 px-4 px-md-0 mb-4">Whether you're facing complex divorce proceedings, custody disputes, or navigating spousal and child support agreements, our dedicated team is here for you.</p>
                                     <p class="text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 px-4 px-md-0 mb-5">Our goal is to empower you with the knowledge and confidence necessary to navigate the complexities of family law with ease and peace of mind.</p>
 

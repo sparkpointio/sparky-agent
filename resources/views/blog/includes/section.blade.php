@@ -6,7 +6,7 @@
                     <div class="h-100 d-flex align-items-center">
                         <div class="py-5 pe-md-5 text-center text-md-start">
                             <div class="py-5">
-                                <p class="cardo-bold tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-white font-size-200 font-size-lg-210 font-size-xl-270 font-size-xxl-290 mb-4">Peres Family Law is here to provide you with personalized legal solutions tailored to your unique situation.</p>
+                                <p class="tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-white font-size-200 font-size-lg-210 font-size-xl-270 font-size-xxl-290 mb-4">Peres Family Law is here to provide you with personalized legal solutions tailored to your unique situation.</p>
                                 <p class="text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 px-4 px-md-0 mb-4">Whether you're facing complex divorce proceedings, custody disputes, or navigating spousal and child support agreements, our dedicated team is here for you.</p>
                                 <p class="text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 px-4 px-md-0 mb-5">Our goal is to empower you with the knowledge and confidence necessary to navigate the complexities of family law with ease and peace of mind.</p>
 

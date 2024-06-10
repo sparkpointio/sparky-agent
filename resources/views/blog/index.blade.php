@@ -13,7 +13,7 @@
                     <div class="col-md-9 col-lg-6 py-5">
                         <div class="text-center text-md-start pt-4 pb-5 py-sm-5">
                             <p class="articulat-bold tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-color-2 font-size-120 font-size-xl-130 px-4 px-md-0 mb-4">FEATURED BLOG</p>
-                            <h1 class="cardo-bold tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-color-1 font-size-200 font-size-lg-210 font-size-xl-270 font-size-xxl-290 px-4 px-md-0 mb-4">Thinking about reconciliation?</h1>
+                            <h1 class="tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-color-1 font-size-200 font-size-lg-210 font-size-xl-270 font-size-xxl-290 px-4 px-md-0 mb-4">Thinking about reconciliation?</h1>
                             <p class="text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 px-4 px-md-0 mb-5">Considering reconciling? Reconciling can make sense for some couples and for some, it does not....</p>
 
                             <div class="">

@@ -68,12 +68,12 @@
                         </div>
                     </a>
 
-                    <a href="mailto:username@gmail.com" target="_blank" rel="noreferrer" class="d-flex text-decoration-none text-black mb-4">
+                    <a href="mailto:{{ config('mail.mailers.smtp.username') }}" target="_blank" rel="noreferrer" class="d-flex text-decoration-none text-black mb-4">
                         <div class="tw-min-w-[23px] text-center">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <div class="ps-4">
-                            username@gmail.com
+                            {{ config('mail.mailers.smtp.username') }}
                         </div>
                     </a>
 

@@ -6,37 +6,31 @@
 <div>
     @include('home.includes.nav')
 
-    <div class="tw-pt-[88px]">
+    <div class="tw-pt-[74px]">
         <div class="bg-color-1 py-5">
             <div class="container">
-                <div class="row justify-content-between">
+                <div class="row justify-content-between align-items-end">
                     <div class="col-md-5 col-lg-5 mb-4 mb-md-0">
-                        <h1 class="cardo-bold text-center text-md-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-white font-size-200 font-size-lg-210 font-size-xl-270 px-4 px-md-0 mb-4">Contact</h1>
+                        <h1 class="text-center text-md-start h-custom-1 bebas-neue px-4 px-md-0 mb-3">We're Here to Help</h1>
 
-                        <p class="text-white text-center text-md-start tw-leading-[1.2em] font-size-120 font-size-xl-130 px-4 px-md-0 mb-4">Get in touch with us today to schedule a consultation and take the first step towards resolving your family law matters.</p>
+                        <p class="text-center text-md-start h-custom-4 px-4 px-md-0 mb-4">If you have any questions or need assistance, please get in touch with us using the information below or fill out the contact form.</p>
 
-                        <div class="d-flex align-items-center justify-content-center justify-content-md-start font-size-140 font-size-xl-150 flex-wrap">
+                        <div class="d-flex align-items-center justify-content-center justify-content-md-start font-size-160 font-size-xl-170 flex-wrap">
                             <div class="pe-3">
-                                <a href="https://facebook.com/peresfamilylaw" target="_blank" class="text-white text-decoration-none">
+                                <a href="https://facebook.com/" target="_blank" class="text-decoration-none">
                                     <i class="fa-brands fa-facebook-f"></i>
                                 </a>
                             </div>
 
                             <div class="px-3">
-                                <a href="https://x.com/peresfamilylaw" target="_blank" class="text-white text-decoration-none">
+                                <a href="https://x.com/" target="_blank" class="text-decoration-none">
                                     <i class="fa-brands fa-twitter"></i>
                                 </a>
                             </div>
 
                             <div class="px-3">
-                                <a href="https://instagram.com/peresfamilylaw" target="_blank" class="text-white text-decoration-none">
+                                <a href="https://instagram.com/" target="_blank" class="text-decoration-none">
                                     <i class="fa-brands fa-instagram"></i>
-                                </a>
-                            </div>
-
-                            <div class="ps-3">
-                                <a href="https://www.linkedin.com/company/peres-family-law/" target="_blank" class="text-white text-decoration-none">
-                                    <i class="fa-brands fa-linkedin"></i>
                                 </a>
                             </div>
                         </div>
@@ -44,41 +38,32 @@
 
                     <div class="col-md-6 col-lg-5 ps-xxl-5">
                         <div class="text-white font-size-120 font-size-xl-130">
-                            <a href="tel:650-409-7070" target="_blank" rel="noreferrer" class="d-flex text-decoration-none text-white mb-2">
+                            <a href="tel:650-409-7070" target="_blank" rel="noreferrer" class="d-flex text-decoration-none text-white mb-4">
                                 <div class="tw-min-w-[23px] text-center">
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
                                 <div class="ps-4">
-                                    650-409-7070
+                                    123-123-1234
                                 </div>
                             </a>
 
-                            <a href="mailto:info@peresfamilylaw.com" target="_blank" rel="noreferrer" class="d-flex text-decoration-none text-white mb-2">
+                            <a href="mailto:{{ config('mail.mailers.smtp.username') }}" target="_blank" rel="noreferrer" class="d-flex text-decoration-none text-white mb-4">
                                 <div class="tw-min-w-[23px] text-center">
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>
                                 <div class="ps-4">
-                                    info@peresfamilylaw.com
+                                    {{ config('mail.mailers.smtp.username') }}
                                 </div>
                             </a>
 
-                            <a href="https://maps.app.goo.gl/t69Wk9FxoExXZT358" target="_blank" rel="noreferrer" class="d-flex text-decoration-none text-white mb-2">
+                            <a href="https://maps.app.goo.gl/t69Wk9FxoExXZT358" target="_blank" rel="noreferrer" class="d-flex text-decoration-none text-white mb-0">
                                 <div class="tw-min-w-[23px] text-center">
                                     <i class="fa-solid fa-map-marker-alt"></i>
                                 </div>
                                 <div class="ps-4">
-                                    99 S Almaden Blvd, Suite 600, San Jose, CA 95113
+                                    123 Main Street, Suite 600, San Jose, CA 12345
                                 </div>
                             </a>
-
-                            <div class="d-flex justify-content-center justify-content-center justify-content-md-start mb-0">
-                                <div class="tw-min-w-[23px] text-center">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </div>
-                                <div class="ps-4">
-                                    Peres Family Law, 2108 N St. #4882, Sacramento, CA 95816
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -86,15 +71,42 @@
         </div>
     </div>
 
-    <div class="container py-5">
-        <div class="row mb-sm-5">
-            <div class="col-md-12">
-                <div class="w-100 xxl:tw-mt-[-66px] xxl:tw-mb-[-30px] tw-h-[1053px] sm:tw-h-[997px] md:tw-h-[1130px] xl:tw-h-[684px]" id="calendly-widget"></div>
+    <div class="bg-color-2">
+        <div class="container py-5">
+            <div class="d-flex flex-column flex-md-row align-items-md-end py-5">
+                <div class="col-md-6 px-0 mb-5 mb-md-0">
+                    <p class="h-custom-2 bebas-neue text-center text-md-start mb-4">Send Us a Message</p>
+                    <p class="h-custom-4 text-center text-md-justify mb-5">If you prefer, you can also reach out to us by filling out the form below. We aim to respond to all inquiries within 24 hours during business days.</p>
+
+                    <div class="">
+                        <img src="{{ asset('img/contact/img-1.webp') }}" class="w-100" />
+                    </div>
+                </div>
+
+                <div class="col-md-6 ps-md-4 ps-xl-5 pe-0">
+                    <div class="d-flex flex-column justify-content-between ps-lg-4 pt-3 h-100">
+                        <div>
+                            <form id="contact-form">
+                                <input type="hidden" name="url" value="{{ route('contact.sendMessage') }}" />
+
+                                <div class="mb-3" style="border-bottom:2px solid white">
+                                    <input type="text" name="name" class="form-control form-control-1 font-size-lg-110 px-3 px-md-4 py-2 py-xl-3 mb-3" placeholder="Your Name (required)" required />
+                                    <input type="text" name="email" class="form-control form-control-1 font-size-lg-110 px-3 px-md-4 py-2 py-xl-3 mb-3" placeholder="Your Email (required)" required />
+                                    <textarea name="message" class="form-control form-control-1 font-size-lg-110 px-3 px-md-4 py-2 py-xl-3 mb-3" placeholder="Your Message" style="height:181px" required></textarea>
+                                </div>
+
+                                <div class="text-center text-md-start">
+                                    <button type="submit" class="btn btn-custom-1 font-size-md-90 font-size-lg-110 px-5 py-3 w-100">
+                                        <span class="px-sm-4 px-lg-5 text-white">SEND MESSAGE</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    @include('home.includes.testimonial')
 </div>
 
 @include('home.includes.footer')

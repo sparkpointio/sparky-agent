@@ -13,7 +13,7 @@
                     <div class="d-flex justify-content-center justify-content-lg-end">
                         <div class="sm:tw-max-w-[calc((540px/12)*10)] md:tw-max-w-[calc((720px/12)*8)] lg:tw-max-w-[calc((960px/12)*5)] xl:tw-max-w-[calc((1140px/12)*5)] xxl:tw-max-w-[calc((1320px/12)*5)] w-100">
                             <div class="lg:tw-ps-[26px] pe-lg-5">
-                                <h1 class="cardo-bold text-center text-lg-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-white font-size-270 font-size-lg-270 font-size-xl-330 font-size-xxl-370 px-4 px-md-0 mb-3">{{ $currentBlog['title'] }}</h1>
+                                <h1 class="text-center text-lg-start tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-white font-size-270 font-size-lg-270 font-size-xl-330 font-size-xxl-370 px-4 px-md-0 mb-3">{{ $currentBlog['title'] }}</h1>
                                 <p class="text-white text-center text-lg-start font-size-140 font-size-xl-160 mb-4">Ariel Peres, Esq. | {{ Carbon\Carbon::parse($currentBlog['created_at'])->setTimezone('America/Los_Angeles')->format('d-M-Y') }}</p>
                                 <p class="text-white text-center text-lg-start font-size-120 font-size-xl-130 mb-0">{{ $currentBlog->getFirstTwoSentences() }}..</p>
                             </div>

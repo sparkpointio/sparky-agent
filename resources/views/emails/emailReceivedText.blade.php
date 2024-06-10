@@ -1,4 +1,4 @@
-BARE New Inquiry
+New Inquiry
 
 Dear Support Team,
 
