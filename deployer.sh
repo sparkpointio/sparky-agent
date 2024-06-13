@@ -24,11 +24,10 @@ export COMPOSER_ALLOW_SUPERUSER=1
 
 /usr/bin/php8.1 artisan cache:clear
 /usr/bin/php8.1 artisan config:cache
-/usr/bin/php8.1 artisan migrate --force
 /usr/bin/php8.1 artisan view:cache
 /usr/bin/php8.1 artisan route:cache
-/usr/bin/php8.1 artisan optimize
 /usr/bin/php8.1 artisan event:cache
+/usr/bin/php8.1 artisan migrate --force
 
 sudo supervisorctl reread
 sudo supervisorctl update
