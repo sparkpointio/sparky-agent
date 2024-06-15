@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Monarobase\CountryList\CountryListFacade;
+use Rinvex\Country\Loader;
 
 class HomeController extends Controller
 {
@@ -27,6 +29,8 @@ class HomeController extends Controller
         if(config('app.env') == 'production') {
             abort(404);
         }
+
+        return Loader::countries();
 
         $user = User::find(1);
         $user->name = 'Bernard Historillo';

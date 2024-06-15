@@ -7,7 +7,7 @@
     <div class="position-absolute tw-top-[0] tw-left-[0] tw-bg-[rgba(255,255,255,0.9)] tw-z-[1] w-100 h-100"></div>
     @include('home.includes.nav')
 
-    <div class="position-relative background-image-cover" style="background-image:url('{{ asset('img/home/woman.webp') }}')">
+    <div class="position-relative">
         <div class="position-absolute bg-color-1 w-100 h-100" style="top:0; left:0; opacity:0.5; z-index:1"></div>
 
         <div class="container position-relative" style="top:0; left:0; opacity:0.9; z-index:2">
@@ -23,6 +23,23 @@
 
                                 <input type="text" name="name" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your name" required />
                                 <input type="email" name="email" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your email address" required />
+
+                                <div>
+                                    <select name="country" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" required>
+                                        <option>Select your country:</option>
+                                        @foreach($countries as $i => $country)
+                                        <option value="{{ $i }}">{{ $country['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="d-none address-fields" id="ph-address-selection">
+                                    @include('address::form', ['model' => \App\Models\User::find(1)])
+                                </div>
+
+                                <div class="d-none" id="gmaps-places-api-input">
+                                    <input type="text" name="address" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your address" required />
+                                </div>
 
                                 <div class="position-relative">
                                     <input type="password" name="password" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your password" required />

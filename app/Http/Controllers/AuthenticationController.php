@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
+use Rinvex\Country\Loader;
 
 class AuthenticationController extends Controller
 {
@@ -48,7 +49,9 @@ class AuthenticationController extends Controller
     }
 
     public function registerPage() {
-        return view('register.index');
+        $countries = Loader::countries();
+
+        return view('register.index', compact('countries'));
     }
 
     public function register(Request $request) {

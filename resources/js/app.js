@@ -6,7 +6,9 @@ let currentRouteName;
 let pageOnload = async function() {
     await allOnload();
 
-    if(currentRouteName === "admin.users.index") {
+    if(currentRouteName === "register.index") {
+        registerOnload();
+    } else if(currentRouteName === "admin.users.index") {
         adminUsersOnload();
     } else if(currentRouteName === "admin.email-subscriptions.index") {
         adminEmailSubscriptionsOnload();
@@ -25,6 +27,9 @@ let allOnload = async function() {
 
 let homeOnload = function() {
 
+};
+let registerOnload = function() {
+    initializeAddressFields();
 };
 
 let numberFormat = function(x, decimal) {
@@ -275,6 +280,99 @@ $(document).on("submit", "#register-form", function(e) {
         })
 });
 
+// Address Selection
+let address;
+
+let initializeAddressFields = function() {
+    address = {
+        province: '',
+        city: '',
+        barangay: '',
+    }
+
+    $('#region_id').addClass(['py-2', 'mb-3', 'tw-h-[45px]']);
+    $('#province_id').addClass(['py-2', 'mb-3', 'tw-h-[45px]']);
+    $('#city_id').addClass(['py-2', 'mb-3', 'tw-h-[45px]']);
+    $('#barangay_id').addClass(['py-2', 'mb-3', 'tw-h-[45px]']);
+    $('input[name="street"]').addClass(['py-2', 'mb-3', 'tw-h-[45px]']);
+
+    $('input[name="street"]').attr('placeholder', 'House No., Street');
+
+    $('#region_id').attr('required', true);
+    $('#province_id').attr('required', true);
+    $('#city_id').attr('required', true);
+    $('#barangay_id').attr('required', true);
+    $('input[name="street"]').attr('required', true);
+
+    $('#address-fields label').addClass("d-none");
+
+    $('#region_id').html('<option value="" selected>Select your region:</option>' + $('#region_id').html());
+    $('#province_id').html('<option value="" selected>Select your province:</option>');
+    $('#city_id').html('<option value="" selected>Select your city/municipality:</option>');
+    $('#barangay_id').html('<option value="" selected>Select your barangay:</option>');
+};
+
+$(document).on('change', '#region_id', function () {
+    $.getJSON('/api/address/provinces/' + this.value, function (data) {
+        console.log(data);
+        var options = '<option value="">Select your province:</option>';
+        $.each(data, function (index, data) {
+            var selected = '';
+            if (data.province_id == address.province) {
+                selected = ' selected ';
+            }
+            options += '<option value="' + data.province_id + '"' + selected + '>' + data.name + '</option>';
+        });
+        $('#province_id').html(options);
+        $('#province_id').change();
+
+        $('#city_id').html('<option value="" selected>Select your city/municipality:</option>');
+        $('#barangay_id').html('<option value="" selected>Select your barangay:</option>');
+    });
+});
+
+$(document).on('change', '#province_id', function () {
+    $.getJSON('/api/address/cities/' + this.value, function (data) {
+        var options = '<option value="">Select your city/municipality:</option>';
+        $.each(data, function (index, data) {
+            var selected = '';
+            if (data.city_id == address.city) {
+                selected = ' selected ';
+            }
+            options += '<option value="' + data.city_id + '"' + selected + '>' + data.name + '</option>';
+        });
+        $('#city_id').html(options);
+        $('#city_id').change();
+
+        $('#barangay_id').html('<option value="" selected>Select your barangay:</option>');
+    });
+});
+
+$(document).on('change', '#city_id', function () {
+    $.getJSON('/api/address/barangays/' + this.value, function (data) {
+        var options = '<option value="">Select your barangay:</option>';
+        $.each(data, function (index, data) {
+            var selected = '';
+            if (data.code == address.barangay) {
+                selected = ' selected ';
+            }
+            options += '<option value="' + data.code + '"' + selected + '>' + data.name + '</option>';
+        });
+        $('#barangay_id').html(options);
+        $('#barangay_id').change();
+    });
+});
+
+$(document).on('change', '[name="country"]', function () {
+    if($(this).val() === 'ph') {
+        $("#ph-address-selection").removeClass("d-none");
+        $("#gmaps-places-api-input").addClass("d-none");
+    } else {
+        $("#ph-address-selection").addClass("d-none");
+        $("#gmaps-places-api-input").removeClass("d-none");
+    }
+});
+
 // Login
 $(document).on("click", ".toggle-password-show", function() {
     let input = $(this).closest(".position-relative").find("input");
@@ -502,7 +600,6 @@ $(document).on("click", "#save-profile-photo", function() {
             button.html('Save Photo');
         });
 });
-
 
 // Admin Users
 let adminUsersTable;
