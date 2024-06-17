@@ -9,10 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Request;
 use Laravel\Sanctum\HasApiTokens;
 use OwenIt\Auditing\Contracts\Auditable;
+use Yajra\Address\HasAddress;
 
- class User extends Authenticatable implements MustVerifyEmail, Auditable
+class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
-    use HasApiTokens, HasFactory, Notifiable, \OwenIt\Auditing\Auditable;
+    use HasApiTokens, HasFactory, Notifiable, \OwenIt\Auditing\Auditable, HasAddress;
 
     /**
      * The attributes that are mass assignable.

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Monarobase\CountryList\CountryListFacade;
@@ -24,11 +25,17 @@ class HomeController extends Controller
         return view('underConstruction.index');
     }
 
-    public function try()
+    public function try(Request $request)
     {
         if(config('app.env') == 'production') {
             abort(404);
         }
+
+//        return json_decode(Http::get('https://maps.googleapis.com/maps/api/place/autocomplete/json', [
+//            'input' => 'daraga',
+//            'components' => 'country:ph',
+//            'key' => config('app.google_maps_api_key')
+//        ]), true);
 
         return Loader::countries();
 

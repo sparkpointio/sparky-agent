@@ -260,12 +260,23 @@ $(document).on("submit", "#contact-form", function(e) {
 $(document).on("submit", "#register-form", function(e) {
     e.preventDefault();
 
+    if($('[name="country"]').val() !== 'ph') {
+        if($('[name="gmaps_address"]').attr("data-value") === "") {
+            $("#modal-error .message").html("Please input a correct address.");
+            $("#modal-error").modal("show");
+
+            return 0;
+        }
+    }
+
     let form = $(this);
     let button = form.find("[type='submit']");
     button.prop("disabled", true);
     button.html('Submitting');
 
     let data = new FormData($(this)[0]);
+    data.append('gmaps_address', $('[name="gmaps_address"]').attr("data-value"));
+
     let url = data.get('url').toString();
 
     axios.post(url, data)
@@ -282,6 +293,9 @@ $(document).on("submit", "#register-form", function(e) {
 
 // Address Selection
 let address;
+let searchAddressTimeout;
+let CancelToken = axios.CancelToken;
+let source = CancelToken.source();
 
 let initializeAddressFields = function() {
     address = {
@@ -297,12 +311,6 @@ let initializeAddressFields = function() {
     $('input[name="street"]').addClass(['py-2', 'mb-3', 'tw-h-[45px]']);
 
     $('input[name="street"]').attr('placeholder', 'House No., Street');
-
-    $('#region_id').attr('required', true);
-    $('#province_id').attr('required', true);
-    $('#city_id').attr('required', true);
-    $('#barangay_id').attr('required', true);
-    $('input[name="street"]').attr('required', true);
 
     $('#address-fields label').addClass("d-none");
 
@@ -364,13 +372,97 @@ $(document).on('change', '#city_id', function () {
 });
 
 $(document).on('change', '[name="country"]', function () {
-    if($(this).val() === 'ph') {
+    let showPHAddressFields = $(this).val() === 'ph';
+
+    if(showPHAddressFields) {
         $("#ph-address-selection").removeClass("d-none");
         $("#gmaps-places-api-input").addClass("d-none");
     } else {
         $("#ph-address-selection").addClass("d-none");
         $("#gmaps-places-api-input").removeClass("d-none");
+
+        let gmapsAddress = $("[name='gmaps_address']");
+
+        gmapsAddress.attr("data-value", "");
+        gmapsAddress.val("");
+
+        $("#address-is-valid").addClass("d-none");
     }
+
+    $('#region_id').attr('required', showPHAddressFields);
+    $('#province_id').attr('required', showPHAddressFields);
+    $('#city_id').attr('required', showPHAddressFields);
+    $('#barangay_id').attr('required', showPHAddressFields);
+    $('input[name="street"]').attr('required', showPHAddressFields);
+
+    $('[name="gmaps_address"]').attr('required', !showPHAddressFields);
+    $('[name="street_2"]').attr('required', !showPHAddressFields);
+});
+
+$(document).on('input', '[name="gmaps_address"]', function () {
+    let spinner = $(this).closest("#gmaps-places-api-input").find(".spinner");
+    spinner.removeClass("d-none");
+
+    $("[name='gmaps_address']").attr("data-value", "");
+
+    $("#address-is-valid").addClass("d-none");
+    $("#search-address-result").addClass("d-none");
+
+    let input = $(this).val();
+    let url = $(this).attr("data-url");
+
+    clearTimeout(searchAddressTimeout);
+
+    if(input) {
+        let data = new FormData();
+        data.append('input', input);
+        data.append('country', $('[name="country"]').val());
+
+        searchAddressTimeout = setTimeout(function() {
+            axios.post(url, data, {
+                cancelToken: source.token
+            }).then(response => {
+                if(response.data.result) {
+                    let content = '';
+
+                    response.data.result.predictions.map((data, index, arr) => {
+                        let isLastItem = index === arr.length - 1;
+
+                        content += '<button type="button" class="list-group-item list-group-item-action select-address" style="' + (!isLastItem ? 'border-bottom:1px solid #222222' : '') + '"><span class="d-none">' + JSON.stringify(data) + '</span><div>' + data.description + '</div></button>'
+                    });
+
+                    if(content === '') {
+                        content += '<div class="list-group-item text-center font-size-90">No result found.</div>'
+                    }
+
+                    $("#search-address-result .list-group").html(content);
+                    $("#search-address-result").removeClass("d-none");
+                }
+            }).catch((error) => {
+                if (!axios.isCancel(error)) {
+                    showRequestError(error);
+                }
+            }).then(() => {
+                spinner.addClass("d-none");
+            });
+        }, 2000);
+    } else {
+        spinner.addClass("d-none");
+    }
+});
+
+$(document).on('click', '.select-address', function () {
+    let gmapsAddress = $("[name='gmaps_address']");
+
+    gmapsAddress.attr("data-value", $(this).find("span").html());
+    gmapsAddress.val($(this).find("div").html());
+
+    $("#search-address-result").addClass("d-none");
+    $("#address-is-valid").removeClass("d-none");
+});
+
+$(document).on('click', '#close-address-result', function () {
+    $("#search-address-result").addClass("d-none");
 });
 
 // Login

@@ -14,6 +14,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Redirect;
@@ -48,25 +49,81 @@ class AuthenticationController extends Controller
         ]);
     }
 
+    public function searchAddress(Request $request) {
+        $request->validate([
+            'input' => 'required|string',
+            'country' => 'required|string',
+        ]);
+
+        $response = Http::get('https://maps.googleapis.com/maps/api/place/autocomplete/json', [
+            'input' => $request->input,
+            'components' => 'country:' . $request->country,
+            'key' => config('app.google_maps_api_key')
+        ]);
+
+        if($response->successful()) {
+            $result = $response->json();
+        } else {
+            $result = null;
+        }
+
+        return response()->json([
+            'result' => $result
+        ]);
+    }
+
     public function registerPage() {
         $countries = Loader::countries();
+
+        uasort($countries, function ($a, $b) {
+            return strcmp($a['name'], $b['name']);
+        });
 
         return view('register.index', compact('countries'));
     }
 
     public function register(Request $request) {
         $request->validate([
-            'name' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email',
+            'country' => 'required',
             'password' => 'required|string',
             'password_confirmation' => 'required|same:password',
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        $user = new User();
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->country = $request->country;
+
+        if($request->gmaps_address) {
+            $request->validate([
+                'gmaps_address' => 'required|string',
+                'street_2' => 'required',
+            ]);
+
+            $user->gmaps_address = $request->gmaps_address;
+            $user->street = $request->street_2;
+        } else {
+            $request->validate([
+                'region_id' => 'required',
+                'province_id' => 'required',
+                'city_id' => 'required',
+                'barangay_id' => 'required',
+                'street' => 'required',
+            ]);
+
+            $user->region_id = $request->region_id;
+            $user->province_id = $request->province_id;
+            $user->city_id = $request->city_id;
+            $user->barangay_id = $request->barangay_id;
+            $user->street = $request->street;
+        }
+
+        $user->save();
 
         Mail::to($user->email)->queue(new VerificationMail($user));
 

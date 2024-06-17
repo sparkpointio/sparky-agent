@@ -21,7 +21,8 @@
                             <form id="register-form" class="mb-4">
                                 <input type="hidden" name="url" value="{{ route('register.submit') }}" />
 
-                                <input type="text" name="name" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your name" required />
+                                <input type="text" name="first_name" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your first name" required />
+                                <input type="text" name="last_name" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your last name" required />
                                 <input type="email" name="email" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your email address" required />
 
                                 <div>
@@ -38,7 +39,35 @@
                                 </div>
 
                                 <div class="d-none" id="gmaps-places-api-input">
-                                    <input type="text" name="address" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="Your address" required />
+                                    <div class="position-relative">
+                                        <input type="text" name="gmaps_address" class="form-control form-control-1 text-center mb-3 py-2 px-5 tw-h-[45px]" placeholder="Your address" data-url="{{ route('register.search-address') }}" data-value="" />
+
+                                        <div class="position-absolute w-100 tw-top-[44px] tw-left-[0px] tw-z-[2] d-none spinner">
+                                            <div class="list-group rounded-0" style="border:1px solid #222222">
+                                                <div class="list-group-item p-3">
+                                                    <div class="d-flex justify-content-center mb-2">
+                                                        <div class="spinner-grow tw-w-[24px] tw-h-[24px]" role="status">
+                                                            <span class="visually-hidden">Loading...</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-center font-size-90">Loading</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="position-absolute tw-top-[11px] tw-right-[15px] d-none" id="address-is-valid">
+                                            <i class="fa-solid fa-check-circle font-size-110 text-color-3"></i>
+                                        </div>
+
+                                        <div class="position-absolute w-100 tw-top-[44px] tw-left-[0px] tw-z-[2] d-none" id="search-address-result">
+                                            <div class="position-absolute tw-top-[9px] tw-right-[10px] tw-z-[2]">
+                                                <i class="fa-solid fa-times-circle cursor-pointer" id="close-address-result"></i>
+                                            </div>
+                                            <div class="list-group rounded-0" style="border:1px solid #222222"></div>
+                                        </div>
+                                    </div>
+
+                                    <input type="text" name="street_2" class="form-control form-control-1 text-center mb-3 py-2 tw-h-[45px]" placeholder="House No., Street" required />
                                 </div>
 
                                 <div class="position-relative">
