@@ -60,6 +60,11 @@ class InitializeApp extends Command
         // Migrate tables
         $this->call('migrate');
 
+        $this->line('Seeding PH addresses:');
+        $this->call('db:seed', [
+            '--class' => 'Yajra\Address\Seeders\AddressSeeder'
+        ]);
+
         $this->line('');
 
         // Create Users
