@@ -73,11 +73,7 @@ class AuthenticationController extends Controller
     }
 
     public function registerPage() {
-        $countries = Loader::countries();
-
-        uasort($countries, function ($a, $b) {
-            return strcmp($a['name'], $b['name']);
-        });
+        $countries = getCountryList();
 
         return view('register.index', compact('countries'));
     }
@@ -105,6 +101,11 @@ class AuthenticationController extends Controller
                 'street_2' => 'required',
             ]);
 
+            $user->region_id = 0;
+            $user->province_id = 0;
+            $user->city_id = 0;
+            $user->barangay_id = 0;
+
             $user->gmaps_address = $request->gmaps_address;
             $user->street = $request->street_2;
         } else {
@@ -115,6 +116,8 @@ class AuthenticationController extends Controller
                 'barangay_id' => 'required',
                 'street' => 'required',
             ]);
+
+            $user->gmaps_address = null;
 
             $user->region_id = $request->region_id;
             $user->province_id = $request->province_id;

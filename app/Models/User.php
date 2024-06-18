@@ -46,6 +46,36 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         'password' => 'hashed',
     ];
 
+    public function completeAddress() {
+        $address = '';
+
+        if($this->gmaps_address) {
+            $address = $this->street . ', ' . json_decode($this->gmaps_address, true)['description'];
+        } else {
+            $barangay = $this->barangay['name'];
+            $city = $this->city['name'];
+            $province = $this->province['name'];
+
+            if($this->street) {
+                $address = $this->street;
+            }
+
+            if($barangay) {
+                $address = $address . ', ' . $barangay;
+            }
+
+            if($city) {
+                $address = $address . ', ' . $city;
+            }
+
+            if($province) {
+                $address = $address . ', ' . $province;
+            }
+        }
+
+        return $address;
+    }
+
      public function fullName() {
          return $this->first_name . ' ' . $this->last_name;
      }

@@ -53,15 +53,13 @@
                 <div class="col-md-8 col-xl-9 d-flex justify-content-start">
                     <div class="d-flex justify-content-center align-items-center md:tw-max-w-[calc((720px/12)*8)] lg:tw-max-w-[calc((960px/12)*8)] xl:tw-max-w-[calc((1140px/12)*9)] xxl:tw-max-w-[calc((1320px/12)*9)] w-100">
                         <div class="flex-fill md:tw-ps-[35px] lg:tw-ps-[40px] xl:tw-ps-[45px] xxl:tw-ps-[50px] py-5">
-                            <div id="profile-form">
+                            <form id="profile-form">
                                 <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between pt-5">
                                     <div class="">
                                         <p class="h-custom-3 mb-4 mb-sm-0">Information</p>
                                     </div>
 
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-custom-1-outline px-5 py-2 tw-w-[215px] mb-2 mb-sm-0 d-none" id="cancel-update-profile">Cancel</button>
-                                        <button type="button" class="btn btn-custom-1 px-5 py-2 tw-w-[215px] d-none" id="save-profile">Save Changes</button>
                                         <button type="button" class="btn btn-custom-1 px-5 py-2 tw-w-[215px]" id="update-profile">Update Profile</button>
                                     </div>
                                 </div>
@@ -91,12 +89,67 @@
                                         <input type="text" name="contact_number" class="form-control form-control-1 mb-3 py-2 tw-h-[45px] mt-1 numeric-only" id="contact-number" value="{{ $user['contact_number'] }}" required disabled />
                                     </div>
 
+                                    <div class="col-md-12" id="address-display">
+                                        <p class="font-size-90 mb-0">Address</p>
+                                        <input type="text" class="form-control form-control-1 mb-3 py-2 tw-h-[45px] mt-1" id="address" value="{{ $user->completeAddress() }}" disabled />
+                                    </div>
+
+                                    <div class="col-md-12 address-fields d-none" id="address-update-input">
+                                        <div>
+                                            <label class="font-size-90">Country</label>
+                                            <select name="country" class="form-control form-control-1 mb-3 py-2 tw-h-[45px]" required>
+                                                <option>Select your country:</option>
+                                                @foreach($countries as $i => $country)
+                                                <option value="{{ $i }}" {{ ($user['country'] == $i) ? 'selected' : '' }}>{{ $country['name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="{{ $user['gmaps_address'] ? 'd-none' : '' }} address-fields" id="ph-address-selection">
+                                            @include('address::form', ['model' => \App\Models\User::find(1)])
+                                        </div>
+
+                                        <div class="{{ !$user['gmaps_address'] ? 'd-none' : '' }}" id="gmaps-places-api-input">
+                                            <div class="position-relative">
+                                                <input type="text" name="gmaps_address" class="form-control form-control-1 mb-3 tw-h-[45px]" value="{{ $user['gmaps_address'] ? json_decode($user['gmaps_address'],true)['description'] : '' }}" placeholder="Your address" data-url="{{ route('register.search-address') }}" data-value="{{ $user['gmaps_address'] }}" />
+
+                                                <div class="position-absolute w-100 tw-top-[44px] tw-left-[0px] tw-z-[2] d-none spinner">
+                                                    <div class="list-group rounded-0" style="border:1px solid #222222">
+                                                        <div class="list-group-item p-3">
+                                                            <div class="d-flex justify-content-center mb-2">
+                                                                <div class="spinner-grow tw-w-[24px] tw-h-[24px]" role="status">
+                                                                    <span class="visually-hidden">Loading...</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-center font-size-90">Loading</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="position-absolute tw-top-[11px] tw-right-[15px] d-none" id="address-is-valid">
+                                                    <i class="fa-solid fa-check-circle font-size-110 text-color-3"></i>
+                                                </div>
+
+                                                <div class="position-absolute w-100 tw-top-[44px] tw-left-[0px] tw-z-[2] d-none" id="search-address-result">
+                                                    <div class="position-absolute tw-top-[9px] tw-right-[10px] tw-z-[2]">
+                                                        <i class="fa-solid fa-times-circle cursor-pointer" id="close-address-result"></i>
+                                                    </div>
+                                                    <div class="list-group rounded-0" style="border:1px solid #222222"></div>
+                                                </div>
+                                            </div>
+
+                                            <input type="text" name="street_2" class="form-control form-control-1 mb-3 py-2 tw-h-[45px]" value="{{ $user['street'] }}" placeholder="House No., Street" required />
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-12">
-                                        <label class="font-size-90" for="address">Address</label>
-                                        <input type="text" name="address" class="form-control form-control-1 mb-3 py-2 tw-h-[45px] mt-1" id="address" value="{{ $user['address'] }}" required disabled />
+                                        <div class="d-flex tw-mx-[-4px]">
+                                            <button type="button" class="btn btn-custom-1-outline px-2 py-2 tw-w-[50%] sm:tw-w-[215px] mx-1 mt-3 d-none" id="cancel-update-profile">Cancel</button>
+                                            <button type="submit" class="btn btn-custom-1 px-2 py-2 tw-w-[50%] sm:tw-w-[215px] mx-1 mt-3 d-none" id="save-profile">Save Changes</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

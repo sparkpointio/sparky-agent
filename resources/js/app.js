@@ -8,6 +8,8 @@ let pageOnload = async function() {
 
     if(currentRouteName === "register.index") {
         registerOnload();
+    } else if(currentRouteName === "profile.index") {
+        profileOnload();
     } else if(currentRouteName === "admin.users.index") {
         adminUsersOnload();
     } else if(currentRouteName === "admin.email-subscriptions.index") {
@@ -30,6 +32,28 @@ let homeOnload = function() {
 };
 let registerOnload = function() {
     initializeAddressFields();
+};
+let profileOnload = function() {
+    address = {
+        province: '',
+        city: '',
+        barangay: '',
+    }
+
+    $('#region_id').addClass(['py-2', 'mb-3', 'tw-h-[45px]']);
+    $('#province_id').addClass(['py-2', 'mb-3', 'tw-h-[45px]']);
+    $('#city_id').addClass(['py-2', 'mb-3', 'tw-h-[45px]']);
+    $('#barangay_id').addClass(['py-2', 'mb-3', 'tw-h-[45px]']);
+    $('input[name="street"]').addClass(['py-2', 'mb-3', 'tw-h-[45px]']);
+
+    $('input[name="street"]').attr('placeholder', 'House No., Street');
+
+    $('.address-fields label').addClass(['font-size-90', 'mb-1']);
+
+    $('#region_id').html('<option value="" selected>Select your region:</option>' + $('#region_id').html());
+    $('#province_id').html('<option value="" selected>Select your province:</option>');
+    $('#city_id').html('<option value="" selected>Select your city/municipality:</option>');
+    $('#barangay_id').html('<option value="" selected>Select your barangay:</option>');
 };
 
 let numberFormat = function(x, decimal) {
@@ -321,8 +345,11 @@ let initializeAddressFields = function() {
 };
 
 $(document).on('change', '#region_id', function () {
+    if(!this.value) {
+        return 0;
+    }
+
     $.getJSON('/api/address/provinces/' + this.value, function (data) {
-        console.log(data);
         var options = '<option value="">Select your province:</option>';
         $.each(data, function (index, data) {
             var selected = '';
@@ -340,6 +367,10 @@ $(document).on('change', '#region_id', function () {
 });
 
 $(document).on('change', '#province_id', function () {
+    if(!this.value) {
+        return 0;
+    }
+
     $.getJSON('/api/address/cities/' + this.value, function (data) {
         var options = '<option value="">Select your city/municipality:</option>';
         $.each(data, function (index, data) {
@@ -357,6 +388,10 @@ $(document).on('change', '#province_id', function () {
 });
 
 $(document).on('change', '#city_id', function () {
+    if(!this.value) {
+        return 0;
+    }
+
     $.getJSON('/api/address/barangays/' + this.value, function (data) {
         var options = '<option value="">Select your barangay:</option>';
         $.each(data, function (index, data) {
@@ -374,17 +409,16 @@ $(document).on('change', '#city_id', function () {
 $(document).on('change', '[name="country"]', function () {
     let showPHAddressFields = $(this).val() === 'ph';
 
+    let gmapsAddress = $("[name='gmaps_address']");
+    gmapsAddress.attr("data-value", "");
+    gmapsAddress.val("");
+
     if(showPHAddressFields) {
         $("#ph-address-selection").removeClass("d-none");
         $("#gmaps-places-api-input").addClass("d-none");
     } else {
         $("#ph-address-selection").addClass("d-none");
         $("#gmaps-places-api-input").removeClass("d-none");
-
-        let gmapsAddress = $("[name='gmaps_address']");
-
-        gmapsAddress.attr("data-value", "");
-        gmapsAddress.val("");
 
         $("#address-is-valid").addClass("d-none");
     }
@@ -574,7 +608,12 @@ $(document).on("click", "#update-profile", function() {
     $("#birthdate").attr("data-value", formattedBirthdate);
     $("#birthdate").attr("type", "date");
 
+    $("#address-display").addClass("d-none");
+    $("#address-update-input").removeClass("d-none");
+
     $("#profile-form input").prop("disabled", false);
+
+    $('[name="country"]').change();
 });
 
 $(document).on("click", "#cancel-update-profile", function() {
@@ -587,42 +626,43 @@ $(document).on("click", "#cancel-update-profile", function() {
     $("#birthdate").val($("#birthdate").attr("data-value"));
     $("#birthdate").attr("data-value", birthdate);
 
+    $("#address-display").removeClass("d-none");
+    $("#address-update-input").addClass("d-none");
+
     $("#profile-form input").prop("disabled", true);
 });
 
-$(document).on("click", "#save-profile", function() {
-    let hasRequired = false;
-    $("#profile-form input").each(function() {
-        if($(this).val() === "") {
-            $(this).focus()
-            hasRequired = true;
+$(document).on("submit", "#profile-form", function(e) {
+    e.preventDefault();
 
-            return false;
+    if($('[name="country"]').val() !== 'ph') {
+        if($('[name="gmaps_address"]').attr("data-value") === "") {
+            $("#modal-error .message").html("Please input a correct address.");
+            $("#modal-error").modal("show");
+
+            return 0;
         }
-    });
-
-    if(hasRequired) {
-        return 0;
     }
 
-    let button = $(this);
+    let button = $(this).find("[type='submit']");
     button.prop("disabled", true);
     button.html('Processing');
 
-    let data = new FormData();
-    let url = $("#profile-form [name='url']").val();
+    let data = new FormData($(this)[0]);
+    data.append('gmaps_address', $('[name="gmaps_address"]').attr("data-value"));
 
-    data.append('first_name', $("#profile-form [name='first_name']").val());
-    data.append('last_name', $("#profile-form [name='last_name']").val());
-    data.append('birthdate', $("#profile-form [name='birthdate']").val());
-    data.append('contact_number', $("#profile-form [name='contact_number']").val());
-    data.append('address', $("#profile-form [name='address']").val());
+    let url = data.get("url").toString();
 
     axios.post(url, data)
         .then((response) => {
             $("#birthdate").attr("type", "text");
             $("#birthdate").val(response.data.formattedBirthdate);
             $("#birthdate").attr("data-value", response.data.birthdate);
+
+            $("#address").val(response.data.address);
+
+            $("#address-display").removeClass("d-none");
+            $("#address-update-input").addClass("d-none");
 
             $("#profile-form input").prop("disabled", true);
 

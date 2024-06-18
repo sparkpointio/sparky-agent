@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Rinvex\Country\Loader;
 
 if(!function_exists('ogDetails')) {
     function ogDetails() {
@@ -24,5 +25,17 @@ if(!function_exists('userRoles')) {
             'Standard',
             'Admin',
         ];
+    }
+}
+
+if(!function_exists('getCountryList')) {
+    function getCountryList() {
+        $countries = Loader::countries();
+
+        uasort($countries, function ($a, $b) {
+            return strcmp($a['name'], $b['name']);
+        });
+
+        return $countries;
     }
 }

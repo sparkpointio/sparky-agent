@@ -15,8 +15,9 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $countries = getCountryList();
 
-        return view('profile.index', compact('user'));
+        return view('profile.index', compact('user', 'countries'));
     }
 
     /**
@@ -61,7 +62,7 @@ class ProfileController extends Controller
             'last_name' => 'required',
             'birthdate' => 'required|date|before:today',
             'contact_number' => 'required|regex:/^\d+$/',
-            'address' => 'required|string',
+            'country' => 'required',
         ]);
 
         $user = Auth::user();
@@ -69,12 +70,45 @@ class ProfileController extends Controller
         $user->last_name = $request->last_name;
         $user->birthdate = $request->birthdate;
         $user->contact_number = $request->contact_number;
-        $user->address = $request->address;
+        $user->country = $request->country;
+
+        if($request->gmaps_address) {
+            $request->validate([
+                'gmaps_address' => 'required|string',
+                'street_2' => 'required',
+            ]);
+
+            $user->region_id = 0;
+            $user->province_id = 0;
+            $user->city_id = 0;
+            $user->barangay_id = 0;
+
+            $user->gmaps_address = $request->gmaps_address;
+            $user->street = $request->street_2;
+        } else {
+            $request->validate([
+                'region_id' => 'required',
+                'province_id' => 'required',
+                'city_id' => 'required',
+                'barangay_id' => 'required',
+                'street' => 'required',
+            ]);
+
+            $user->gmaps_address = null;
+
+            $user->region_id = $request->region_id;
+            $user->province_id = $request->province_id;
+            $user->city_id = $request->city_id;
+            $user->barangay_id = $request->barangay_id;
+            $user->street = $request->street;
+        }
+
         $user->update();
 
         return response()->json([
             'birthdate' => $user['birthdate'],
             'formattedBirthdate' => Carbon::parse($user['birthdate'])->format('Y-F-d'),
+            'address' => $user->completeAddress(),
         ]);
     }
 

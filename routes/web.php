@@ -29,6 +29,7 @@ Route::get('under-construction', [HomeController::class, 'underConstruction'])->
 Route::resource('email-subscriptions', EmailSubscriptionController::class);
 
 Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+Route::post('register/search-address', [AuthenticationController::class, 'searchAddress'])->name('register.search-address');
 
 Route::middleware(['guest'])->group(function() {
     Route::post('/forgot-password', [AuthenticationController::class, 'forgotPassword'])->name('password.request');
@@ -42,7 +43,6 @@ Route::middleware(['guest'])->group(function() {
 
     Route::prefix('register')->group(function () {
         Route::get('/', [AuthenticationController::class, 'registerPage'])->name('register.index');
-        Route::post('/search-address', [AuthenticationController::class, 'searchAddress'])->name('register.search-address');
         Route::post('/submit', [AuthenticationController::class, 'register'])->name('register.submit');
     });
 });

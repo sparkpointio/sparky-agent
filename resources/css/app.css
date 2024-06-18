@@ -166,6 +166,12 @@ div.dt-processing>div:last-child>div {
     border:1px solid #222222;
     padding:12px 8px;
 }
+#profile-form .address-fields select, #profile-form .address-fields input {
+    font-size: 1rem;
+    border-radius:0;
+    border:1px solid #222222;
+    padding:8px 12px;
+}
 
 /*##################################################################*/
 
