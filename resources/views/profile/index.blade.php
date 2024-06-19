@@ -111,6 +111,7 @@
 
                                         <div class="{{ !$user['gmaps_address'] ? 'd-none' : '' }}" id="gmaps-places-api-input">
                                             <div class="position-relative">
+                                                <label class="font-size-90">Address</label>
                                                 <input type="text" name="gmaps_address" class="form-control form-control-1 mb-3 tw-h-[45px]" value="{{ $user['gmaps_address'] ? json_decode($user['gmaps_address'],true)['description'] : '' }}" placeholder="Your address" data-url="{{ route('register.search-address') }}" data-value="{{ $user['gmaps_address'] }}" />
 
                                                 <div class="position-absolute w-100 tw-top-[44px] tw-left-[0px] tw-z-[2] d-none spinner">
@@ -138,6 +139,7 @@
                                                 </div>
                                             </div>
 
+                                            <label class="font-size-90">House No., Street</label>
                                             <input type="text" name="street_2" class="form-control form-control-1 mb-3 py-2 tw-h-[45px]" value="{{ $user['street'] }}" placeholder="House No., Street" required />
                                         </div>
                                     </div>
