@@ -154,9 +154,12 @@ let showRequestError = function(error) {
     if(error.response) {
         if(error.response.data) {
             content = error.response.data.message;
+
             for (let prop in error.response.data.errors) {
                 if (Object.prototype.hasOwnProperty.call(error.response.data.errors, prop)) {
-                    content += ' ' + error.response.data.errors[prop];
+                    if(!content.includes(error.response.data.errors[prop])) {
+                        content += ' ' + error.response.data.errors[prop];
+                    }
                 }
             }
         }
