@@ -138,6 +138,33 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function updateValidID(Request $request)
+    {
+        $request->validate([
+            'valid_id' => 'required|mimes:jpg,jpeg,png,bmp,tiff,webp|max:10240',
+        ]);
+
+        $user = Auth::user();
+
+        if($request->hasFile('valid_id')) {
+            $file = $request->file('valid_id');
+            $name = $file->hashName();
+
+            $path = $file->storeAs(
+                'valid-id/' . Auth::user()->id, $name, config('filesystems.default')
+            );
+
+            $url = Storage::url($path);
+
+            $user->valid_id = $url;
+            $user->update();;
+        }
+
+        return response()->json([
+            'valid_id' => $user['valid_id'],
+        ]);
+    }
+
     /**
      * Remove the specified resource from storage.
      */

@@ -107,8 +107,8 @@ let initializeReloadButton = function(link) {
 let showSuccessModal = function(title = null, message = null) {
     // Success! Awesome! Great! Fantastic! Excellent! Superb! Wonderful! Amazing! Spectacular! Marvelous! Outstanding! Terrific! Brilliant! Phenomenal! Splendid! Remarkable! Magnificent! Glorious! Stellar! Impressive!
 
-    $("#modal-success .title").text(title ? title : 'Great!');
-    $("#modal-success .message").text(message ? message : 'Your request has been completed successfully.');
+    $("#modal-success .title").html(title ? title : 'Great!');
+    $("#modal-success .message").html(message ? message : 'Your request has been completed successfully.');
 
     $("#modal-success").modal("show");
 };
@@ -682,6 +682,7 @@ $(document).on("submit", "#profile-form", function(e) {
         });
 });
 
+// Profile Photo
 $(document).on("click", "#select-user-photo", function() {
     $("[name='photo']").trigger("click");
 });
@@ -733,6 +734,67 @@ $(document).on("click", "#save-profile-photo", function() {
         }).then(() => {
             button.prop("disabled", false);
             button.html('Save Photo');
+        });
+});
+
+// Valid ID
+$(document).on("click", "#select-valid-id", function() {
+    $("[name='valid_id']").trigger("click");
+});
+
+$(document).on("change", "[name='valid_id']", function() {
+    let input = $(this)[0];
+    let reader = new FileReader();
+
+    reader.onload = function(event) {
+        let img = new Image();
+
+        img.onload = function() {
+            $("#valid-id-display").css("background-image", "url('" + img.src + "')");
+            $("#attach-valid-id-label").addClass("d-none");
+
+            $("#update-valid-id-actions").removeClass("d-none");
+        };
+
+        img.src = event.target.result;
+    };
+
+    reader.readAsDataURL(input.files[0]);
+});
+
+$(document).on("click", "#cancel-update-valid-id", function() {
+    $("[name='valid_id']").val("");
+    $("#update-valid-id-actions").addClass("d-none");
+
+    if($("#valid-id-display").attr("data-value")) {
+        $("#valid-id-display").css("background-image", "url('" + $("#valid-id-display").attr("data-value") + "')");
+    } else {
+        $("#valid-id-display").css("background-image", "initial");
+        $("#attach-valid-id-label").removeClass("d-none");
+    }
+});
+
+$(document).on("click", "#save-valid-id", function() {
+    let button = $(this);
+    button.prop("disabled", true);
+    button.html('Processing');
+
+    let data = new FormData($("#update-valid-id-form")[0]);
+    let url = data.get('url').toString();
+
+    axios.post(url, data)
+        .then((response) => {
+            $("#profile-photo").attr("data-value", response.data.photo);
+
+            $("[name='valid_id']").val("");
+            $("#update-valid-id-actions").addClass("d-none")
+
+            showSuccessModal("Excellent!", "You have successfully updated your Valid&nbsp;ID.");
+        }).catch((error) => {
+            showRequestError(error);
+        }).then(() => {
+            button.prop("disabled", false);
+            button.html('Save Valid ID');
         });
 });
 

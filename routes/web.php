@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
         Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
         Route::post('/update/photo', [ProfileController::class, 'updatePhoto'])->name('profile.update-photo');
+        Route::post('/update/valid-id', [ProfileController::class, 'updateValidID'])->name('profile.update-valid-id');
     });
 
     Route::middleware(['verified'])->group(function() {
