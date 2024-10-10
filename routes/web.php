@@ -5,7 +5,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\Admin\EmailSubscriptionController;
+use App\Http\Controllers\Admin\EmailSubscriptionController as AdminEmailSubscriptionController;
+use App\Http\Controllers\EmailSubscriptionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -81,8 +82,8 @@ Route::middleware(['auth'])->group(function() {
             });
 
             Route::prefix('email-subscriptions')->group(function () {
-                Route::resource('/', EmailSubscriptionController::class)->names('admin.email-subscriptions');
-                Route::get('/export/excel', [EmailSubscriptionController::class, 'exportExcel'])->name('admin.email-subscriptions.export-excel');
+                Route::resource('/', AdminEmailSubscriptionController::class)->names('admin.email-subscriptions');
+                Route::get('/export/excel', [AdminEmailSubscriptionController::class, 'exportExcel'])->name('admin.email-subscriptions.export-excel');
             });
         });
     });
