@@ -74,9 +74,11 @@ class BlogController extends Controller
         $fileName = 'blogs/' . $blog['id'] . '/' . uniqid() . '.html';
         Storage::put($fileName, $body, config('filesystems.default'));
 
-        $previousBody = 'blogs/' . explode('/blogs/', $blog->body)[1];
-        if(Storage::exists($previousBody)) {
-            Storage::delete($previousBody);
+        if($blog->body) {
+            $previousBody = 'blogs/' . explode('/blogs/', $blog->body)[1];
+            if(Storage::exists($previousBody)) {
+                Storage::delete($previousBody);
+            }
         }
 
         $blog->body = Storage::url($fileName);
