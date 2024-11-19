@@ -151,7 +151,7 @@
 
                                                         <div class="carousel-inner">
                                                             <div class="carousel-item active">
-                                                                <p class="articulat-bold tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-black h-custom-2 mb-4">"Lorem ipsum is so ubiquitous because it is so versatile."</p>
+                                                                <p class="tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-black h-custom-2 mb-4">"Lorem ipsum is so ubiquitous because it is so versatile."</p>
                                                                 <p class="text-black tw-leading-[1.2em] h-custom-4 mb-4">I’ve heard the argument that “lorem ipsum” is effective in wireframing or design because it helps people focus on the actual layout, or color scheme, or whatever. What kills me here is that we’re talking about creating a user experience that will (whether we like it or not) be DRIVEN by words. The entire structure of the page or app flow is FOR THE WORDS.</p>
                                                                 <p class="text-black tw-leading-[1.2em] h-custom-4 mb-4">- P.Y.</p>
 
@@ -175,7 +175,7 @@
                                                             </div>
 
                                                             <div class="carousel-item">
-                                                                <p class="articulat-bold tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-black h-custom-2 mb-4">"The strength of lorem ipsum is its weakness."</p>
+                                                                <p class="tw-tracking-[-0.05em] tw-leading-[1.1em] lg:tw-leading-[1em] text-black h-custom-2 mb-4">"The strength of lorem ipsum is its weakness."</p>
                                                                 <p class="text-black tw-leading-[1.2em] h-custom-4 mb-4">Lorem ipsum is so ubiquitous because it is so versatile. Select how many paragraphs you want, copy, paste, and break the lines wherever it is convenient. Real copy doesn't work that way.</p>
                                                                 <p class="text-black tw-leading-[1.2em] h-custom-4 mb-4">But despite zealous cries for the demise of lorem ipsum, others, such as Karen McGrane, offer appeals for moderation.</p>
                                                                 <p class="text-black tw-leading-[1.2em] h-custom-4 mb-4">- G.P.</p>

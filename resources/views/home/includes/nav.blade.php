@@ -19,6 +19,10 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link {{ (Route::currentRouteName() == 'blog.index') ? 'font-weight-600' : 'font-weight-500' }} font-size-110 letter-spacing-5 px-lg-3 px-xl-4" href="{{ route('blog.index') }}">Blog</a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link {{ (Route::currentRouteName() == 'contact.index') ? 'font-weight-600' : 'font-weight-500' }} font-size-110 letter-spacing-5 px-lg-3 px-xl-4" href="{{ route('contact.index') }}">Contact</a>
                 </li>
 

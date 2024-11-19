@@ -16,7 +16,8 @@
         "owen-it/laravel-auditing": "^13.6",
         "rinvex/country": "^2.0",
         "yajra/laravel-address": "^10.0",
-        "yajra/laravel-datatables": "10.0"
+        "yajra/laravel-datatables": "10.0",
+        "ext-dom": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

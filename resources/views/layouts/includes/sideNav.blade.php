@@ -31,6 +31,13 @@
         </a>
     </li>
 
+    <li class="nav-item {{ (in_array(Route::currentRouteName(), ['admin.blogs.index'])) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.blogs.index') }}">
+            <i class="fa-solid fa-fw fa-newspaper"></i>
+            <span>Blogs</span>
+        </a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="/{{ config('log-viewer.route_path') }}">
             <i class="fa-solid fa-fw fa-book"></i>

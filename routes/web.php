@@ -10,6 +10,8 @@ use App\Http\Controllers\EmailSubscriptionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BlogController as AdminBlogController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,11 @@ Route::resource('email-subscriptions', EmailSubscriptionController::class);
 
 Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
 Route::post('register/search-address', [AuthenticationController::class, 'searchAddress'])->name('register.search-address');
+
+Route::prefix('blog')->group(function () {
+    Route::get('/', [BlogController::class, 'index'])->name('blog.index');
+    Route::get('/{content}', [BlogController::class, 'content'])->name('blog.content');
+});
 
 Route::middleware(['guest'])->group(function() {
     Route::post('/forgot-password', [AuthenticationController::class, 'forgotPassword'])->name('password.request');
@@ -84,6 +91,14 @@ Route::middleware(['auth'])->group(function() {
             Route::prefix('email-subscriptions')->group(function () {
                 Route::resource('/', AdminEmailSubscriptionController::class)->names('admin.email-subscriptions');
                 Route::get('/export/excel', [AdminEmailSubscriptionController::class, 'exportExcel'])->name('admin.email-subscriptions.export-excel');
+            });
+
+            Route::prefix('blogs')->group(function () {
+                Route::get('/', [AdminBlogController::class, 'index'])->name('admin.blogs.index');
+                Route::get('/create', [AdminBlogController::class, 'create'])->name('admin.blogs.create');
+                Route::post('/store', [AdminBlogController::class, 'store'])->name('admin.blogs.store');
+                Route::get('/{id}/edit', [AdminBlogController::class, 'edit'])->name('admin.blogs.edit');
+                Route::post('/{id}/update', [AdminBlogController::class, 'update'])->name('admin.blogs.update');
             });
         });
     });

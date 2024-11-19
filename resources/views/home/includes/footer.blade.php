@@ -43,6 +43,10 @@
                                 <a class="text-decoration-none text-black" href="{{ route('home.index') }}">Home</a>
                             </div>
 
+                            <div class="px-2 mb-2 mb-lg-0">
+                                <a class="text-decoration-none text-black" href="{{ route('blog.index') }}">Blog</a>
+                            </div>
+
                             <div class="px-2 mb-0 mb-lg-0">
                                 <a class="text-decoration-none text-black" href="{{ route('contact.index') }}">Contact</a>
                             </div>

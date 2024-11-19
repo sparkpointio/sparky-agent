@@ -10,10 +10,18 @@ let pageOnload = async function() {
         registerOnload();
     } else if(currentRouteName === "profile.index") {
         profileOnload();
+    } else if(currentRouteName === "blog.content") {
+        blogContentOnload();
     } else if(currentRouteName === "admin.users.index") {
         adminUsersOnload();
     } else if(currentRouteName === "admin.email-subscriptions.index") {
         adminEmailSubscriptionsOnload();
+    } else if(currentRouteName === "admin.blogs.index") {
+        adminBlogsOnload();
+    } else if(currentRouteName === "admin.blogs.create") {
+        adminBlogsCreateOnload();
+    } else if(currentRouteName === "admin.blogs.edit") {
+        adminBlogsCreateOnload();
     }
 };
 let allOnload = async function() {
@@ -798,6 +806,27 @@ $(document).on("click", "#save-valid-id", function() {
         });
 });
 
+// Blog
+let blogContentOnload = function() {
+    $("#blog-body p").each(function() {
+        if($(this).html() === "<br>") {
+            $(this).remove();
+        } else {
+            if($(this).find("img").length) {
+                let content = ' <div class="row justify-content-center py-4">';
+                content += '        <div class="col-md-10 col-lg-9">';
+                content += '            <img src="' +  $(this).find("img").attr("src") + '" class="w-100" alt="" />';
+                content += '        </div>';
+                content += '    </div>';
+
+                $(this).html(content);
+            } else {
+                $(this).addClass(["text-black", "h-custom-4", "text-justify", "mb-4"]);
+            }
+        }
+    });
+};
+
 // Admin Users
 let adminUsersTable;
 let adminUsersOnload = function() {
@@ -854,3 +883,136 @@ let adminEmailSubscriptionsOnload = function() {
     $(".loading-text").addClass("d-none");
     $(".data-table").removeClass("d-none");
 };
+
+// Admin Blogs
+let adminBlogsTable;
+let quill;
+let adminBlogsOnload = function() {
+    adminBlogsTable = $('#blogs-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: $("#blogs-table").attr("data-url"),
+        columns: [
+            { data: 'date_time', name: 'date_time' },
+            { data: 'title', name: 'title' },
+            { data: 'status', name: 'status' },
+            { data: 'actions', name: 'actions', orderable: false, searchable: false }
+        ]
+    });
+
+    $(".loading-text").addClass("d-none");
+    $(".data-table").removeClass("d-none");
+};
+let adminBlogsCreateOnload = function() {
+    quill = new Quill('#blog-body', {
+        modules: {
+            toolbar: [
+                [{ 'header': [1, 2, false] }],
+                ['bold', 'italic', 'underline'],
+                ['image']
+            ],
+            imageResize: {
+                modules: ['Resize', 'DisplaySize']
+            }
+        },
+        theme: 'snow',
+        placeholder: 'Compose blog...',
+    });
+
+
+    if($("#blog-body-content").length) {
+        quill.root.innerHTML = $("#blog-body-content").html();
+    }
+
+    $(".editor-container").removeClass("d-none");
+};
+
+$(document).on("click", "#attach-blog-banner", function() {
+    $("input[name='banner']").trigger("click");
+});
+
+$(document).on("change", "input[name='banner']", function() {
+    let reader = new FileReader();
+
+    let container = $("#attach-blog-banner");
+
+    reader.onload = function(event) {
+        let img = new Image();
+
+        img.onload = function() {
+            container.find("div").addClass("d-none");
+            container.css("background-image", "url('" + img.src + "')");
+        };
+
+        img.src = event.target.result;
+    };
+
+    if($(this)[0].files.length) {
+        reader.readAsDataURL($(this)[0].files[0]);
+    }
+});
+
+$(document).on("submit", "#blog-form", function(e) {
+    e.preventDefault();
+
+    let form = $(this);
+
+    let button = form.find("[type='submit']");
+    button.prop("disabled", true);
+    button.html('Processing');
+
+    let data = new FormData($(this)[0]);
+    let url = data.get("url").toString();
+
+    // Get the HTML content of the editor
+    let htmlContent = quill.root.innerHTML;
+
+    // Iterate through all images in the editor
+    let images = quill.root.querySelectorAll('img');
+    images.forEach(function(image, index) {
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+        canvas.width = image.width;
+        canvas.height = image.height;
+        ctx.drawImage(image, 0, 0, image.width, image.height);
+        var dataURI = canvas.toDataURL('image/png');
+
+        var newImage = new Image();
+        newImage.src = dataURI;
+
+        image.parentNode.replaceChild(newImage, image);
+    });
+
+    if(htmlContent === '<p><br></p>' || htmlContent === '') {
+        try {
+            throw new Error('Blog body is required.');
+        } catch (error) {
+            showRequestError(error);
+
+            button.prop("disabled",false);
+            button.html("Save Blog");
+
+            return 0;
+        }
+    }
+
+    data.append('body', htmlContent);
+
+    axios.post(url, data)
+        .then((response) => {
+            initializeReloadButton(response.data.redirect);
+
+            if(data.get("id") && !isNaN(parseInt(data.get("id").toString()))) {
+                $("#modal-success .message").html("Blog Successfully Updated");
+            } else {
+                $("#modal-success .message").html("Blog Successfully Created");
+            }
+
+            $("#modal-success").modal("show");
+        }).catch((error) => {
+        showRequestError(error);
+    }).then(() => {
+        button.prop("disabled",false);
+        button.html("Save Blog");
+    });
+});

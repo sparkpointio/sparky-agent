@@ -43,7 +43,7 @@
                             <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
-                        <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Divorce and custody proceedings</p>
+                        <p class="text-center text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Divorce and custody proceedings</p>
                     </div>
 
                     <div class="col-6 col-md-4 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
@@ -51,7 +51,7 @@
                             <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
-                        <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Mediation</p>
+                        <p class="text-center text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Mediation</p>
                     </div>
 
                     <div class="col-6 col-md-4 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
@@ -59,7 +59,7 @@
                             <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
-                        <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Move-away actions</p>
+                        <p class="text-center text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Move-away actions</p>
                     </div>
 
                     <div class="col-6 col-md-3 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
@@ -67,7 +67,7 @@
                             <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
-                        <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Spousal and child support</p>
+                        <p class="text-center text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Spousal and child support</p>
                     </div>
 
                     <div class="col-6 col-md-3 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
@@ -75,7 +75,7 @@
                             <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
-                        <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Attorney fee disputes</p>
+                        <p class="text-center text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Attorney fee disputes</p>
                     </div>
 
                     <div class="col-6 col-md-3 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
@@ -83,7 +83,7 @@
                             <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
-                        <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Prenuptial/<br />postnuptial agreements</p>
+                        <p class="text-center text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">Prenuptial/<br />postnuptial agreements</p>
                     </div>
 
                     <div class="col-6 col-md-3 px-2 px-sm-3 px-md-4 px-lg-5 mb-5">
@@ -91,7 +91,7 @@
                             <img src="{{ asset('img/home/bg.png') }}" class="w-100" alt="{{ config('app.name') }}" />
                         </div>
 
-                        <p class="text-center articulat-bold text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">High net worth cases</p>
+                        <p class="text-center text-color-1 tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-0">High net worth cases</p>
                     </div>
                 </div>
             </div>
@@ -250,7 +250,7 @@
                                     <p class="text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 px-4 px-md-0 mb-5">Our goal is to empower you with the knowledge and confidence necessary to navigate the complexities of family law with ease and peace of mind.</p>
 
                                     <div class="">
-                                        <a href="https://calendly.com/peresfamilylaw/1hourconsultation" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-2 font-size-130 font-size-120 font-size-xl-130 articulat-bold tw-pt-[0.55em!important]">Book a Consultation</a>
+                                        <a href="https://calendly.com/peresfamilylaw/1hourconsultation" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-2 font-size-130 font-size-120 font-size-xl-130 tw-pt-[0.55em!important]">Book a Consultation</a>
                                     </div>
                                 </div>
                             </div>

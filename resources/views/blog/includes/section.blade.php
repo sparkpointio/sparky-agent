@@ -11,7 +11,7 @@
                                 <p class="text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 px-4 px-md-0 mb-5">Our goal is to empower you with the knowledge and confidence necessary to navigate the complexities of family law with ease and peace of mind.</p>
 
                                 <div class="">
-                                    <a href="https://calendly.com/peresfamilylaw/1hourconsultation" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-2 font-size-130 font-size-120 font-size-xl-130 articulat-bold tw-pt-[0.55em!important]">Book a Consultation</a>
+                                    <a href="https://calendly.com/peresfamilylaw/1hourconsultation" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-2 font-size-130 font-size-120 font-size-xl-130 tw-pt-[0.55em!important]">Book a Consultation</a>
                                 </div>
                             </div>
                         </div>
@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <div class="col-md-5 background-image-cover p-0 tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
+            <div class="col-md-5 background-image-cover p-0 tw-bg-[url('/img/blog/img-4.webp')] tw-min-h-[calc(100vh-78px)] md:tw-min-h-[initial]"></div>
         </div>
     </div>
 </div>

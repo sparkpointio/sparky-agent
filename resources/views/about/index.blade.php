@@ -50,7 +50,7 @@
                                 <p class="text-black tw-leading-[1.2em] font-size-120 font-size-xl-130 mb-5">With extensive experience in navigating complex financial and custody agreements, Ariel ensures that her clients' rights are protected and their interests are represented with utmost diligence.</p>
 
                                 <div class="">
-                                    <a href="https://calendly.com/peresfamilylaw/1hourconsultation" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-2 font-size-120 font-size-xl-130 articulat-bold tw-pt-[0.55em!important]">Book a Consultation</a>
+                                    <a href="https://calendly.com/peresfamilylaw/1hourconsultation" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-2 font-size-120 font-size-xl-130 tw-pt-[0.55em!important]">Book a Consultation</a>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                                     <p class="text-white tw-leading-[1.2em] font-size-120 font-size-xl-130 px-4 px-md-0 mb-5">With a focus on personalized attention and tailored solutions, Ariel strives to alleviate the stress and uncertainty associated with divorce proceedings. Clients can trust Ariel to provide steadfast advocacy and practical guidance every step of the way, empowering them to make informed decisions and move forward with confidence.</p>
 
                                     <div class="">
-                                        <a href="https://calendly.com/peresfamilylaw/1hourconsultation" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-2 font-size-130 font-size-120 font-size-xl-130 articulat-bold tw-pt-[0.55em!important]">Book a Consultation</a>
+                                        <a href="https://calendly.com/peresfamilylaw/1hourconsultation" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-2 font-size-130 font-size-120 font-size-xl-130 tw-pt-[0.55em!important]">Book a Consultation</a>
                                     </div>
                                 </div>
                             </div>

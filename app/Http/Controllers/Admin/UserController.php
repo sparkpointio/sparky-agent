@@ -24,6 +24,9 @@ class UserController extends Controller
                 ->addColumn('user_role', function ($row) {
                     return userRoles()[$row['role']];
                 })
+                ->addColumn('name', function ($row) {
+                    return $row['first_name'] . ' ' . $row['last_name'];
+                })
                 ->filterColumn('user_role', function ($query, $keyword) {
                     $keyword = strtolower($keyword);
 
