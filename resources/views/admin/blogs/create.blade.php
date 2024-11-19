@@ -5,7 +5,7 @@
 @section('content')
 <main class="main">
     <div class="d-flex justify-content-between flex-wrap tw-mx-[-16px]">
-        <ol class="breadcrumb align-items-end bg-white py-0 px-3 mb-3">
+        <ol class="breadcrumb align-items-end bg-white py-0 px-3 mb-3 pb-3">
             <li class="breadcrumb-item active" aria-current="page">
                 <a href="{{ route('admin.blogs.index') }}" class="text-decoration-none">
                     <h1 class="h3 mb-0 text-gray-800">Blogs</h1>

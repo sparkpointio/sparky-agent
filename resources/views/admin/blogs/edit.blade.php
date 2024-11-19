@@ -4,13 +4,15 @@
 
 @section('content')
 <main class="main">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.blogs.index') }}" class="link-color-1">Blog</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $blog['title'] }}</li>
-            </ol>
-        </nav>
+    <div class="d-flex justify-content-between flex-wrap tw-mx-[-16px]">
+        <ol class="breadcrumb align-items-end bg-white py-0 px-3 mb-3 pb-3">
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="{{ route('admin.blogs.index') }}" class="text-decoration-none">
+                    <h1 class="h3 mb-0 text-gray-800">Blogs</h1>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">{{ $blog['title'] }}</li>
+        </ol>
     </div>
 
     <div class="animated fadeIn pb-5">
