@@ -18,10 +18,10 @@
                                 </div>
 
                                 <h1 class="bebas-neue text-black h-custom-1 px-4 px-md-0 mb-4">{{ $featuredBlog ? $featuredBlog['title'] : 'Lorem Ipsum Dolor Sit Amet' }}</h1>
-                                <p class="text-secondary tw-leading-[1.2em] h-custom-4 px-4 px-md-0 mb-5">{{ $featuredBlog ? $featuredBlog['body'] : 'Lorem Ipsum Dolor Sit Amet' }}</p>
+                                <p class="text-secondary tw-leading-[1.2em] h-custom-4 px-4 px-md-0 mb-5">{{ $featuredBlog ? $featuredBlog['description'] : 'Lorem Ipsum Dolor Sit Amet' }}</p>
 
                                 <div class="">
-                                    <a href="{{ route('blog.content', str_replace('%2F', ' ', rawurlencode($featuredBlog['title']))) }}" class="btn btn-custom-1 px-5 py-2 h-custom-4">Read More</a>
+                                    <a href="{{ route('blog.content', $featuredBlog['url_slug']) }}" class="btn btn-custom-1 px-5 py-2 h-custom-4">Read More</a>
                                 </div>
                             </div>
                         </div>

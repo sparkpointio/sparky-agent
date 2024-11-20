@@ -22,7 +22,7 @@ class BlogController extends Controller
                 ->addColumn('actions', function ($row) {
                     $content = '
                         <div class="d-flex justify-content-center flex-wrap" style="margin-bottom:-5px">
-                            <div class="text-center"><a href="' . route('blog.content', str_replace('%2F', ' ', rawurlencode($row->title))) . '" target="_blank" rel="noreferrer" class="btn btn-custom-1 btn-sm font-size-80 mx-1" style="min-width:93px; margin-bottom:5px">View</a></div>
+                            <div class="text-center"><a href="' . route('blog.content', $row->url_slug) . '" target="_blank" rel="noreferrer" class="btn btn-custom-1 btn-sm font-size-80 mx-1" style="min-width:93px; margin-bottom:5px">View</a></div>
                             <div class="text-center"><a href="' . route('admin.blogs.edit', $row->id) . '" class="btn btn-custom-1 btn-sm font-size-80 mx-1" style="min-width:93px; margin-bottom:5px">Edit</a></div>
                         </div>';
 
@@ -43,7 +43,12 @@ class BlogController extends Controller
         $request->validate([
             'id' => 'nullable',
             'title' => 'required',
+            'author' => 'required',
+            'categories' => 'required|array',
+            'categories.*' => 'string',
+            'description' => 'required',
             'body' => 'required',
+            'url_slug' => 'required',
             'banner' => 'mimes:jpg,jpeg,png,bmp,tiff,pdf,webp|max:10240',
             'status' => 'required|in:Draft,Coming Soon,Published',
         ]);
@@ -64,11 +69,28 @@ class BlogController extends Controller
                 ->first();
         } else {
             $blog = new Blog();
+            $blog->body = '';
+        }
+
+        if(!$blog['published_at']) {
+            if($blog['status'] != 'Published' && $request->status == 'Published') {
+                $blog->published_at = Carbon::now();
+            }
         }
 
         $blog->title = $request->title;
+        $blog->author = $request->author;
+        $blog->categories = json_encode($request->categories);
+        $blog->description = $request->description;
+        $blog->url_slug = $request->url_slug;
         $blog->status = $request->status;
+        $blog->is_featured = $request->is_featured;
         $blog->save();
+
+        if($blog->is_featured == 1) {
+            Blog::where('id', '!=', $blog->id)
+                ->update(['is_featured' => 0]);
+        }
 
         $body = $request->input('body');
         $fileName = 'blogs/' . $blog['id'] . '/' . uniqid() . '.html';

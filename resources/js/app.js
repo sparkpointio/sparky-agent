@@ -812,17 +812,17 @@ let blogContentOnload = function() {
         if($(this).html() === "<br>") {
             $(this).remove();
         } else {
-            if($(this).find("img").length) {
-                let content = ' <div class="row justify-content-center py-4">';
-                content += '        <div class="col-md-10 col-lg-9">';
-                content += '            <img src="' +  $(this).find("img").attr("src") + '" class="w-100" alt="" />';
-                content += '        </div>';
-                content += '    </div>';
-
-                $(this).html(content);
-            } else {
-                $(this).addClass(["text-black", "h-custom-4", "text-justify", "mb-4"]);
-            }
+            // if($(this).find("img").length) {
+            //     let content = ' <div class="row justify-content-center py-4">';
+            //     content += '        <div class="col-md-10 col-lg-9">';
+            //     content += '            <img src="' +  $(this).find("img").attr("src") + '" class="w-100" alt="" />';
+            //     content += '        </div>';
+            //     content += '    </div>';
+            //
+            //     $(this).html(content);
+            // } else {
+            //     $(this).addClass(["text-black", "h-custom-4", "text-justify", "mb-4"]);
+            // }
         }
     });
 };
@@ -907,9 +907,9 @@ let adminBlogsCreateOnload = function() {
     quill = new Quill('#blog-body', {
         modules: {
             toolbar: [
-                [{ 'header': [1, 2, false] }],
+                [{ 'header': [2, 3, 4, 5, false] }],
                 ['bold', 'italic', 'underline'],
-                ['image']
+                ['link', 'image']
             ],
             imageResize: {
                 modules: ['Resize', 'DisplaySize']
@@ -925,6 +925,15 @@ let adminBlogsCreateOnload = function() {
     }
 
     $(".editor-container").removeClass("d-none");
+
+    $("#categories").select2( {
+        theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+        closeOnSelect: false,
+    });
+
+    $("#categories").removeClass("d-none");
 };
 
 $(document).on("click", "#attach-blog-banner", function() {
