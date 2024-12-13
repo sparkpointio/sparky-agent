@@ -26,12 +26,12 @@
 
             <div class="mb-4">
                 <label for="title">Blog Title</label>
-                <input type="text" class="form-control rounded-0 text-start px-3 py-3" id="title" name="title" value="{{ $blog['title'] }}" required />
+                <input type="text" class="form-control text-black rounded-0 text-start px-3 py-3" id="title" name="title" value="{{ $blog['title'] }}" required />
             </div>
 
             <div class="mb-4">
                 <label for="author">Author</label>
-                <input type="text" class="form-control text-start rounded-0 px-3 py-2" id="author" name="author" value="{{ $blog['author'] }}" required />
+                <input type="text" class="form-control text-black text-start rounded-0 px-3 py-2" id="author" name="author" value="{{ $blog['author'] }}" required />
             </div>
 
             <div class="mb-4">
@@ -50,7 +50,7 @@
 
             <div class="mb-4">
                 <label for="description">Blog Description</label>
-                <textarea class="form-control text-start rounded-0 px-3 py-2" id="description" name="description" style="height:90px"  required>{{ $blog['description'] }}</textarea>
+                <textarea class="form-control text-black text-start rounded-0 px-3 py-2" id="description" name="description" style="height:90px"  required>{{ $blog['description'] }}</textarea>
             </div>
 
             <div class="d-none" id="blog-body-content">{!! $blog['body'] !!}</div>
@@ -81,7 +81,7 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text rounded-0 py-2">{{ config('app.url') }}/blog/</span>
-                    <input type="text" class="form-control rounded-0 py-2" placeholder="my-adventure" style="height:initial" id="url-slug" name="url_slug" value="{{ $blog['url_slug'] }}" required>
+                    <input type="text" class="form-control text-black rounded-0 py-2" placeholder="my-adventure" style="height:initial" id="url-slug" name="url_slug" value="{{ $blog['url_slug'] }}" required>
                 </div>
             </div>
 
