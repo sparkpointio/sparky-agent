@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmailSubscriptionController;
+use App\Http\Controllers\StorageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
