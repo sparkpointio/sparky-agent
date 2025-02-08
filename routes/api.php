@@ -20,3 +20,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::resource('email-subscriptions', EmailSubscriptionController::class)->names('api.email-subscriptions');
+
+Route::post('/storage/set', [StorageController::class, 'setItem']);
+Route::get('/storage/get/{key}', [StorageController::class, 'getItem']);
+Route::delete('/storage/remove/{key}', [StorageController::class, 'removeItem']);
