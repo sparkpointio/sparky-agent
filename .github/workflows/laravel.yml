@@ -1,4 +1,4 @@
-name: Deploy to DigitalOcean
+name: Deploy to Contabo
 
 on:
   push:
@@ -20,4 +20,4 @@ jobs:
 
       - name: Deploy to DigitalOcean
         run: |
-          ssh -o StrictHostKeyChecking=no root@128.199.219.142 'bash -s' < deployer.sh
+          ssh -o StrictHostKeyChecking=no root@95.111.227.6 'bash -s' < deployer.sh

@@ -1,5 +1,5 @@
 # Path to your project directory
-PROJECT_DIR="/var/www/laravel-boilerplate"
+PROJECT_DIR="/var/www/sparkagent"
 
 # Log file path
 LOG_FILE="$PROJECT_DIR/storage/logs/deployment.log"
@@ -19,19 +19,19 @@ sudo chmod -R 775 bootstrap/cache
 
 export COMPOSER_ALLOW_SUPERUSER=1
 
-/usr/bin/php8.1 /usr/local/bin/composer dump-autoload --no-interaction
-/usr/bin/php8.1 /usr/local/bin/composer install --no-interaction
+composer dump-autoload --no-interaction
+composer install --no-interaction
 
-/usr/bin/php8.1 artisan cache:clear
-/usr/bin/php8.1 artisan config:cache
-/usr/bin/php8.1 artisan view:cache
-/usr/bin/php8.1 artisan route:cache
-/usr/bin/php8.1 artisan event:cache
-/usr/bin/php8.1 artisan migrate --force
+php artisan cache:clear
+php artisan config:cache
+php artisan view:cache
+php artisan route:cache
+php artisan event:cache
+php artisan migrate --force
 
 sudo supervisorctl reread
 sudo supervisorctl update
-sudo supervisorctl restart laravel-boilerplate-worker:*
+sudo supervisorctl restart sparkagent-worker:*
 
 npm install
 npm run build
