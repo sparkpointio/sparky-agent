@@ -27,6 +27,7 @@ use App\Http\Controllers\BlogController;
 Route::get('/try', [HomeController::class, 'try']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/nft-pass', [HomeController::class, 'nftPass'])->name('nftPass.index');
 Route::get('under-construction', [HomeController::class, 'underConstruction'])->name('home.underConstruction');
 
 Route::resource('email-subscriptions', EmailSubscriptionController::class);

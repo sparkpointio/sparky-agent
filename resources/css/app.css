@@ -10,13 +10,19 @@ html, body {
     -ms-scroll-behavior: auto !important;
 }
 * {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Roboto", sans-serif;
     color: #000000;
 }
 .bebas-neue {
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
+}
+.rubik {
+    font-family: "Rubik", sans-serif;
+}
+.roboto {
+    font-family: "Roboto", sans-serif;
 }
 .text-black {
     color:#000000!important;
@@ -29,6 +35,9 @@ html, body {
 }
 .text-color-3 {
     color:#2c4944!important;
+}
+.text-color-4 {
+    color:#e9d300!important;
 }
 .link-color-1 {
     color:#2c4944!important;
@@ -62,8 +71,24 @@ a:hover {
     color:#ffffff!important;
     border:2px solid #000000;
 }
+.btn-custom-2 {
+    background-color:#4f84db;
+    color:#ffffff;
+    border:1px solid #222222;
+}
+.btn-custom-2:hover, .btn-custom-2:active, .btn-custom-2:focus, .btn-custom-2:disabled {
+    background-color: #4f84db !important;
+    color:#ffffff!important;
+    border:1px solid #222222;
+}
 .bg-color-1 {
     background-color:#d7dce0!important;
+}
+.bg-color-2 {
+    background-color:#ff7c32!important;
+}
+.bg-color-3 {
+    background-color:#548ce9!important;
 }
 .cursor-pointer {
     cursor:pointer;
@@ -196,7 +221,7 @@ div.dt-processing>div:last-child>div {
     text-align: justify;
 }
 .h-custom-1 {
-    font-size: 2.7em;
+    font-size: 2.4em;
 }
 .h-custom-2 {
     font-size: 2em;
@@ -205,13 +230,22 @@ div.dt-processing>div:last-child>div {
     font-size: 1.3em;
 }
 .h-custom-4, #blog-body p {
-    font-size: 1.1em;
+    font-size: 1.3em;
+}
+.h-custom-5 {
+    font-size: 1.2em;
 }
 
 /* SM */
 @media(min-width:576px) {
     .text-sm-justify {
         text-align: justify!important;
+    }
+    .h-custom-4, #blog-body p {
+        font-size: 1.4em;
+    }
+    .h-custom-5 {
+        font-size: 1.2em;
     }
 }
 
@@ -238,7 +272,7 @@ div.dt-processing>div:last-child>div {
         text-align: justify!important;
     }
     .h-custom-1 {
-        font-size: 3.3em;
+        font-size: 3.1em;
     }
     .h-custom-2 {
         font-size: 2.7em;
@@ -247,7 +281,10 @@ div.dt-processing>div:last-child>div {
         font-size: 1.4em;
     }
     .h-custom-4, #blog-body p {
-        font-size: 1.2em;
+        font-size: 1.5em;
+    }
+    .h-custom-5 {
+        font-size: 1.3em;
     }
 }
 
@@ -257,7 +294,7 @@ div.dt-processing>div:last-child>div {
         text-align: justify!important;
     }
     .h-custom-1 {
-        font-size: 3.7em;
+        font-size: 3.5em;
     }
     .h-custom-2 {
         font-size: 2.9em;
