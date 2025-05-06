@@ -252,9 +252,9 @@
     <div class="py-5 background-image-cover" style="background-image:url('{{ asset('img/home/bg-1.webp') }}')">
         <div class="container py-5">
             <p class="text-center font-weight-500 tw-leading-[1em] h-custom-2 px-4 px-md-0 mb-5">Get Started Today</p>
-            <p class="text-center h-custom-5 mb-3">Activate your SparkAgent in under 5 minutes — no coding required.</p>
-            <p class="text-center h-custom-5 mb-3">All you need is your vision, the SparkAgent platform, and the power of SRK tokens.</p>
-            <p class="text-center h-custom-5 mb-5 pb-4">Mint your NFT access card, unlock your AI, and take control of a smarter future.</p>
+            <p class="text-center h-custom-5 mb-3">Activate your SparkAgent in under 5 minutes — no coding, no complexity.</p>
+            <p class="text-center h-custom-5 mb-3">Just bring your vision, tap into the SparkAgent platform, and power it with SRK tokens.</p>
+            <p class="text-center h-custom-5 mb-5 pb-4">Set your AI in motion and start building your smarter digital presence — effortlessly and securely.</p>
 
             <div class="text-center">
                 <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-4 px-sm-5 py-3 h-custom-5 tw-rounded-[50px] tw-w-[100%] sm:tw-w-[initial]">Activate My SparkAgent</a>
