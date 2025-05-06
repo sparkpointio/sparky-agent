@@ -9,7 +9,7 @@ cd $PROJECT_DIR
 
 git stash push --include-untracked
 git stash drop
-git pull origin master
+git pull origin develop
 
 sudo chown -R $USER:www-data storage
 sudo chown -R $USER:www-data bootstrap/cache
