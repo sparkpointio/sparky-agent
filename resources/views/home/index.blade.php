@@ -87,10 +87,10 @@
 
                 <div class="col-lg-8 col-xl-9">
                     <div class="font-size-80">
-                        <p class="text-center text-lg-start font-weight-500 tw-tracking-[-0.05em] tw-leading-[1.2em] lg:tw-leading-[1.1em] h-custom-2 px-4 px-md-0 mb-4">3. Pay with SRK and Mint Your Agent Pass</p>
+                        <p class="text-center text-lg-start font-weight-500 tw-tracking-[-0.05em] tw-leading-[1.2em] lg:tw-leading-[1.1em] h-custom-2 px-4 px-md-0 mb-4">3. Pay with SRK</p>
                     </div>
 
-                    <p class="text-center text-lg-start h-custom-4 mb-4">Once you're happy with your setup, activate your agent by paying with SRK tokens. You’ll automatically mint an NFT-based Agent Card — your access key. It’s transferrable, secure, and time-limited.</p>
+                    <p class="text-center text-lg-start h-custom-4 mb-4">Once you’ve customized your agent, simply pay with SRK tokens to activate it. Your access is tied securely to your wallet, time-limited based on your chosen plan, and fully under your control — no subscriptions, just pure on-chain ownership.</p>
                 </div>
             </div>
 
@@ -130,8 +130,8 @@
                                         </div>
 
                                         <div>
-                                            <p class="text-center text-sm-start h-custom-4 font-weight-700 px-4 px-md-0 mb-1">Ownable & Transferable</p>
-                                            <p class="text-center text-sm-start h-custom-5 px-4 px-md-0 mb-0">Each subscription is tied to a unique NFT card—yours to trade, hold, or gift.</p>
+                                            <p class="text-center text-sm-start h-custom-4 font-weight-700 px-4 px-md-0 mb-1">Ownable & Flexible</p>
+                                            <p class="text-center text-sm-start h-custom-5 px-4 px-md-0 mb-0">Your AI agent is linked to your wallet and plan — fully transferable and under your control. No subscriptions. No lock-ins.</p>
                                         </div>
                                     </div>
 
@@ -141,8 +141,8 @@
                                         </div>
 
                                         <div>
-                                            <p class="text-center text-sm-start h-custom-4 font-weight-700 px-4 px-md-0 mb-1">Fully Automated Agents</p>
-                                            <p class="text-center text-sm-start h-custom-5 px-4 px-md-0 mb-0">Let your AI handle replies, DMs, scheduling, and more—powered by ElizaOS.</p>
+                                            <p class="text-center text-sm-start h-custom-4 font-weight-700 px-4 px-md-0 mb-1">24/7 Autonomous AI</p>
+                                            <p class="text-center text-sm-start h-custom-5 px-4 px-md-0 mb-0">Let your custom agent handle replies, DMs, scheduling, and engagement — powered by ElizaOS automation.</p>
                                         </div>
                                     </div>
 
@@ -152,8 +152,8 @@
                                         </div>
 
                                         <div>
-                                            <p class="text-center text-sm-start h-custom-4 font-weight-700 px-4 px-md-0 mb-1">Secure & Private</p>
-                                            <p class="text-center text-sm-start h-custom-5 px-4 px-md-0 mb-0">Your data stays safe. We only use what’s required to operate the agent.</p>
+                                            <p class="text-center text-sm-start h-custom-4 font-weight-700 px-4 px-md-0 mb-1">Private by Design</p>
+                                            <p class="text-center text-sm-start h-custom-5 px-4 px-md-0 mb-0">We respect your data. Only essential information is processed to operate your agent efficiently and securely.</p>
                                         </div>
                                     </div>
 
@@ -163,8 +163,8 @@
                                         </div>
 
                                         <div>
-                                            <p class="text-center text-sm-start h-custom-4 font-weight-700 px-4 px-md-0 mb-1">Powered by the Spark (SRK) Token</p>
-                                            <p class="text-center text-sm-start h-custom-5 px-4 px-md-0 mb-0">Use SRK to activate agents, manage renewals, and tap into the SparkAgent ecosystem.</p>
+                                            <p class="text-center text-sm-start h-custom-4 font-weight-700 px-4 px-md-0 mb-1">Fueled by Spark (SRK) Token</p>
+                                            <p class="text-center text-sm-start h-custom-5 px-4 px-md-0 mb-0">Use SRK to activate, extend, or manage your agent. Simple, on-chain, and built for the SparkPoint ecosystem.</p>
                                         </div>
                                     </div>
 
@@ -197,7 +197,7 @@
                                 <p class="text-center h-custom-2 px-4 px-md-0 mb-1">Creators</p>
                             </div>
 
-                            <p class="text-center h-custom-5 mb-0">Engage with your audience, reply to comments, and post content — even when you're asleep or offline. Your AI agent keeps the connection alive 24/7.</p>
+                            <p class="text-center h-custom-5 mb-0">Stay connected with fans 24/7. Your agent can reply to comments, answer questions, and post updates — even while you’re offline.</p>
                         </div>
 
                         <div class="col-md-6 col-lg-4 mb-5 pb-4 md:tw-px-[40px] xxl:tw-px-[50px]">
@@ -205,7 +205,7 @@
                                 <p class="text-center h-custom-2 px-4 px-md-0 mb-1">Brands</p>
                             </div>
 
-                            <p class="text-center h-custom-5 mb-0">Automate support, run interactive marketing campaigns, and maintain a consistent brand voice across platforms without hiring extra staff.</p>
+                            <p class="text-center h-custom-5 mb-0">Automate support, launch campaigns, and keep your brand voice consistent across platforms — all without growing your team.</p>
                         </div>
 
                         <div class="col-md-6 col-lg-4 mb-5 pb-4 md:tw-px-[40px] xxl:tw-px-[50px]">
@@ -213,7 +213,7 @@
                                 <p class="text-center h-custom-2 px-4 px-md-0 mb-1">Communities</p>
                             </div>
 
-                            <p class="text-center h-custom-5 mb-0">Welcome new members, answer FAQs, moderate conversations, and boost engagement — your AI agent becomes a trusted part of your space.</p>
+                            <p class="text-center h-custom-5 mb-0">Welcome newcomers, answer FAQs, moderate conversations, and boost engagement with an always-on presence.</p>
                         </div>
 
                         <div class="col-md-6 col-lg-4 mb-5 pb-4 mb-md-0 pb-md-0 md:tw-px-[40px] xxl:tw-px-[50px]">
@@ -221,7 +221,7 @@
                                 <p class="text-center h-custom-2 px-4 px-md-0 mb-1">Influencers</p>
                             </div>
 
-                            <p class="text-center h-custom-5 mb-0">Let your AI handle common DMs, promote your content, and collaborate with fans — freeing you to focus on creating while staying connected.</p>
+                            <p class="text-center h-custom-5 mb-0">Let your AI handle DMs, promote content, and stay engaged with your audience — so you can focus on creating.</p>
                         </div>
 
                         <div class="col-md-6 col-lg-4 mb-5 pb-4 mb-md-0 pb-md-0 md:tw-px-[40px] xxl:tw-px-[50px]">
@@ -229,15 +229,15 @@
                                 <p class="text-center h-custom-2 px-4 px-md-0 mb-1">Entrepreneurs</p>
                             </div>
 
-                            <p class="text-center h-custom-5 mb-0">Use AI agents as virtual assistants or sales bots — handling queries, qualifying leads, or sharing updates instantly on your social accounts.</p>
+                            <p class="text-center h-custom-5 mb-0">Use SparkAgent as a virtual assistant or sales bot — managing inquiries, qualifying leads, and sharing updates on autopilot.</p>
                         </div>
 
                         <div class="col-md-6 col-lg-4 mb-5 pb-4 mb-md-0 pb-md-0 md:tw-px-[40px] xxl:tw-px-[50px]">
                             <div class="font-size-90">
-                                <p class="text-center h-custom-2 px-4 px-md-0 mb-1">Collectors</p>
+                                <p class="text-center h-custom-2 px-4 px-md-0 mb-1">Web3 Users</p>
                             </div>
 
-                            <p class="text-center h-custom-5 mb-0">Own, trade, or gift SparkAgent access cards (NFTs). Each card is a digital asset that activates a real AI agent, transferable and time-limited.</p>
+                            <p class="text-center h-custom-5 mb-0">Activate and manage your AI agents using SRK tokens. Everything is on-chain, transferable, and fully under your control.</p>
                         </div>
                     </div>
                 </div>
@@ -250,39 +250,6 @@
     </div>
 
     <div class="py-5 background-image-cover" style="background-image:url('{{ asset('img/home/bg-1.webp') }}')">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-1 order-lg-0 mb-5 mb-lg-0">
-                    <div class="d-flex align-items-center bg-white h-100 px-4 py-5 p-md-5">
-                        <div class="text-center text-lg-start">
-                            <p class="text-center text-lg-start font-weight-500 tw-leading-[1em] h-custom-2 px-4 px-md-0 mb-4">Your Access Card — Powered by NFT Tech</p>
-                            <p class="text-center text-lg-start h-custom-5 mb-4">When you activate your SparkAgent with SRK tokens, you don’t just unlock your AI — you mint a unique NFT access card.</p>
-                            <p class="text-center text-lg-start h-custom-5 mb-4">This NFT is more than just proof of purchase — it’s your license to run an AI agent. The card includes:</p>
-
-                            <p class="text-center text-lg-start h-custom-5 mb-0">✅ Your Agent’s Validity Period — visible on the card</p>
-                            <p class="text-center text-lg-start h-custom-5 mb-0">🔁 Transferability — you can sell or gift the NFT to others</p>
-                            <p class="text-center text-lg-start h-custom-5 mb-4">🔒 Security & Ownership — fully verifiable on-chain, always under your control</p>
-
-                            <p class="text-center text-lg-start h-custom-5 mb-4">Each access card represents a time-based pass (e.g., 30 days, 90 days), giving you full access to SparkAgent services for the duration.</p>
-                            <p class="text-center text-lg-start h-custom-5 mb-4 pb-2">Once the validity expires, the card can be renewed or burned and replaced by minting a new one.</p>
-
-                            <div class="text-center text-lg-start">
-                                <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-4 px-sm-5 py-3 h-custom-5 tw-rounded-[50px] tw-w-[100%] sm:tw-w-[initial]">Activate My SparkAgent</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 order-0 order-lg-1">
-                    <div class="text-center mb-5 mb-lg-0">
-                        <img src="{{ asset('img/home/img-6.webp') }}" class="tw-w-[100%] sm:tw-w-[70%] md:tw-w-[60%] lg:tw-w-[100%]" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="py-5 bg-color-3">
         <div class="container py-5">
             <p class="text-center font-weight-500 tw-leading-[1em] h-custom-2 px-4 px-md-0 mb-5">Get Started Today</p>
             <p class="text-center h-custom-5 mb-3">Activate your SparkAgent in under 5 minutes — no coding required.</p>
