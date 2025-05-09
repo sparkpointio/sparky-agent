@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 use Monarobase\CountryList\CountryListFacade;
 use Rinvex\Country\Loader;
 
-class HomeController extends Controller
+class AgentController extends Controller
 {
     /**
      * Display a listing of the resource.
