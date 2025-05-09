@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
-use Monarobase\CountryList\CountryListFacade;
-use Rinvex\Country\Loader;
 
 class AgentController extends Controller
 {
@@ -17,38 +12,7 @@ class AgentController extends Controller
      */
     public function index()
     {
-        return view('home.index');
-    }
-
-    public function underConstruction()
-    {
-        return view('underConstruction.index');
-    }
-
-    public function try(Request $request)
-    {
-        if(config('app.env') == 'production') {
-            abort(404);
-        }
-
-//        return json_decode(Http::get('https://maps.googleapis.com/maps/api/place/autocomplete/json', [
-//            'input' => 'daraga',
-//            'components' => 'country:ph',
-//            'key' => config('app.google_maps_api_key')
-//        ]), true);
-
-        return Loader::countries();
-
-        $user = User::find(1);
-        $user->name = 'Bernard Historillo';
-        $user->role = 1;
-        $user->update();
-
-        return $user->audits()->latest()->get();
-
-        $user = User::find(1);
-        $url = route('home.index') . '/' . Str::random(50);
-        return view('emails.verification', compact('user', 'url'));
+        return view('agents.index');
     }
 
     /**

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.3.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    @if(Str::startsWith(Route::currentRouteName(), 'admin.'))
+    @if(Str::startsWith(Route::currentRouteName(), 'admin.') || Str::startsWith(Route::currentRouteName(), 'agents.'))
     <link href="{{ asset('lib/sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     @endif
 
@@ -48,6 +48,8 @@
 <body class="app tw-overflow-x-hidden">
     @if(Str::startsWith(Route::currentRouteName(), 'admin.'))
         @include('layouts.includes.admin')
+    @elseif(Str::startsWith(Route::currentRouteName(), 'agents.'))
+        @include('layouts.includes.agent')
     @else
         @yield('content')
     @endif
@@ -61,7 +63,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    @if(Str::startsWith(Route::currentRouteName(), 'admin.'))
+    @if(Str::startsWith(Route::currentRouteName(), 'admin.') || Str::startsWith(Route::currentRouteName(), 'agents.'))
     <script src="{{ asset('lib/sb-admin/js/sb-admin-2.min.js') }}"></script>
     @endif
 
