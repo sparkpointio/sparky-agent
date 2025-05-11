@@ -41,6 +41,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+    @viteReactRefresh
     @vite('resources/css/app.css')
 
     <title>@yield('title') | {{ config('app.name') }}</title>
@@ -77,6 +78,6 @@
     {{--  Select2  --}}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    @vite('resources/js/app.js')
+    @vite('resources/js/app.jsx')
 </body>
 </html>

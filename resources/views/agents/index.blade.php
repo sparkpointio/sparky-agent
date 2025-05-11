@@ -18,9 +18,7 @@
             <p class="h-custom-5 text-center">Kickstart your AI journey by creating your first agent — it only takes a few minutes.</p>
             <p class="h-custom-5 text-center mb-5">Customize its personality, connect your socials, and let it work for you 24/7.</p>
 
-            <div class="text-center">
-                <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-4 px-sm-5 py-3 h-custom-5 tw-rounded-[50px] tw-w-[100%] sm:tw-w-[initial]">Activate My SparkAgent</a>
-            </div>
+            <div id="root"></div>
         </div>
     </div>
 </main>

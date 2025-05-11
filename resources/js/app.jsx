@@ -827,6 +827,47 @@ let blogContentOnload = function() {
     });
 };
 
+// Agent
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createThirdwebClient } from "thirdweb";
+import { ConnectButton, ThirdwebProvider, useActiveAccount } from "thirdweb/react";
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { useEffect } from "react";
+
+const queryClient = new QueryClient();
+const client = createThirdwebClient({
+    clientId: "6ab4691a82f30c256cb603d219cd1531",
+});
+
+function App() {
+    const account = useActiveAccount();
+
+    useEffect(() => {
+        if (account) {
+            window.connectedWallet = account;
+        }
+    }, [account]);
+
+    return (
+        <div className="text-center">
+            <ConnectButton client={client} theme={"light"} connectButton={{label:"Create Agent"}} />
+        </div>
+    );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <QueryClientProvider client={queryClient}>
+        <ThirdwebProvider
+            clientId="6ab4691a82f30c256cb603d219cd1531"
+            activeChain="ethereum"
+        >
+            <App />
+        </ThirdwebProvider>
+    </QueryClientProvider>
+);
+
 // Admin Users
 let adminUsersTable;
 let adminUsersOnload = function() {
