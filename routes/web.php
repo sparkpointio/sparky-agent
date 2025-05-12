@@ -64,7 +64,7 @@ Route::prefix('contact')->group(function () {
 
 Route::prefix('agents')->group(function () {
     Route::get('/', [AgentController::class, 'index'])->name('agents.index');
-    Route::get('/setup/{id?}', [AgentController::class, 'setup'])->name('agents.setup');
+    Route::get('/settings/{id?}', [AgentController::class, 'settings'])->name('agents.settings');
     Route::post('/update/{id?}', [AgentController::class, 'update'])->name('agents.update');
     Route::post('/{id}/toggle', [AgentController::class, 'toggle'])->name('agents.toggle');
 });

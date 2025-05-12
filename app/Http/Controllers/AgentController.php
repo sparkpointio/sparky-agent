@@ -15,6 +15,11 @@ class AgentController extends Controller
         return view('agents.index');
     }
 
+    public function settings($id = null)
+    {
+        return view('agents.settings');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

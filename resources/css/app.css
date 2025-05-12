@@ -235,6 +235,13 @@ div.dt-processing>div:last-child>div {
 #blog-body p {
     margin-bottom:24px;
 }
+#agent-settings .nav-link {
+    color: #222222;
+}
+#agent-settings .nav-pills .nav-link.active, #agent-settings .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #4f84db;
+}
 
 /*##################################################################*/
 

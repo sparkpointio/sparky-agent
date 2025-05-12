@@ -1,4 +1,10 @@
 import './bootstrap'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createThirdwebClient } from "thirdweb";
+import { ConnectButton, ThirdwebProvider, useActiveAccount } from "thirdweb/react";
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { useEffect } from "react";
 
 let appUrl;
 let currentRouteName;
@@ -12,6 +18,8 @@ let pageOnload = async function() {
         profileOnload();
     } else if(currentRouteName === "blog.content") {
         blogContentOnload();
+    } else if(currentRouteName === "agents.index") {
+        agentsOnload();
     } else if(currentRouteName === "admin.users.index") {
         adminUsersOnload();
     } else if(currentRouteName === "admin.email-subscriptions.index") {
@@ -37,6 +45,40 @@ let allOnload = async function() {
 
 let homeOnload = function() {
 
+};
+let agentsOnload = function() {
+    const queryClient = new QueryClient();
+    const client = createThirdwebClient({
+        clientId: "6ab4691a82f30c256cb603d219cd1531",
+    });
+
+    function App() {
+        const account = useActiveAccount();
+
+        useEffect(() => {
+            if (account) {
+                window.connectedWallet = account;
+            }
+        }, [account]);
+
+        return (
+            <div className="text-center">
+                <ConnectButton client={client} theme={"light"} connectButton={{label:"Create Agent"}} />
+            </div>
+        );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+        <QueryClientProvider client={queryClient}>
+            <ThirdwebProvider
+                clientId="6ab4691a82f30c256cb603d219cd1531"
+                activeChain="ethereum"
+            >
+                <App />
+            </ThirdwebProvider>
+        </QueryClientProvider>
+    );
 };
 let registerOnload = function() {
     initializeAddressFields();
@@ -828,59 +870,55 @@ let blogContentOnload = function() {
 };
 
 // Agent
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createThirdwebClient } from "thirdweb";
-import { ConnectButton, ThirdwebProvider, useActiveAccount } from "thirdweb/react";
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { useEffect } from "react";
+$(document).on("keydown", ".agent-input input", function(e) {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        e.preventDefault();
 
-const queryClient = new QueryClient();
-const client = createThirdwebClient({
-    clientId: "6ab4691a82f30c256cb603d219cd1531",
+        let value = $(this).val().trim();
+
+        if(value !== "") {
+            let content = ' <div class="tw-bg-[#eeeeee] d-flex tw-rounded-[20px] tw-border-solid tw-border-[1px] tw-border-[#222222] px-3 py-0 mx-1 mb-2 value">';
+            content += '        <div>';
+            content += '            <p class="mb-0">' + value + '</p>';
+            content += '        </div>';
+            content += '        <div class="ps-3 mb-0">';
+            content += '            <i class="fa-solid fa-times cursor-pointer remove"></i>';
+            content += '        </div>';
+            content += '    </div>';
+
+            $(this).closest(".agent-input").find(".values").append(content);
+            $(this).val("");
+
+            $(this).closest(".agent-input").find(".values").removeClass("d-none");
+            $(this).closest(".agent-input").find(".values").addClass("d-flex");
+        }
+    }
 });
 
-function App() {
-    const account = useActiveAccount();
+$(document).on("click", ".agent-input .remove", function() {
+    let valuesContainer = $(this).closest(".values");
 
-    useEffect(() => {
-        if (account) {
-            window.connectedWallet = account;
-        }
-    }, [account]);
+    $(this).closest(".value").remove();
 
-    return (
-        <div className="text-center">
-            <ConnectButton client={client} theme={"light"} connectButton={{label:"Create Agent"}} />
-        </div>
-    );
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <QueryClientProvider client={queryClient}>
-        <ThirdwebProvider
-            clientId="6ab4691a82f30c256cb603d219cd1531"
-            activeChain="ethereum"
-        >
-            <App />
-        </ThirdwebProvider>
-    </QueryClientProvider>
-);
+    if(valuesContainer.html().trim() === "") {
+        valuesContainer.addClass("d-none")
+        valuesContainer.removeClass("d-flex")
+    }
+});
 
 // Admin Users
 let adminUsersTable;
-let adminUsersOnload = function() {
+let adminUsersOnload = function () {
     adminUsersTable = $('#users-table').DataTable({
         processing: true,
         serverSide: true,
         ajax: $("#users-table").attr("data-url"),
         columns: [
-            { data: 'name', name: 'name' },
-            { data: 'email', name: 'email' },
-            { data: 'date_time_registered', name: 'date_time_registered' },
-            { data: 'user_role', name: 'user_role' },
-            { data: 'actions' }
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},
+            {data: 'date_time_registered', name: 'date_time_registered'},
+            {data: 'user_role', name: 'user_role'},
+            {data: 'actions'}
         ]
     });
 
