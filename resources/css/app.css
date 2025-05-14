@@ -81,6 +81,27 @@ a:hover {
     color:#ffffff!important;
     border:1px solid #222222;
 }
+#root .tw-connect-wallet {
+    background-color:#4f84db;
+    color:#ffffff;
+    border:1px solid #222222;
+    border-radius:100px;
+}
+#root .tw-connect-wallet:hover, #root .tw-connect-wallet:active, #root .tw-connect-wallet:focus, #root .tw-connect-wallet:disabled {
+    background-color: #4f84db !important;
+    color:#ffffff!important;
+    border:1px solid #222222;
+}
+.btn-custom-3 {
+    background-color:#ffffff;
+    color:#222222;
+    border:1px solid #ffffff;
+}
+.btn-custom-3:hover, .btn-custom-3:active, .btn-custom-3:focus, .btn-custom-3:disabled {
+    background-color: #cccccc !important;
+    color:#222222!important;
+    border:1px solid #cccccc;
+}
 .bg-color-1 {
     background-color:#d7dce0!important;
 }
@@ -214,6 +235,13 @@ div.dt-processing>div:last-child>div {
 #blog-body p {
     margin-bottom:24px;
 }
+#agent-settings .nav-link {
+    color: #222222;
+}
+#agent-settings .nav-pills .nav-link.active, #agent-settings .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #4f84db;
+}
 
 /*##################################################################*/
 
@@ -235,6 +263,18 @@ div.dt-processing>div:last-child>div {
 .h-custom-5 {
     font-size: 1.2em;
 }
+#root .tw-connect-wallet {
+    font-size: 1.3em;
+}
+.navbar-nav.sidebar.accordion:not(.toggled) .sidebar-brand-icon {
+    display: inline-block;
+}
+.navbar-nav.sidebar.accordion:not(.toggled) .sidebar-brand-text {
+    display: none;
+}
+#agent-sidebar.sidebar .create-agent-lg {
+    display:none;
+}
 
 /* SM */
 @media(min-width:576px) {
@@ -244,6 +284,9 @@ div.dt-processing>div:last-child>div {
     .h-custom-4, #blog-body p {
         font-size: 1.4em;
     }
+    #root .tw-connect-wallet {
+        font-size: 1.4em;
+    }
     .h-custom-5 {
         font-size: 1.2em;
     }
@@ -251,8 +294,32 @@ div.dt-processing>div:last-child>div {
 
 /* MD */
 @media(min-width:768px) {
+    .navbar-nav.sidebar.accordion:not(.toggled) .sidebar-brand-icon {
+        display: none;
+    }
+    .navbar-nav.sidebar.accordion:not(.toggled) .sidebar-brand-text {
+        display: inline-block;
+    }
     .text-md-justify {
         text-align: justify!important;
+    }
+    #agent-sidebar.sidebar .sidebar-brand {
+        height:160px;
+    }
+    #agent-sidebar.sidebar.toggled .sidebar-brand {
+        height:100px;
+    }
+    #agent-sidebar.sidebar .create-agent-lg {
+        display:inline-block;
+    }
+    #agent-sidebar.sidebar.toggled .create-agent-lg {
+        display:none;
+    }
+    #agent-sidebar.sidebar .create-agent-sm {
+        display:none;
+    }
+    #agent-sidebar.sidebar.toggled .create-agent-sm {
+        display:inline-block;
     }
 }
 
@@ -281,6 +348,9 @@ div.dt-processing>div:last-child>div {
         font-size: 1.4em;
     }
     .h-custom-4, #blog-body p {
+        font-size: 1.5em;
+    }
+    #root .tw-connect-wallet {
         font-size: 1.5em;
     }
     .h-custom-5 {

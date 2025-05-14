@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ContactController;
@@ -27,7 +28,7 @@ use App\Http\Controllers\BlogController;
 Route::get('/try', [HomeController::class, 'try']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
-Route::get('/nft-pass', [HomeController::class, 'nftPass'])->name('nftPass.index');
+
 Route::get('under-construction', [HomeController::class, 'underConstruction'])->name('home.underConstruction');
 
 Route::resource('email-subscriptions', EmailSubscriptionController::class);
@@ -59,6 +60,13 @@ Route::middleware(['guest'])->group(function() {
 Route::prefix('contact')->group(function () {
     Route::get('/', [ContactController::class, 'index'])->name('contact.index');
     Route::post('/sendMessage', [ContactController::class, 'sendMessage'])->name('contact.sendMessage');
+});
+
+Route::prefix('agents')->group(function () {
+    Route::get('/', [AgentController::class, 'index'])->name('agents.index');
+    Route::get('/settings/{id?}', [AgentController::class, 'settings'])->name('agents.settings');
+    Route::post('/update/{id?}', [AgentController::class, 'update'])->name('agents.update');
+    Route::post('/{id}/toggle', [AgentController::class, 'toggle'])->name('agents.toggle');
 });
 
 Route::middleware(['auth'])->group(function() {

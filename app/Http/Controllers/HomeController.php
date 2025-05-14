@@ -25,11 +25,6 @@ class HomeController extends Controller
         return view('underConstruction.index');
     }
 
-    public function nftPass()
-    {
-        return view('nftPass.index');
-    }
-
     public function try(Request $request)
     {
         if(config('app.env') == 'production') {
