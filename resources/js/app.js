@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { createThirdwebClient } from "thirdweb";
 import { ConnectButton, ThirdwebProvider, useActiveAccount } from "thirdweb/react";
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 let appUrl;
 let currentRouteName;
@@ -20,6 +20,8 @@ let pageOnload = async function() {
         blogContentOnload();
     } else if(currentRouteName === "agents.index") {
         agentsOnload();
+    } else if(currentRouteName === "agents.settings") {
+        agentSettingsOnload();
     } else if(currentRouteName === "admin.users.index") {
         adminUsersOnload();
     } else if(currentRouteName === "admin.email-subscriptions.index") {
@@ -46,39 +48,16 @@ let allOnload = async function() {
 let homeOnload = function() {
 
 };
-let agentsOnload = function() {
-    const queryClient = new QueryClient();
-    const client = createThirdwebClient({
-        clientId: "6ab4691a82f30c256cb603d219cd1531",
-    });
+let agentsOnload = function () {
+    loadWallet();
+};
+let agentSettingsOnload = function () {
+    loadWallet();
 
-    function App() {
-        const account = useActiveAccount();
-
-        useEffect(() => {
-            if (account) {
-                window.connectedWallet = account;
-            }
-        }, [account]);
-
-        return (
-            <div className="text-center">
-                <ConnectButton client={client} theme={"light"} connectButton={{label:"Create Agent"}} />
-            </div>
-        );
+    let connectedWallet = localStorage.getItem('connectedWallet')
+    if(!connectedWallet) {
+        window.location.href = "/agents";
     }
-
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
-        <QueryClientProvider client={queryClient}>
-            <ThirdwebProvider
-                clientId="6ab4691a82f30c256cb603d219cd1531"
-                activeChain="ethereum"
-            >
-                <App />
-            </ThirdwebProvider>
-        </QueryClientProvider>
-    );
 };
 let registerOnload = function() {
     initializeAddressFields();
@@ -233,6 +212,63 @@ function getOffset(el) {
         top: rect.top + window.scrollY
     };
 }
+
+let loadWallet = function() {
+    const queryClient = new QueryClient();
+    const clientId = "6ab4691a82f30c256cb603d219cd1531";
+    const client = createThirdwebClient({
+        clientId: clientId,
+    });
+
+    function App() {
+        const account = useActiveAccount();
+        const previousAccount = useRef(null);
+
+        useEffect(() => {
+            // Detect connect
+            if (account && !previousAccount.current) {
+                localStorage.setItem('connectedWallet', JSON.stringify(account));
+            }
+
+            // Detect disconnect
+            if (!account && previousAccount.current) {
+                localStorage.removeItem('connectedWallet');
+
+                if(currentRouteName === "agents.settings") {
+                    window.location.href = "/agents";
+                }
+            }
+
+            previousAccount.current = account;
+        }, [account]);
+
+        return React.createElement(
+            'div',
+            { className: 'text-center' },
+            React.createElement(ConnectButton, {
+                client: client,
+                theme: 'light',
+                connectButton: { label: 'Connect Wallet' }
+            })
+        );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('wallet-container'));
+    root.render(
+        React.createElement(
+            QueryClientProvider,
+            { client: queryClient },
+            React.createElement(
+                ThirdwebProvider,
+                {
+                    clientId: clientId,
+                    activeChain: "ethereum"
+                },
+                React.createElement(App, null)
+            )
+        )
+    );
+};
 
 $(document).ready(function() {
     pageOnload();
@@ -872,6 +908,8 @@ let blogContentOnload = function() {
 // Agent
 $(document).on("keydown", ".agent-input input", function(e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
+        $(this).prop("disabled", true);
+
         e.preventDefault();
 
         let value = $(this).val().trim();
@@ -892,6 +930,8 @@ $(document).on("keydown", ".agent-input input", function(e) {
             $(this).closest(".agent-input").find(".values").removeClass("d-none");
             $(this).closest(".agent-input").find(".values").addClass("d-flex");
         }
+
+        $(this).prop("disabled", false);
     }
 });
 
@@ -904,6 +944,48 @@ $(document).on("click", ".agent-input .remove", function() {
         valuesContainer.addClass("d-none")
         valuesContainer.removeClass("d-flex")
     }
+});
+
+$(document).on("submit", "#agent-form", function(e) {
+    e.preventDefault();
+
+    let form = $(this);
+
+    let button = $(this).find("[type='submit']");
+    button.prop("disabled", true);
+    button.html('Saving Changes');
+
+    let data = new FormData(form[0]);
+    let url = data.get("url").toString();
+
+    data.append("address", JSON.parse(localStorage.getItem('connectedWallet')).address);
+
+    $(".agent-input").each(function() {
+        let variable = $(this).attr("data-input") + "[]";
+
+        $(this).find(".value").each(function() {
+            let value = $(this).find("p").html().trim();
+
+            if(value !== "") {
+                data.append(variable, value);
+            }
+        });
+    });
+
+    axios.post(url, data)
+        .then((response) => {
+            if(response.data.redirect) {
+                initializeReloadButton(response.data.redirect);
+            }
+
+            $("#modal-success .message").html("Agent successfully saved.");
+            $("#modal-success").modal("show");
+        }).catch((error) => {
+            showRequestError(error);
+        }).then(() => {
+            button.prop("disabled",false);
+            button.html("Save Changes");
+        });
 });
 
 // Admin Users

@@ -81,13 +81,27 @@ a:hover {
     color:#ffffff!important;
     border:1px solid #222222;
 }
-#root .tw-connect-wallet {
+.btn-custom-2-outline {
+    background-color:#ffffff;
+    color:#222222;
+    border:2px solid #4f84db;
+}
+.btn-custom-2-outline:hover, .btn-custom-2-outline:active, .btn-custom-2-outline:focus, .btn-custom-2-outline:disabled {
+    background-color: #4f84db !important;
+    color:#ffffff!important;
+    border:2px solid #4f84db;
+}
+#wallet-container .tw-connect-wallet {
     background-color:#4f84db;
     color:#ffffff;
     border:1px solid #222222;
     border-radius:100px;
+    padding:12px 10px!important;
+    font-size: 0.9em!important;
+    font-weight: 400!important;
+    height:initial!important;
 }
-#root .tw-connect-wallet:hover, #root .tw-connect-wallet:active, #root .tw-connect-wallet:focus, #root .tw-connect-wallet:disabled {
+#wallet-container .tw-connect-wallet:hover, #wallet-container .tw-connect-wallet:active, #wallet-container .tw-connect-wallet:focus, #wallet-container .tw-connect-wallet:disabled {
     background-color: #4f84db !important;
     color:#ffffff!important;
     border:1px solid #222222;
@@ -263,7 +277,7 @@ div.dt-processing>div:last-child>div {
 .h-custom-5 {
     font-size: 1.2em;
 }
-#root .tw-connect-wallet {
+#wallet-container .tw-connect-wallet {
     font-size: 1.3em;
 }
 .navbar-nav.sidebar.accordion:not(.toggled) .sidebar-brand-icon {
@@ -284,7 +298,7 @@ div.dt-processing>div:last-child>div {
     .h-custom-4, #blog-body p {
         font-size: 1.4em;
     }
-    #root .tw-connect-wallet {
+    #wallet-container .tw-connect-wallet {
         font-size: 1.4em;
     }
     .h-custom-5 {
@@ -350,7 +364,7 @@ div.dt-processing>div:last-child>div {
     .h-custom-4, #blog-body p {
         font-size: 1.5em;
     }
-    #root .tw-connect-wallet {
+    #wallet-container .tw-connect-wallet {
         font-size: 1.5em;
     }
     .h-custom-5 {

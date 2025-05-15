@@ -18,7 +18,7 @@
             <p class="h-custom-5 text-center">Kickstart your AI journey by creating your first agent — it only takes a few minutes.</p>
             <p class="h-custom-5 text-center mb-5">Customize its personality, connect your socials, and let it work for you 24/7.</p>
 
-            <div id="root"></div>
+            <div id=""></div>
         </div>
     </div>
 </main>
