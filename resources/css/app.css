@@ -39,6 +39,12 @@ html, body {
 .text-color-4 {
     color:#e9d300!important;
 }
+.text-color-5 {
+    color:#4f84db!important;
+}
+.text-color-6 {
+    color:#A63446!important;
+}
 .link-color-1 {
     color:#2c4944!important;
     text-decoration: none!important;
@@ -115,6 +121,16 @@ a:hover {
     background-color: #cccccc !important;
     color:#222222!important;
     border:1px solid #cccccc;
+}
+.btn-custom-4 {
+    background-color:#A63446;
+    color:#ffffff;
+    border:1px solid #A63446;
+}
+.btn-custom-4:hover, .btn-custom-4:active, .btn-custom-4:focus, .btn-custom-4:disabled {
+    background-color: #73242f !important;
+    color:#ffffff!important;
+    border:1px solid #73242f;
 }
 .bg-color-1 {
     background-color:#d7dce0!important;

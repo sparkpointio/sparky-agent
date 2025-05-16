@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('name');
             $table->text('bio')->nullable();
+            $table->text('lore')->nullable();
             $table->text('topics')->nullable();
             $table->text('adjectives')->nullable();
             $table->text('style_all')->nullable();

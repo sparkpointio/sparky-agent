@@ -988,6 +988,33 @@ $(document).on("submit", "#agent-form", function(e) {
         });
 });
 
+$(document).on("click", ".toggle-agent", function() {
+    let button = $(this);
+    let isEnabled = button.html() !== "Start Agent";
+
+    button.prop("disabled", true);
+    button.html(isEnabled ? 'Stopping Agent' : 'Starting Agent');
+
+    let data = new FormData();
+    let url = button.attr("data-url");
+
+    axios.post(url, data)
+        .then((response) => {
+            button.html(isEnabled ? 'Start Agent' : 'Stop Agent');
+            button.addClass(isEnabled ? 'btn-custom-2' : 'btn-custom-4');
+            button.removeClass(isEnabled ? 'btn-custom-4' : 'btn-custom-2');
+
+            $("#modal-success .message").html("Agent successfully " + (isEnabled ? "stopped" : "started") + ".");
+            $("#modal-success").modal("show");
+        }).catch((error) => {
+            showRequestError(error);
+            button.html(isEnabled ? 'Stop Agent' : 'Start Agent');
+        }).then(() => {
+            button.prop("disabled",false);
+        });
+});
+
+
 // Admin Users
 let adminUsersTable;
 let adminUsersOnload = function () {

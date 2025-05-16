@@ -13,6 +13,10 @@ class Agent extends Model
         return $this->bio ? json_decode($this->bio, true) : [];
     }
 
+    public function parsedLore() {
+        return $this->lore ? json_decode($this->lore, true) : [];
+    }
+
     public function parsedTopics() {
         return $this->topics ? json_decode($this->topics, true) : [];
     }
