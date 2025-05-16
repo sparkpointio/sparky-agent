@@ -272,6 +272,13 @@ div.dt-processing>div:last-child>div {
     color: #fff;
     background-color: #4f84db;
 }
+.pulse {
+    animation: pulse 1s infinite ease-in-out alternate;
+}
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
 
 /*##################################################################*/
 

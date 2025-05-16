@@ -277,4 +277,60 @@
         </div>
     </form>
 </main>
+
+<div class="modal fade" id="modal-agent-payment" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content tw-rounded-[0]">
+            <div class="modal-body px-4 px-sm-5 py-4">
+                <div class="text-center mt-3 mb-2">
+                    <img src="{{ asset('img/home/img-4.webp') }}" class="tw-w-[120px]" />
+                </div>
+
+                <div class="text-center h-custom-4 font-weight-500 mb-3 title">Payment Required</div>
+
+                <div class="text-center font-size-120 mb-3">Starting an agent requires a one-time payment of <strong>100 SRK</strong>.</div>
+                <div class="text-center mb-3">To start the agent, please complete your payment first.</div>
+                <div class="text-center mb-0">Access to this feature is available only to paid users. Once your payment is confirmed, you’ll be able to start and manage your agent.</div>
+            </div>
+            <div class="modal-footer justify-content-center py-4" style="border-color:#808080">
+                <button type="button" class="btn btn-custom-2 py-2 tw-rounded-[25px] px-5" id="make-payment">Make a Payment</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-srk-approval" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content tw-rounded-[0]">
+            <div class="modal-body px-4 px-sm-5 py-5">
+                <div class="text-center mb-4">
+                    <img src="{{ asset('img/home/img-4.webp') }}" class="tw-w-[140px] pulse" />
+                </div>
+
+                <div class="text-center h-custom-4 font-weight-500 mb-3 title">Approving SRK Token</div>
+                <div class="text-center mb-3">Please confirm the token approval in your wallet.</div>
+                <div class="text-center mb-3">This allows the payment contract to spend 100 SRK on your behalf.</div>
+                <div class="text-center font-size-90 fst-italic mb-0">This is a one-time approval. You’ll only need to do this once.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-srk-payment" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content tw-rounded-[0]">
+            <div class="modal-body px-4 px-sm-5 py-5">
+                <div class="text-center mb-4">
+                    <img src="{{ asset('img/home/img-4.webp') }}" class="tw-w-[140px] pulse" />
+                </div>
+
+                <div class="text-center h-custom-4 font-weight-500 mb-3 title">Confirm SRK Payment</div>
+                <div class="text-center mb-3">Now, please confirm the 100 SRK payment in your wallet.</div>
+                <div class="text-center mb-3">This will grant you access to the premium agent features.</div>
+
+                <div class="text-center font-size-90 fst-italic mb-0">Almost there! This payment is final and will be processed securely.</div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

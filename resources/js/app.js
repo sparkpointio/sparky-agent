@@ -1,8 +1,9 @@
 import './bootstrap'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createThirdwebClient } from "thirdweb";
-import { ConnectButton, ThirdwebProvider, useActiveAccount } from "thirdweb/react";
+import {createThirdwebClient, getContract, prepareContractCall, readContract} from "thirdweb";
+import {ConnectButton, ThirdwebProvider, useActiveAccount, useSendTransaction} from "thirdweb/react";
+import { arbitrum, arbitrumSepolia } from "thirdweb/chains";
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { useEffect, useRef } from "react";
 
@@ -51,13 +52,34 @@ let homeOnload = function() {
 let agentsOnload = function () {
     loadWallet();
 };
-let agentSettingsOnload = function () {
-    loadWallet();
+let agentSettingsOnload = async function () {
+    await loadWallet();
 
     let connectedWallet = localStorage.getItem('connectedWallet')
     if(!connectedWallet) {
         window.location.href = "/agents";
+        return;
     }
+
+    connectedWallet = JSON.parse(connectedWallet);
+
+    tokenAccessPaymentContract = getContract({
+        client,
+        chain: networkEnv === "testnet" ? arbitrumSepolia : arbitrum,
+        address: tokenAccessPaymentContractAddress
+    });
+
+    srkContract = getContract({
+        client,
+        chain: networkEnv === "testnet" ? arbitrumSepolia : arbitrum,
+        address: srkContractAddress
+    });
+
+    currentAllowance = await readContract({
+        contract: srkContract,
+        method: "function allowance(address owner, address spender) returns (uint256)",
+        params: [connectedWallet.address, tokenAccessPaymentContract.address],
+    });
 };
 let registerOnload = function() {
     initializeAddressFields();
@@ -216,7 +238,7 @@ function getOffset(el) {
 let loadWallet = function() {
     const queryClient = new QueryClient();
     const clientId = "6ab4691a82f30c256cb603d219cd1531";
-    const client = createThirdwebClient({
+    client = createThirdwebClient({
         clientId: clientId,
     });
 
@@ -241,6 +263,12 @@ let loadWallet = function() {
 
             previousAccount.current = account;
         }, [account]);
+
+        const { mutate: sendTransaction } = useSendTransaction();
+
+        useEffect(() => {
+            sendTransactionGlobal = sendTransaction;
+        }, [sendTransaction]);
 
         return React.createElement(
             'div',
@@ -906,6 +934,86 @@ let blogContentOnload = function() {
 };
 
 // Agent
+const networkEnv = import.meta.env.VITE_NETWORK_ENV;
+const tokenAccessPaymentContractAddress = import.meta.env.VITE_TOKEN_ACCESS_PAYMENT_CONTRACT_ADDRESS;
+const srkContractAddress = import.meta.env.VITE_SRK_CONTRACT_ADDRESS;
+const paymentPrice = import.meta.env.VITE_PAYMENT_PRICE;
+
+let client = null;
+let tokenAccessPaymentContract = null;
+let srkContract = null;
+let currentAllowance = null;
+let sendTransactionGlobal = null;
+
+const approveTransaction = async () => {
+    $("#modal-srk-approval").modal("show");
+
+    const approveTx = prepareContractCall({
+        contract: srkContract,
+        method: "function approve(address spender, uint256 value)",
+        params: [
+            tokenAccessPaymentContractAddress,
+            BigInt(paymentPrice) * BigInt("1000000000000000000")
+        ],
+        value: BigInt(0),
+    });
+
+    console.log("Prepared approval transaction:", approveTx);
+
+    const approveReceipt = await sendTransactionGlobal(approveTx, {
+        onError: (error) => {
+            console.error(error);
+            $("#modal-srk-approval").modal("hide");
+        },
+        onSuccess: () => {
+            console.log("Transaction successfully executed!");
+            $("#modal-srk-approval").modal("hide");
+            proceedWithPayment();
+        },
+    });
+
+    console.log("Approval transaction receipt:", approveReceipt);
+};
+
+const proceedWithPayment = async () => {
+    $("#modal-srk-payment").modal("show");
+
+    const paymentTx = prepareContractCall({
+        contract: tokenAccessPaymentContract,
+        method: "function pay()",
+        params: [],
+        value: BigInt(0),
+    });
+
+    console.log("Prepared launch transaction:", launchTx);
+
+    const paymentReceipt = sendTransactionGlobal(paymentTx, {
+        onError: (error) => {
+            $("#modal-srk-payment").modal("show");
+            console.error(error);
+        },
+        onSuccess: async (tx) => {
+            $("#modal-srk-payment").modal("show");
+
+            $("#modal-success .message").html("Payment successfully received.");
+            $("#modal-success").modal("show");
+
+            console.log("Transaction sent! Hash:", tx.transactionHash);
+        },
+    });
+
+    console.log("Payment transaction receipt:", paymentReceipt);
+};
+
+$(document).on("click", "#create-agent-redirect", function() {
+    let connectedWallet = localStorage.getItem('connectedWallet')
+    if(connectedWallet) {
+        window.location.href = "/agents/settings";
+    } else {
+        $("#wallet-container .tw-connect-wallet").trigger("click");
+    }
+});
+
 $(document).on("keydown", ".agent-input input", function(e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
         $(this).prop("disabled", true);
@@ -989,6 +1097,9 @@ $(document).on("submit", "#agent-form", function(e) {
 });
 
 $(document).on("click", ".toggle-agent", function() {
+    $("#modal-agent-payment").modal("show");
+    return;
+
     let button = $(this);
     let isEnabled = button.html() !== "Start Agent";
 
@@ -1014,6 +1125,15 @@ $(document).on("click", ".toggle-agent", function() {
         });
 });
 
+$(document).on("click", "#make-payment", async function() {
+    $("#modal-agent-payment").modal("hide");
+
+    if (currentAllowance > BigInt(0) && currentAllowance >= BigInt(paymentPrice) * BigInt("1000000000000000000")) {
+        await proceedWithPayment();
+    } else {
+        await approveTransaction();
+    }
+});
 
 // Admin Users
 let adminUsersTable;

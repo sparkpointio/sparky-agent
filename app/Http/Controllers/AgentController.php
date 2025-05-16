@@ -107,6 +107,10 @@ class AgentController extends Controller
         $agent = Agent::where('uuid', $id)
             ->first();
 
+        if(!in_array(strtolower($agent['address']), [strtolower("0xb65d3ae82a75012d2d6f487834534ee34584b7cd")])) {
+            abort(422, "System is in development. Allowed wallets are currently whitelisted.");
+        }
+
         abort_if(!$agent, 422, "Agent not found.");
 
         $agentId = ($client == 'twitter') ? $agent["twitter_agent_id"] : $agent["telegram_agent_id"];
