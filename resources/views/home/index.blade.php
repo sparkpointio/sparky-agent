@@ -14,7 +14,7 @@
                             <p class="h-custom-4 px-4 px-md-0 mb-5 pb-2">Build, launch, and monetize your AI agents on Twitter and Telegram—no code needed.</p>
 
                             <div class="">
-                                <a href="{{ route('agents.index') }}" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
+                                <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                         <p class="h-custom-4 px-4 px-md-0 mb-5 pb-2">SparkyAgent lets you turn your idea into a living, breathing social AI. From content creators to brands to communities, anyone can run an always-on, intelligent agent that talks, responds, and grows your presence online.</p>
 
                         <div class="">
-                            <a href="{{ route('agents.index') }}" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
+                            <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
                         </div>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
             </div>
 
             <div class="text-center">
-                <a href="{{ route('agents.index') }}" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
+                <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
             </div>
         </div>
     </div>
@@ -169,7 +169,7 @@
                                     </div>
 
                                     <div class="text-center text-lg-start">
-                                        <a href="{{ route('agents.index') }}" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
+                                        <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
                                     </div>
                                 </div>
                             </div>
@@ -243,7 +243,7 @@
                 </div>
 
                 <div class="text-center pt-4">
-                    <a href="{{ route('agents.index') }}" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
+                    <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
                 </div>
             </div>
         </div>
@@ -257,7 +257,7 @@
             <p class="text-center h-custom-5 mb-5 pb-4">Set your AI in motion and start building your smarter digital presence — effortlessly and securely.</p>
 
             <div class="text-center">
-                <a href="{{ route('agents.index') }}" class="btn btn-custom-2 px-4 px-sm-5 py-3 h-custom-5 tw-rounded-[50px] tw-w-[100%] sm:tw-w-[initial]">Activate My SparkyAgent</a>
+                <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-4 px-sm-5 py-3 h-custom-5 tw-rounded-[50px] tw-w-[100%] sm:tw-w-[initial]">Activate My SparkyAgent</a>
             </div>
         </div>
     </div>
