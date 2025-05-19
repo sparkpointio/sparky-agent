@@ -39,6 +39,12 @@ html, body {
 .text-color-4 {
     color:#e9d300!important;
 }
+.text-color-5 {
+    color:#4f84db!important;
+}
+.text-color-6 {
+    color:#A63446!important;
+}
 .link-color-1 {
     color:#2c4944!important;
     text-decoration: none!important;
@@ -81,13 +87,27 @@ a:hover {
     color:#ffffff!important;
     border:1px solid #222222;
 }
-#root .tw-connect-wallet {
+.btn-custom-2-outline {
+    background-color:#ffffff;
+    color:#222222;
+    border:2px solid #4f84db;
+}
+.btn-custom-2-outline:hover, .btn-custom-2-outline:active, .btn-custom-2-outline:focus, .btn-custom-2-outline:disabled {
+    background-color: #4f84db !important;
+    color:#ffffff!important;
+    border:2px solid #4f84db;
+}
+#wallet-container .tw-connect-wallet {
     background-color:#4f84db;
     color:#ffffff;
     border:1px solid #222222;
     border-radius:100px;
+    padding:12px 10px!important;
+    font-size: 0.9em!important;
+    font-weight: 400!important;
+    height:initial!important;
 }
-#root .tw-connect-wallet:hover, #root .tw-connect-wallet:active, #root .tw-connect-wallet:focus, #root .tw-connect-wallet:disabled {
+#wallet-container .tw-connect-wallet:hover, #wallet-container .tw-connect-wallet:active, #wallet-container .tw-connect-wallet:focus, #wallet-container .tw-connect-wallet:disabled {
     background-color: #4f84db !important;
     color:#ffffff!important;
     border:1px solid #222222;
@@ -101,6 +121,16 @@ a:hover {
     background-color: #cccccc !important;
     color:#222222!important;
     border:1px solid #cccccc;
+}
+.btn-custom-4 {
+    background-color:#A63446;
+    color:#ffffff;
+    border:1px solid #A63446;
+}
+.btn-custom-4:hover, .btn-custom-4:active, .btn-custom-4:focus, .btn-custom-4:disabled {
+    background-color: #73242f !important;
+    color:#ffffff!important;
+    border:1px solid #73242f;
 }
 .bg-color-1 {
     background-color:#d7dce0!important;
@@ -242,6 +272,13 @@ div.dt-processing>div:last-child>div {
     color: #fff;
     background-color: #4f84db;
 }
+.pulse {
+    animation: pulse 1s infinite ease-in-out alternate;
+}
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
 
 /*##################################################################*/
 
@@ -263,7 +300,7 @@ div.dt-processing>div:last-child>div {
 .h-custom-5 {
     font-size: 1.2em;
 }
-#root .tw-connect-wallet {
+#wallet-container .tw-connect-wallet {
     font-size: 1.3em;
 }
 .navbar-nav.sidebar.accordion:not(.toggled) .sidebar-brand-icon {
@@ -284,7 +321,7 @@ div.dt-processing>div:last-child>div {
     .h-custom-4, #blog-body p {
         font-size: 1.4em;
     }
-    #root .tw-connect-wallet {
+    #wallet-container .tw-connect-wallet {
         font-size: 1.4em;
     }
     .h-custom-5 {
@@ -350,7 +387,7 @@ div.dt-processing>div:last-child>div {
     .h-custom-4, #blog-body p {
         font-size: 1.5em;
     }
-    #root .tw-connect-wallet {
+    #wallet-container .tw-connect-wallet {
         font-size: 1.5em;
     }
     .h-custom-5 {

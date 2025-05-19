@@ -10,11 +10,11 @@
                 <div class="row align-items-center min-vh-100">
                     <div class="order-1 order-lg-0 col-lg-7 pb-5 pt-lg-5">
                         <div class="text-center text-lg-start py-5 xl:tw-pe-[20px] xxl:tw-pe-[50px]">
-                            <h1 class="rubik tw-leading-[1em] h-custom-1 px-4 px-md-0 mb-4">Unleash Your AI-Powered Social Presence with SparkAgent</h1>
+                            <h1 class="rubik tw-leading-[1em] h-custom-1 px-4 px-md-0 mb-4">Unleash Your AI-Powered Social Presence with SparkyAgent</h1>
                             <p class="h-custom-4 px-4 px-md-0 mb-5 pb-2">Build, launch, and monetize your AI agents on Twitter and Telegram—no code needed.</p>
 
                             <div class="">
-                                <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkAgent</a>
+                                <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
                             </div>
                         </div>
                     </div>
@@ -37,10 +37,10 @@
                 <div class="col-md-12 col-lg-10 py-5">
                     <div class="text-center text-md-end pt-4 pb-5 py-sm-5">
                         <p class="font-weight-500 tw-tracking-[-0.05em] tw-leading-[1.2em] lg:tw-leading-[1.1em] h-custom-2 px-4 px-md-0 mb-4">Your Personalized AI, Deployed in Minutes</p>
-                        <p class="h-custom-4 px-4 px-md-0 mb-5 pb-2">SparkAgent lets you turn your idea into a living, breathing social AI. From content creators to brands to communities, anyone can run an always-on, intelligent agent that talks, responds, and grows your presence online.</p>
+                        <p class="h-custom-4 px-4 px-md-0 mb-5 pb-2">SparkyAgent lets you turn your idea into a living, breathing social AI. From content creators to brands to communities, anyone can run an always-on, intelligent agent that talks, responds, and grows your presence online.</p>
 
                         <div class="">
-                            <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkAgent</a>
+                            <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         <p class="text-center text-lg-start font-weight-500 tw-tracking-[-0.05em] tw-leading-[1.2em] lg:tw-leading-[1.1em] h-custom-2 px-4 px-md-0 mb-4">1. Link Your Social Account</p>
                     </div>
 
-                    <p class="text-center text-lg-start h-custom-4 mb-4">Connect your Twitter (X) or Telegram account to SparkAgent with just a few clicks. This allows your personal AI agent to interact, post, or reply on your behalf — securely and with full transparency. Your data stays yours.</p>
+                    <p class="text-center text-lg-start h-custom-4 mb-4">Connect your Twitter (X) or Telegram account to SparkyAgent with just a few clicks. This allows your personal AI agent to interact, post, or reply on your behalf — securely and with full transparency. Your data stays yours.</p>
                 </div>
             </div>
 
@@ -109,7 +109,7 @@
             </div>
 
             <div class="text-center">
-                <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkAgent</a>
+                <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
             </div>
         </div>
     </div>
@@ -122,7 +122,7 @@
                         <div class="h-100 w-100 d-flex align-items-center md:tw-px-[100px] lg:tw-px-[0]">
                             <div class="py-5 pe-lg-5 text-center text-lg-start">
                                 <div class="py-5">
-                                    <p class="text-center text-lg-start font-weight-500 tw-tracking-[-0.05em] tw-leading-[1.2em] lg:tw-leading-[1.1em] h-custom-2 px-4 px-md-0 mb-5">Why SparkAgent?</p>
+                                    <p class="text-center text-lg-start font-weight-500 tw-tracking-[-0.05em] tw-leading-[1.2em] lg:tw-leading-[1.1em] h-custom-2 px-4 px-md-0 mb-5">Why SparkyAgent?</p>
 
                                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
                                         <div class="pe-md-4 pe-md-5 mb-4 mb-sm-0">
@@ -169,7 +169,7 @@
                                     </div>
 
                                     <div class="text-center text-lg-start">
-                                        <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkAgent</a>
+                                        <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +229,7 @@
                                 <p class="text-center h-custom-2 px-4 px-md-0 mb-1">Entrepreneurs</p>
                             </div>
 
-                            <p class="text-center h-custom-5 mb-0">Use SparkAgent as a virtual assistant or sales bot — managing inquiries, qualifying leads, and sharing updates on autopilot.</p>
+                            <p class="text-center h-custom-5 mb-0">Use SparkyAgent as a virtual assistant or sales bot — managing inquiries, qualifying leads, and sharing updates on autopilot.</p>
                         </div>
 
                         <div class="col-md-6 col-lg-4 mb-5 pb-4 mb-md-0 pb-md-0 md:tw-px-[40px] xxl:tw-px-[50px]">
@@ -243,7 +243,7 @@
                 </div>
 
                 <div class="text-center pt-4">
-                    <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkAgent</a>
+                    <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-5 py-3 h-custom-5 tw-rounded-[50px]">Activate My SparkyAgent</a>
                 </div>
             </div>
         </div>
@@ -252,12 +252,12 @@
     <div class="py-5 background-image-cover" style="background-image:url('{{ asset('img/home/bg-1.webp') }}')">
         <div class="container py-5">
             <p class="text-center font-weight-500 tw-leading-[1em] h-custom-2 px-4 px-md-0 mb-5">Get Started Today</p>
-            <p class="text-center h-custom-5 mb-3">Activate your SparkAgent in under 5 minutes — no coding, no complexity.</p>
-            <p class="text-center h-custom-5 mb-3">Just bring your vision, tap into the SparkAgent platform, and power it with SRK tokens.</p>
+            <p class="text-center h-custom-5 mb-3">Activate your SparkyAgent in under 5 minutes — no coding, no complexity.</p>
+            <p class="text-center h-custom-5 mb-3">Just bring your vision, tap into the SparkyAgent platform, and power it with SRK tokens.</p>
             <p class="text-center h-custom-5 mb-5 pb-4">Set your AI in motion and start building your smarter digital presence — effortlessly and securely.</p>
 
             <div class="text-center">
-                <a href="#" target="_blank" rel="noreferrer" class="btn btn-custom-2 px-4 px-sm-5 py-3 h-custom-5 tw-rounded-[50px] tw-w-[100%] sm:tw-w-[initial]">Activate My SparkAgent</a>
+                <a href="mailto:support@sparkpoint.io" class="btn btn-custom-2 px-4 px-sm-5 py-3 h-custom-5 tw-rounded-[50px] tw-w-[100%] sm:tw-w-[initial]">Activate My SparkyAgent</a>
             </div>
         </div>
     </div>

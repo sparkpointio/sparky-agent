@@ -1,10 +1,11 @@
 import './bootstrap'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createThirdwebClient } from "thirdweb";
-import { ConnectButton, ThirdwebProvider, useActiveAccount } from "thirdweb/react";
+import {createThirdwebClient, getContract, prepareContractCall, readContract} from "thirdweb";
+import {ConnectButton, ThirdwebProvider, useActiveAccount, useSendTransaction} from "thirdweb/react";
+import { arbitrum, arbitrumSepolia } from "thirdweb/chains";
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 let appUrl;
 let currentRouteName;
@@ -20,6 +21,8 @@ let pageOnload = async function() {
         blogContentOnload();
     } else if(currentRouteName === "agents.index") {
         agentsOnload();
+    } else if(currentRouteName === "agents.settings") {
+        agentSettingsOnload();
     } else if(currentRouteName === "admin.users.index") {
         adminUsersOnload();
     } else if(currentRouteName === "admin.email-subscriptions.index") {
@@ -46,39 +49,37 @@ let allOnload = async function() {
 let homeOnload = function() {
 
 };
-let agentsOnload = function() {
-    const queryClient = new QueryClient();
-    const client = createThirdwebClient({
-        clientId: "6ab4691a82f30c256cb603d219cd1531",
-    });
+let agentsOnload = function () {
+    loadWallet();
+};
+let agentSettingsOnload = async function () {
+    await loadWallet();
 
-    function App() {
-        const account = useActiveAccount();
-
-        useEffect(() => {
-            if (account) {
-                window.connectedWallet = account;
-            }
-        }, [account]);
-
-        return (
-            <div className="text-center">
-                <ConnectButton client={client} theme={"light"} connectButton={{label:"Create Agent"}} />
-            </div>
-        );
+    let connectedWallet = localStorage.getItem('connectedWallet')
+    if(!connectedWallet) {
+        window.location.href = "/agents";
+        return;
     }
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
-        <QueryClientProvider client={queryClient}>
-            <ThirdwebProvider
-                clientId="6ab4691a82f30c256cb603d219cd1531"
-                activeChain="ethereum"
-            >
-                <App />
-            </ThirdwebProvider>
-        </QueryClientProvider>
-    );
+    connectedWallet = JSON.parse(connectedWallet);
+
+    tokenAccessPaymentContract = getContract({
+        client,
+        chain: networkEnv === "testnet" ? arbitrumSepolia : arbitrum,
+        address: tokenAccessPaymentContractAddress
+    });
+
+    srkContract = getContract({
+        client,
+        chain: networkEnv === "testnet" ? arbitrumSepolia : arbitrum,
+        address: srkContractAddress
+    });
+
+    currentAllowance = await readContract({
+        contract: srkContract,
+        method: "function allowance(address owner, address spender) returns (uint256)",
+        params: [connectedWallet.address, tokenAccessPaymentContract.address],
+    });
 };
 let registerOnload = function() {
     initializeAddressFields();
@@ -233,6 +234,69 @@ function getOffset(el) {
         top: rect.top + window.scrollY
     };
 }
+
+let loadWallet = function() {
+    const queryClient = new QueryClient();
+    const clientId = "6ab4691a82f30c256cb603d219cd1531";
+    client = createThirdwebClient({
+        clientId: clientId,
+    });
+
+    function App() {
+        const account = useActiveAccount();
+        const previousAccount = useRef(null);
+
+        useEffect(() => {
+            // Detect connect
+            if (account && !previousAccount.current) {
+                localStorage.setItem('connectedWallet', JSON.stringify(account));
+            }
+
+            // Detect disconnect
+            if (!account && previousAccount.current) {
+                localStorage.removeItem('connectedWallet');
+
+                if(currentRouteName === "agents.settings") {
+                    window.location.href = "/agents";
+                }
+            }
+
+            previousAccount.current = account;
+        }, [account]);
+
+        const { mutate: sendTransaction } = useSendTransaction();
+
+        useEffect(() => {
+            sendTransactionGlobal = sendTransaction;
+        }, [sendTransaction]);
+
+        return React.createElement(
+            'div',
+            { className: 'text-center' },
+            React.createElement(ConnectButton, {
+                client: client,
+                theme: 'light',
+                connectButton: { label: 'Connect Wallet' }
+            })
+        );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('wallet-container'));
+    root.render(
+        React.createElement(
+            QueryClientProvider,
+            { client: queryClient },
+            React.createElement(
+                ThirdwebProvider,
+                {
+                    clientId: clientId,
+                    activeChain: "ethereum"
+                },
+                React.createElement(App, null)
+            )
+        )
+    );
+};
 
 $(document).ready(function() {
     pageOnload();
@@ -870,8 +934,90 @@ let blogContentOnload = function() {
 };
 
 // Agent
+const networkEnv = import.meta.env.VITE_NETWORK_ENV;
+const tokenAccessPaymentContractAddress = import.meta.env.VITE_TOKEN_ACCESS_PAYMENT_CONTRACT_ADDRESS;
+const srkContractAddress = import.meta.env.VITE_SRK_CONTRACT_ADDRESS;
+const paymentPrice = import.meta.env.VITE_PAYMENT_PRICE;
+
+let client = null;
+let tokenAccessPaymentContract = null;
+let srkContract = null;
+let currentAllowance = null;
+let sendTransactionGlobal = null;
+
+const approveTransaction = async () => {
+    $("#modal-srk-approval").modal("show");
+
+    const approveTx = prepareContractCall({
+        contract: srkContract,
+        method: "function approve(address spender, uint256 value)",
+        params: [
+            tokenAccessPaymentContractAddress,
+            BigInt(paymentPrice) * BigInt("1000000000000000000")
+        ],
+        value: BigInt(0),
+    });
+
+    console.log("Prepared approval transaction:", approveTx);
+
+    const approveReceipt = await sendTransactionGlobal(approveTx, {
+        onError: (error) => {
+            console.error(error);
+            $("#modal-srk-approval").modal("hide");
+        },
+        onSuccess: () => {
+            console.log("Transaction successfully executed!");
+            $("#modal-srk-approval").modal("hide");
+            proceedWithPayment();
+        },
+    });
+
+    console.log("Approval transaction receipt:", approveReceipt);
+};
+
+const proceedWithPayment = async () => {
+    $("#modal-srk-payment").modal("show");
+
+    const paymentTx = prepareContractCall({
+        contract: tokenAccessPaymentContract,
+        method: "function pay()",
+        params: [],
+        value: BigInt(0),
+    });
+
+    console.log("Prepared launch transaction:", launchTx);
+
+    const paymentReceipt = sendTransactionGlobal(paymentTx, {
+        onError: (error) => {
+            $("#modal-srk-payment").modal("show");
+            console.error(error);
+        },
+        onSuccess: async (tx) => {
+            $("#modal-srk-payment").modal("show");
+
+            $("#modal-success .message").html("Payment successfully received.");
+            $("#modal-success").modal("show");
+
+            console.log("Transaction sent! Hash:", tx.transactionHash);
+        },
+    });
+
+    console.log("Payment transaction receipt:", paymentReceipt);
+};
+
+$(document).on("click", "#create-agent-redirect", function() {
+    let connectedWallet = localStorage.getItem('connectedWallet')
+    if(connectedWallet) {
+        window.location.href = "/agents/settings";
+    } else {
+        $("#wallet-container .tw-connect-wallet").trigger("click");
+    }
+});
+
 $(document).on("keydown", ".agent-input input", function(e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
+        $(this).prop("disabled", true);
+
         e.preventDefault();
 
         let value = $(this).val().trim();
@@ -892,6 +1038,8 @@ $(document).on("keydown", ".agent-input input", function(e) {
             $(this).closest(".agent-input").find(".values").removeClass("d-none");
             $(this).closest(".agent-input").find(".values").addClass("d-flex");
         }
+
+        $(this).prop("disabled", false);
     }
 });
 
@@ -903,6 +1051,87 @@ $(document).on("click", ".agent-input .remove", function() {
     if(valuesContainer.html().trim() === "") {
         valuesContainer.addClass("d-none")
         valuesContainer.removeClass("d-flex")
+    }
+});
+
+$(document).on("submit", "#agent-form", function(e) {
+    e.preventDefault();
+
+    let form = $(this);
+
+    let button = $(this).find("[type='submit']");
+    button.prop("disabled", true);
+    button.html('Saving Changes');
+
+    let data = new FormData(form[0]);
+    let url = data.get("url").toString();
+
+    data.append("address", JSON.parse(localStorage.getItem('connectedWallet')).address);
+
+    $(".agent-input").each(function() {
+        let variable = $(this).attr("data-input") + "[]";
+
+        $(this).find(".value").each(function() {
+            let value = $(this).find("p").html().trim();
+
+            if(value !== "") {
+                data.append(variable, value);
+            }
+        });
+    });
+
+    axios.post(url, data)
+        .then((response) => {
+            if(response.data.redirect) {
+                initializeReloadButton(response.data.redirect);
+            }
+
+            $("#modal-success .message").html("Agent successfully saved.");
+            $("#modal-success").modal("show");
+        }).catch((error) => {
+            showRequestError(error);
+        }).then(() => {
+            button.prop("disabled",false);
+            button.html("Save Changes");
+        });
+});
+
+$(document).on("click", ".toggle-agent", function() {
+    $("#modal-agent-payment").modal("show");
+    return;
+
+    let button = $(this);
+    let isEnabled = button.html() !== "Start Agent";
+
+    button.prop("disabled", true);
+    button.html(isEnabled ? 'Stopping Agent' : 'Starting Agent');
+
+    let data = new FormData();
+    let url = button.attr("data-url");
+
+    axios.post(url, data)
+        .then((response) => {
+            button.html(isEnabled ? 'Start Agent' : 'Stop Agent');
+            button.addClass(isEnabled ? 'btn-custom-2' : 'btn-custom-4');
+            button.removeClass(isEnabled ? 'btn-custom-4' : 'btn-custom-2');
+
+            $("#modal-success .message").html("Agent successfully " + (isEnabled ? "stopped" : "started") + ".");
+            $("#modal-success").modal("show");
+        }).catch((error) => {
+            showRequestError(error);
+            button.html(isEnabled ? 'Stop Agent' : 'Start Agent');
+        }).then(() => {
+            button.prop("disabled",false);
+        });
+});
+
+$(document).on("click", "#make-payment", async function() {
+    $("#modal-agent-payment").modal("hide");
+
+    if (currentAllowance > BigInt(0) && currentAllowance >= BigInt(paymentPrice) * BigInt("1000000000000000000")) {
+        await proceedWithPayment();
+    } else {
+        await approveTransaction();
     }
 });
 

@@ -3,7 +3,7 @@
         <div class="modal-content tw-rounded-[0]">
             <div class="modal-body px-4 px-sm-5 py-4">
                 <div class="text-center mt-3 mb-4">
-                    <i class="fas fa-circle-check font-size-500"></i>
+                    <i class="fas fa-circle-check text-color-5 font-size-500"></i>
                 </div>
 
                 <div class="font-size-120">
@@ -12,7 +12,7 @@
                 <div class="text-center h-custom-4 mb-0 message">{{ session()->has('success') ? session('success') : '' }}</div>
             </div>
             <div class="modal-footer justify-content-center py-4" style="border-color:#808080">
-                <button type="button" class="btn btn-custom-1 font-weight-500 px-5" data-bs-dismiss="modal">Okay</button>
+                <button type="button" class="btn btn-custom-2 font-weight-500 px-5" data-bs-dismiss="modal">Okay</button>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
         <div class="modal-content tw-rounded-[0]">
             <div class="modal-body px-4 px-sm-5 py-4">
                 <div class="text-center mt-3 mb-3">
-                    <i class="fas fa-exclamation-circle font-size-500"></i>
+                    <i class="fas fa-exclamation-circle text-color-6 font-size-500"></i>
                 </div>
 
                 <div class="font-size-120">
@@ -32,7 +32,7 @@
                 <div class="text-center h-custom-4 mb-0 message">Sorry, we couldn't process your request. Please try a different approach.</div>
             </div>
             <div class="modal-footer justify-content-center py-4" style="border-color:#808080">
-                <button type="button" class="btn btn-custom-1 px-5" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-custom-4 px-5" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
