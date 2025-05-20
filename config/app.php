@@ -7,6 +7,7 @@ return [
 
     'google_maps_api_key' => env('GOOGLE_MAPS_API_KEY'),
     'elizaos_server_url' => env('ELIZAOS_SERVER_URL'),
+    'payment_price' => env('VITE_PAYMENT_PRICE'),
 
     /*
     |--------------------------------------------------------------------------

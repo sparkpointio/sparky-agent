@@ -288,7 +288,7 @@
 
                 <div class="text-center h-custom-4 font-weight-500 mb-3 title">Payment Required</div>
 
-                <div class="text-center font-size-120 mb-3">Starting an agent requires a one-time payment of <strong>100 SRK</strong>.</div>
+                <div class="text-center font-size-120 mb-3">Starting an agent requires a one-time payment of <strong>{{ number_format(config('app.payment_price')) }} SRK</strong>.</div>
                 <div class="text-center mb-3">To start the agent, please complete your payment first.</div>
                 <div class="text-center mb-0">Access to this feature is available only to paid users. Once your payment is confirmed, you’ll be able to start and manage your agent.</div>
             </div>
@@ -309,7 +309,7 @@
 
                 <div class="text-center h-custom-4 font-weight-500 mb-3 title">Approving SRK Token</div>
                 <div class="text-center mb-3">Please confirm the token approval in your wallet.</div>
-                <div class="text-center mb-3">This allows the payment contract to spend 100 SRK on your behalf.</div>
+                <div class="text-center mb-3">This allows the payment contract to spend <strong>{{ number_format(config('app.payment_price')) }} SRK</strong> on your behalf.</div>
                 <div class="text-center font-size-90 fst-italic mb-0">This is a one-time approval. You’ll only need to do this once.</div>
             </div>
         </div>
@@ -325,7 +325,7 @@
                 </div>
 
                 <div class="text-center h-custom-4 font-weight-500 mb-3 title">Confirm SRK Payment</div>
-                <div class="text-center mb-3">Now, please confirm the 100 SRK payment in your wallet.</div>
+                <div class="text-center mb-3">Now, please confirm the <strong>{{ number_format(config('app.payment_price')) }} SRK</strong> payment in your wallet.</div>
                 <div class="text-center mb-3">This will grant you access to the premium agent features.</div>
 
                 <div class="text-center font-size-90 fst-italic mb-0">Almost there! This payment is final and will be processed securely.</div>

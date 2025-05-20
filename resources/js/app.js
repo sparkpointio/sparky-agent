@@ -985,15 +985,15 @@ const proceedWithPayment = async () => {
         value: BigInt(0),
     });
 
-    console.log("Prepared launch transaction:", launchTx);
+    console.log("Prepared payment transaction:", paymentTx);
 
-    const paymentReceipt = sendTransactionGlobal(paymentTx, {
+    const paymentReceipt = await sendTransactionGlobal(paymentTx, {
         onError: (error) => {
             $("#modal-srk-payment").modal("show");
             console.error(error);
         },
         onSuccess: async (tx) => {
-            $("#modal-srk-payment").modal("show");
+            $("#modal-srk-payment").modal("hide");
 
             $("#modal-success .message").html("Payment successfully received.");
             $("#modal-success").modal("show");

@@ -29,16 +29,16 @@ module.exports = {
         ],
     },
     networks: {
-        local: {
+        staging: {
             url: RPC_URL,
             accounts: [PRIVATE_KEY],
         },
     },
     etherscan: {
-        apiKey: { local: API_KEY },
+        apiKey: { staging: API_KEY },
         customChains: [
             {
-                network: "local",
+                network: "staging",
                 chainId: CHAIN_ID,
                 urls: {
                     apiURL: API_URL,
