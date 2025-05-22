@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agent;
+use App\Models\Payment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -130,11 +132,15 @@ class AgentController extends Controller
                 $agent['telegram_agent_id'] = null;
             }
 
+            $agent->payment_id = null;
             $agent->update();
         }
 
         // Turn On Agent
         if(!$agentId) {
+            $availablePayment = $this->_checkAvailablePayment($agent['uuid'], $agent['address']);
+            abort_if(!$availablePayment, 422, "No available payments made.");
+
             if($client == "twitter") {
                 if(!$agent['twitter_email'] || !$agent['twitter_username'] || !$agent['twitter_password']) {
                     abort(422, "Incomplete Twitter / X credentials");
@@ -202,6 +208,7 @@ class AgentController extends Controller
                     $agent['telegram_agent_id'] = $response->json('id');
                 }
 
+                $agent->payment_id = $availablePayment['id'];
                 $agent->update();
             } else {
                 abort(422, "An error occurred while enabling the agent. " . $response->body());
@@ -209,5 +216,67 @@ class AgentController extends Controller
         }
 
         return response()->json();
+    }
+
+    public function _getPayments($address) {
+        $response = Http::withHeaders([
+            'x-api-key' => config('app.post_secret_key'),
+        ])->withOptions([
+            'verify' => false
+        ])->post(config('app.expressjs_server') . '/sparky-agent/get-payments', [
+            'address' => $address
+        ]);
+
+        abort_if(!$response->successful(), 422, "Error getting address payments.");
+
+        $data = $response->json();
+        $paidAts = $data['data']['payments'];
+
+        foreach($paidAts as $paidAt) {
+            $paidAtFormatted = Carbon::createFromTimestamp((int) $paidAt)->format('Y-m-d H:i:s');
+
+            $paymentExists = Payment::where('address', "LIKE", $address)
+                ->where('paid_at', $paidAtFormatted)
+                ->first();
+
+            if(!$paymentExists) {
+                $newPayment = new Payment();
+                $newPayment->address = $address;
+                $newPayment->paid_at = $paidAtFormatted;
+                $newPayment->valid_until = null;
+                $newPayment->save();
+            }
+        }
+
+        return Payment::where('payments.address', "LIKE", $address)
+            ->leftJoin('agents', 'payments.id', 'payment_id')
+            ->select('payments.id', 'uuid', 'twitter_agent_id', 'telegram_agent_id')
+            ->get();
+    }
+
+    public function checkAvailablePayment($uuid, $address) {
+        $availablePayment = $this->_checkAvailablePayment($uuid, $address);
+
+        return response()->json([
+            'availablePayment' => $availablePayment
+        ]);
+    }
+
+    public function _checkAvailablePayment($uuid, $address) {
+        $payments = $this->_getPayments($address);
+
+        foreach($payments as $payment) {
+            if($payment['uuid'] == $uuid) {
+                return $payment;
+            }
+        }
+
+        foreach($payments as $payment) {
+            if(!$payment['uuid']) {
+                return $payment;
+            }
+        }
+
+        return null;
     }
 }

@@ -279,6 +279,10 @@ div.dt-processing>div:last-child>div {
     from { transform: scale(1); }
     to { transform: scale(1.2); }
 }
+#agent-form .form-check-input:checked {
+    background-color: #4f84db;
+    border-color: #4f84db;
+}
 
 /*##################################################################*/
 

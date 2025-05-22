@@ -6,6 +6,7 @@
 <main class="main">
     <form id="agent-form">
         <input type="hidden" name="url" value="{{ route('agents.update', $agent ? $agent['uuid'] : '') }}" />
+        <input type="hidden" name="uuid" value="{{ $agent ? $agent['uuid'] : '' }}" />
 
         <div class="d-flex justify-content-between flex-wrap tw-mx-[-16px] align-items-center">
             <ol class="breadcrumb align-items-end bg-white py-0 px-3 mb-3">
@@ -199,13 +200,20 @@
                 </div>
 
                 <div class="tab-pane fade" id="secret-tab-pane" role="tabpanel" aria-labelledby="secret-tab" tabindex="0">
+                    <p class="mb-3">Select the radio button next to the client where you'd like to activate your AI agent.</p>
+
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="card rounded-0 tw-border-[#cccccc]">
                                 <div class="card-body p-4">
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div class="">
-                                            <p class="font-weight-700 font-size-110 mb-0">X / Twitter Settings</p>
+                                            <div class="form-check d-flex align-items-center">
+                                                <input class="form-check-input tw-w-[30px] tw-h-[30px] tw-border-[2px] tw-border-[#4f84db]" type="radio" name="client_checkbox" id="twitter-checkbox" value="twitter" {{ $agent && $agent['twitter_agent_id'] ? 'checked' : '' }}>
+                                                <label class="form-check-label font-weight-700 font-size-110 tw-ps-[25px] mt-2 mb-0" for="twitter-checkbox">
+                                                    X / Twitter Settings
+                                                </label>
+                                            </div>
                                         </div>
                                         <div class="">
                                             <button type="button" class="btn btn-custom-2-outline tw-rounded-[25px] font-size-80 px-4 py-1">Instructions</button>
@@ -232,11 +240,19 @@
                                         <input type="text" class="form-control py-4 px-4 tw-border-solid tw-border-[1px] tw-border-[#222222] rounded-0" id="twitter_2fa" name="twitter_2fa" placeholder="2FA" value="{{ $agent['twitter_2fa'] ?? '' }}" />
                                     </div>
 
-                                    @if($agent)
-                                    <div class="">
-                                        <button type="button" class="btn {{ $agent['twitter_agent_id'] ? 'btn-custom-4' : 'btn-custom-2' }} tw-rounded-[25px] px-5 py-2 toggle-agent" data-url="{{ route('agents.toggle', [$agent['uuid'], 'twitter']) }}">{{ $agent['twitter_agent_id'] ? 'Stop' : 'Start' }} Agent</button>
+                                    <div class="agent-button-section {{ !($agent && $agent['twitter_agent_id']) ? 'd-none' : '' }}">
+                                        @if($agent)
+                                        <div class="">
+                                            <button type="button" class="btn {{ $agent['twitter_agent_id'] ? 'btn-custom-4' : 'btn-custom-2' }} tw-rounded-[25px] px-5 py-2 toggle-agent" data-url="{{ route('agents.toggle', [$agent['uuid'], 'twitter']) }}">{{ $agent['twitter_agent_id'] ? 'Stop' : 'Start' }} Agent</button>
+                                        </div>
+                                        @else
+                                        <p class="fst-italic mb-4">Please save your agent before starting it.</p>
+
+                                        <div class="">
+                                            <button type="button" class="btn btn-custom-2 tw-rounded-[25px] px-5 py-2 disabled">Start Agent</button>
+                                        </div>
+                                        @endif
                                     </div>
-                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -246,7 +262,12 @@
                                 <div class="card-body p-4">
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div class="">
-                                            <p class="font-weight-700 font-size-110 mb-0">Telegram Settings</p>
+                                            <div class="form-check d-flex align-items-center">
+                                                <input class="form-check-input tw-w-[30px] tw-h-[30px] tw-border-[2px] tw-border-[#4f84db]" type="radio" name="client_checkbox" id="telegram-checkbox" value="telegram" {{ $agent && $agent['telegram_agent_id'] ? 'checked' : '' }}>
+                                                <label class="form-check-label font-weight-700 font-size-110 tw-ps-[25px] mt-2 mb-0" for="telegram-checkbox">
+                                                    Telegram Settings
+                                                </label>
+                                            </div>
                                         </div>
                                         <div class="">
                                             <button type="button" class="btn btn-custom-2-outline tw-rounded-[25px] font-size-80 px-4 py-1">Instructions</button>
@@ -263,11 +284,19 @@
                                         <input type="text" class="form-control py-4 px-4 tw-border-solid tw-border-[1px] tw-border-[#222222] rounded-0" id="telegram_chat_id" name="telegram_chat_id" placeholder="Chat ID" value="{{ $agent['telegram_chat_id'] ?? '' }}" />
                                     </div>
 
-                                    @if($agent)
-                                    <div class="">
-                                        <button type="button" class="btn {{ $agent['telegram_agent_id'] ? 'btn-custom-4' : 'btn-custom-2' }} tw-rounded-[25px] px-5 py-2 toggle-agent" data-url="{{ route('agents.toggle', [$agent['uuid'], 'telegram']) }}">{{ $agent['telegram_agent_id'] ? 'Stop' : 'Start' }} Agent</button>
+                                    <div class="agent-button-section {{ !($agent && $agent['telegram_agent_id']) ? 'd-none' : '' }}">
+                                        @if($agent)
+                                        <div class="">
+                                            <button type="button" class="btn {{ $agent['telegram_agent_id'] ? 'btn-custom-4' : 'btn-custom-2' }} tw-rounded-[25px] px-5 py-2 toggle-agent" data-url="{{ route('agents.toggle', [$agent['uuid'], 'telegram']) }}">{{ $agent['telegram_agent_id'] ? 'Stop' : 'Start' }} Agent</button>
+                                        </div>
+                                        @else
+                                        <p class="fst-italic mb-4">Please save your agent before starting it.</p>
+
+                                        <div class="">
+                                            <button type="button" class="btn btn-custom-2 tw-rounded-[25px] px-5 py-2 disabled">Start Agent</button>
+                                        </div>
+                                        @endif
                                     </div>
-                                    @endif
                                 </div>
                             </div>
                         </div>

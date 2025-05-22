@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('telegram_bot_token')->nullable();
             $table->string('telegram_chat_id')->nullable();
             $table->string('telegram_agent_id')->nullable();
+            $table->string('payment_id')->nullable();
             $table->timestamps();
         });
     }
