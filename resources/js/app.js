@@ -929,7 +929,7 @@ const loadWallet = function() {
                         window.location.href = "/agents";
                     }
                 }
-            }, 3000);
+            }, 5000);
 
             previousAccount.current = account;
         }, [account]);
