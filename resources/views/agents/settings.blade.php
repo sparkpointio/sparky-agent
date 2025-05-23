@@ -216,7 +216,7 @@
                                             </div>
                                         </div>
                                         <div class="">
-                                            <button type="button" class="btn btn-custom-2-outline tw-rounded-[25px] font-size-80 px-4 py-1">Instructions</button>
+                                            <button type="button" class="btn btn-custom-2-outline tw-rounded-[25px] font-size-80 px-4 py-1" data-bs-toggle="modal" data-bs-target="#modal-twitter-setup-instructions">Instructions</button>
                                         </div>
                                     </div>
 
@@ -236,7 +236,7 @@
                                     </div>
 
                                     <div class="mb-4 pb-2">
-                                        <label for="twitter_2fa" class="form-label mb-2">2FA <span class="fst-italic font-size-90">(Required if enabled)</span></label>
+                                        <label for="twitter_2fa" class="form-label mb-2">2FA Secret Key <span class="fst-italic font-size-90">(Required if enabled)</span></label>
                                         <input type="text" class="form-control py-4 px-4 tw-border-solid tw-border-[1px] tw-border-[#222222] rounded-0" id="twitter_2fa" name="twitter_2fa" placeholder="2FA" value="{{ $agent['twitter_2fa'] ?? '' }}" />
                                     </div>
 
@@ -270,7 +270,7 @@
                                             </div>
                                         </div>
                                         <div class="">
-                                            <button type="button" class="btn btn-custom-2-outline tw-rounded-[25px] font-size-80 px-4 py-1">Instructions</button>
+                                            <button type="button" class="btn btn-custom-2-outline tw-rounded-[25px] font-size-80 px-4 py-1" data-bs-toggle="modal" data-bs-target="#modal-telegram-setup-instructions">Instructions</button>
                                         </div>
                                     </div>
 
@@ -358,6 +358,131 @@
                 <div class="text-center mb-3">This will grant you access to the premium agent features.</div>
 
                 <div class="text-center font-size-90 fst-italic mb-0">Almost there! This payment is final and will be processed securely.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-twitter-setup-instructions" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content tw-rounded-[0]">
+            <div class="modal-body px-4 px-sm-5 py-5 position-relative">
+                <div class="position-absolute tw-top-[20px] tw-right-[20px]">
+                    <i class="fa-solid fa-times font-size-130 cursor-pointer" data-bs-dismiss="modal"></i>
+                </div>
+
+                <p class="font-size-120 font-weight-500">How to Provide Your Twitter (X) Credentials</p>
+
+                <p class="font-weight-500 mb-1">1. Email</p>
+                <p>Enter the email address associated with your Twitter account.</p>
+
+                <p class="font-weight-500 mb-1">2. Username</p>
+                <p>Enter your Twitter handle (e.g., yourusername).</p>
+
+                <p class="font-weight-500 mb-1">3. Password</p>
+                <p>Enter your Twitter account password.</p>
+
+                <p class="font-weight-500 mb-1">4. 2FA Secret (if Two-Factor Authentication is Enabled)</p>
+                <p>If your Twitter account has Two-Factor Authentication (2FA) enabled using an authenticator app, you need to provide the 2FA secret key.</p>
+
+                <p class="font-weight-500 mb-1">What is the 2FA Secret?</p>
+                <p>The 2FA Secret is a code like this:<br/> JBSWY3DPEHPK3PXP</p>
+
+                <p class="font-weight-500 mb-1">Where to Find the 2FA Secret?</p>
+                <p>If you did not save it during setup:</p>
+
+                <ul>
+                    <li>Go to your Twitter account settings</li>
+                    <li>Disable 2FA (if already enabled), then re-enable it</li>
+                    <li>During setup, select “Use authentication app”</li>
+                    <li>When prompted with a QR code, click “Can’t scan it?” or “Enter key manually”</li>
+                    <li>Copy the manual entry key (this is your 2FA secret)</li>
+                </ul>
+
+                <p>✅ Important: After copying and saving the secret key, you must still add it to your authenticator app (Google Authenticator, Authy, etc.) by:</p>
+
+                <ul>
+                    <li>Choosing “Enter a setup key” or “Manual entry”</li>
+                    <li>Pasting the secret key</li>
+                    <li>Saving the entry — this will start generating 6-digit codes</li>
+                </ul>
+
+                <p>If you skip this step, your 2FA will not work correctly.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-telegram-setup-instructions" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content tw-rounded-[0]">
+            <div class="modal-body px-4 px-sm-5 py-5 position-relative">
+                <div class="position-absolute tw-top-[20px] tw-right-[20px]">
+                    <i class="fa-solid fa-times font-size-130 cursor-pointer" data-bs-dismiss="modal"></i>
+                </div>
+
+                <p class="font-size-120 font-weight-500">How to Provide Your Telegram Bot Credentials</p>
+
+                <p>Step 1: Create a Telegram Bot</p>
+                <ol>
+                    <li>Open Telegram and search for @BotFather.</li>
+                    <li>Start a chat and send the command: /newbot</li>
+                    <li>
+                        Follow the prompts:
+                        <ul>
+                            <li>Enter a name for your bot.</li>
+                            <li>Enter a username (must end in "bot", e.g., mytestbot).</li>
+                        </ul>
+                    </li>
+                    <li class="tw-break-words">BotFather will send you a Bot Token like this:<br/>123456789:ABCdefGhIJKlmNoPQRstuVwXyZ1234567890</li>
+                </ol>
+
+                <p>Copy and save this token — you'll need it later.</p>
+
+                <p>Step 2: Add Your Bot to a Telegram Group</p>
+
+                <ol>
+                    <li>Create a new group or use an existing one.</li>
+                    <li>Open the group info (tap the group name).</li>
+                    <li>Tap “Add Members”, then search for your bot by its username and add it.</li>
+                </ol>
+
+                <p>Step 3: Disable Bot Privacy (Required)</p>
+
+                <ol>
+                    <li>Go back to @BotFather.</li>
+                    <li>Send the command: /mybots</li>
+                    <li>Select your bot > Bot Settings > Group Privacy.</li>
+                    <li>Set it to OFF so the bot can read group messages.</li>
+                </ol>
+
+                <p>Step 4: Get Your Group Chat ID</p>
+
+                <ol>
+                    <li>Send a message in your group (e.g., "Hello bot!").</li>
+                    <li class="tw-break-words">
+                        Open this link in your browser (replace &lt;YOUR_BOT_TOKEN&gt; with your actual bot token):<br/>
+                        https://api.telegram.org/bot&lt;YOUR_BOT_TOKEN&gt;/getUpdates<br/>
+                        Example:<br/>
+                        https://api.telegram.org/bot123456789:ABCdefGhIJKlmNoPQRstuVwXyZ1234567890/getUpdates
+                    </li>
+                    <li>
+                        Look for a section like this in the response:<br/>
+                        "chat": {<br/>
+                        "id": -1001234567890,<br/>
+                        "title": "Your Group Name"<br/>
+                        }
+                    </li>
+                </ol>
+
+                <p>Your Group Chat ID is: -1001234567890</p>
+                <p>Step 5: Done!</p>
+                <p>You now have:</p>
+
+                <ul>
+                    <li>Bot Token</li>
+                    <li>Group Chat ID</li>
+                </ul>
             </div>
         </div>
     </div>
