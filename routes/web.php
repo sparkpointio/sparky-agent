@@ -68,6 +68,7 @@ Route::prefix('agents')->group(function () {
     Route::post('/update/{id?}', [AgentController::class, 'update'])->name('agents.update');
     Route::post('/{id}/toggle/{client}', [AgentController::class, 'toggle'])->name('agents.toggle');
     Route::post('/check-available-payment/{uuid}/{address}', [AgentController::class, 'checkAvailablePayment'])->name('agents.check-available-payment');
+    Route::post('/list/{address}', [AgentController::class, 'list'])->name('agents.list');
 });
 
 Route::middleware(['auth'])->group(function() {

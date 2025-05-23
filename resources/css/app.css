@@ -45,6 +45,9 @@ html, body {
 .text-color-6 {
     color:#A63446!important;
 }
+.text-color-7 {
+    color:#22c55e!important;
+}
 .link-color-1 {
     color:#2c4944!important;
     text-decoration: none!important;
@@ -282,6 +285,9 @@ div.dt-processing>div:last-child>div {
 #agent-form .form-check-input:checked {
     background-color: #4f84db;
     border-color: #4f84db;
+}
+#agents-list-side-container .nav-link.active {
+    background-color: #487ccf !important;
 }
 
 /*##################################################################*/

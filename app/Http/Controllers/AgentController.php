@@ -19,6 +19,17 @@ class AgentController extends Controller
         return view('agents.index');
     }
 
+    public function list($address)
+    {
+        $agents = Agent::where('address', 'LIKE', $address)
+            ->select('name', 'uuid', 'twitter_agent_id', 'telegram_agent_id')
+            ->get();
+
+        return response()->json([
+            'agents' => $agents
+        ]);
+    }
+
     public function settings($id = null)
     {
         $agent = Agent::where('uuid', $id)

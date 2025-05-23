@@ -11,7 +11,14 @@
         <div class="d-flex justify-content-between flex-wrap tw-mx-[-16px] align-items-center">
             <ol class="breadcrumb align-items-end bg-white py-0 px-3 mb-3">
                 <li class="breadcrumb-item active" aria-current="page">
-                    <h1 class="h-custom-4 mb-2">Agent Settings</h1>
+                    <div class="d-flex align-items-center mb-2">
+                        <div>
+                            <a href="{{ route('agents.index') }}" class="text-decoration-none">
+                                <i class="fa-solid fa-arrow-left text-secondary font-size-130"></i>
+                            </a>
+                        </div>
+                        <h1 class="h-custom-4 ps-3 mb-0">Agent Settings</h1>
+                    </div>
                     <p class="mb-0 text-gray-800">Configure your AI agent's behavior and capabilities</p>
                 </li>
             </ol>
