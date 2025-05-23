@@ -6,6 +6,7 @@ import {ConnectButton, ThirdwebProvider, useActiveAccount, useSendTransaction} f
 import { arbitrum, arbitrumSepolia } from "thirdweb/chains";
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { useEffect, useRef } from "react";
+import { signMessage } from "thirdweb/utils";
 
 let appUrl;
 let currentRouteName;
@@ -1091,6 +1092,12 @@ const proceedWithPayment = async () => {
 
     console.log("Payment transaction receipt:", paymentReceipt);
 };
+const getSignature = async function() {
+    return await signMessage({
+        message: "Sparky Agent Request Submission",
+        account: connectedWallet,
+    });
+};
 
 $(document).on("click", "#create-agent-redirect", function() {
     if(connectedWallet) {
@@ -1156,8 +1163,10 @@ $(document).on("change", "[name='client_checkbox']", function() {
     $("[name='client_checkbox'][value='" + client + "']").closest(".card").find(".agent-button-section").removeClass("d-none");
 });
 
-$(document).on("submit", "#agent-form", function(e) {
+$(document).on("submit", "#agent-form", async function(e) {
     e.preventDefault();
+
+    const signature = await getSignature();
 
     let form = $(this);
 
@@ -1169,6 +1178,7 @@ $(document).on("submit", "#agent-form", function(e) {
     let url = data.get("url").toString();
 
     data.append("address", connectedWallet.address);
+    data.append("signature", signature);
 
     $(".agent-input").each(function() {
         let variable = $(this).attr("data-input") + "[]";
@@ -1198,11 +1208,13 @@ $(document).on("submit", "#agent-form", function(e) {
         });
 });
 
-$(document).on("click", ".toggle-agent", function() {
+$(document).on("click", ".toggle-agent", async function() {
     if(!availablePayment) {
         $("#modal-agent-payment").modal("show");
         return;
     }
+
+    const signature = await getSignature();
 
     let button = $(this);
     let isEnabled = button.html() !== "Start Agent";
@@ -1212,6 +1224,8 @@ $(document).on("click", ".toggle-agent", function() {
 
     let data = new FormData();
     let url = button.attr("data-url");
+
+    data.append("signature", signature)
 
     axios.post(url, data)
         .then((response) => {

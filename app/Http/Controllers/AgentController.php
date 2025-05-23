@@ -44,6 +44,7 @@ class AgentController extends Controller
     public function update(Request $request, string $id = null) {
         $request->validate([
             'address' => 'required|string',
+            'signature' => 'required|string',
             'name' => 'required|string',
             'bio' => 'array',
             'bio.*' => 'string',
@@ -66,6 +67,8 @@ class AgentController extends Controller
             'telegram_bot_token' => 'nullable|string',
             'telegram_chat_id' => 'nullable|string',
         ]);
+
+        abort_if(!$this->validateSignature($request->address, $request->signature), 422, "Invalid Signature");
 
         $agentWithSameNameExists = Agent::where('name', 'LIKE', $request->name)
             ->where(function ($query) use ($id) {
@@ -115,10 +118,16 @@ class AgentController extends Controller
     }
 
     public function toggle(Request $request, string $id, string $client) {
+        $request->validate([
+            'signature' => 'required|string',
+        ]);
+
         abort_if(!in_array($client, ['twitter', 'telegram']), 422, "Invalid client. Only Twitter/X and Telegram are supported.");
 
         $agent = Agent::where('uuid', $id)
             ->first();
+
+        abort_if(!$this->validateSignature($agent['address'], $request->signature), 422, "Invalid Signature");
 
         if(!in_array(strtolower($agent['address']), [strtolower("0xb65d3ae82a75012d2d6f487834534ee34584b7cd")])) {
             abort(422, "System is in development. Allowed wallets are currently whitelisted.");
@@ -233,7 +242,7 @@ class AgentController extends Controller
         $response = Http::withHeaders([
             'x-api-key' => config('app.post_secret_key'),
         ])->withOptions([
-            'verify' => false
+            'verify' => config('app.env') == 'production' || config('app.env') == 'staging'
         ])->post(config('app.expressjs_server') . '/sparky-agent/get-payments', [
             'address' => $address
         ]);
@@ -289,5 +298,21 @@ class AgentController extends Controller
         }
 
         return null;
+    }
+
+    public function validateSignature($address, $signature) {
+        $response = Http::withHeaders([
+            'x-api-key' => config('app.post_secret_key'),
+        ])->withOptions([
+            'verify' => config('app.env') == 'production' || config('app.env') == 'staging'
+        ])->post(config('app.expressjs_server') . '/sparky-agent/validate-signature', [
+            'account' => $address,
+            'signature' => $signature
+        ]);
+
+        abort_if(!$response->successful(), 422, "Error validating signature.");
+
+        $data = $response->json();
+        return $data['data']['isValid'];
     }
 }
