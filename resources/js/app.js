@@ -6,6 +6,7 @@ import {ConnectButton, ThirdwebProvider, useActiveAccount, useSendTransaction} f
 import { arbitrum, arbitrumSepolia } from "thirdweb/chains";
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { useEffect, useRef } from "react";
+import { signMessage } from "thirdweb/utils";
 
 let appUrl;
 let currentRouteName;
@@ -55,14 +56,6 @@ let agentsOnload = function () {
 let agentSettingsOnload = async function () {
     await loadWallet();
 
-    let connectedWallet = localStorage.getItem('connectedWallet')
-    if(!connectedWallet) {
-        window.location.href = "/agents";
-        return;
-    }
-
-    connectedWallet = JSON.parse(connectedWallet);
-
     tokenAccessPaymentContract = getContract({
         client,
         chain: networkEnv === "testnet" ? arbitrumSepolia : arbitrum,
@@ -73,12 +66,6 @@ let agentSettingsOnload = async function () {
         client,
         chain: networkEnv === "testnet" ? arbitrumSepolia : arbitrum,
         address: srkContractAddress
-    });
-
-    currentAllowance = await readContract({
-        contract: srkContract,
-        method: "function allowance(address owner, address spender) returns (uint256)",
-        params: [connectedWallet.address, tokenAccessPaymentContract.address],
     });
 };
 let registerOnload = function() {
@@ -234,69 +221,6 @@ function getOffset(el) {
         top: rect.top + window.scrollY
     };
 }
-
-let loadWallet = function() {
-    const queryClient = new QueryClient();
-    const clientId = "6ab4691a82f30c256cb603d219cd1531";
-    client = createThirdwebClient({
-        clientId: clientId,
-    });
-
-    function App() {
-        const account = useActiveAccount();
-        const previousAccount = useRef(null);
-
-        useEffect(() => {
-            // Detect connect
-            if (account && !previousAccount.current) {
-                localStorage.setItem('connectedWallet', JSON.stringify(account));
-            }
-
-            // Detect disconnect
-            if (!account && previousAccount.current) {
-                localStorage.removeItem('connectedWallet');
-
-                if(currentRouteName === "agents.settings") {
-                    window.location.href = "/agents";
-                }
-            }
-
-            previousAccount.current = account;
-        }, [account]);
-
-        const { mutate: sendTransaction } = useSendTransaction();
-
-        useEffect(() => {
-            sendTransactionGlobal = sendTransaction;
-        }, [sendTransaction]);
-
-        return React.createElement(
-            'div',
-            { className: 'text-center' },
-            React.createElement(ConnectButton, {
-                client: client,
-                theme: 'light',
-                connectButton: { label: 'Connect Wallet' }
-            })
-        );
-    }
-
-    const root = ReactDOM.createRoot(document.getElementById('wallet-container'));
-    root.render(
-        React.createElement(
-            QueryClientProvider,
-            { client: queryClient },
-            React.createElement(
-                ThirdwebProvider,
-                {
-                    clientId: clientId,
-                    activeChain: "ethereum"
-                },
-                React.createElement(App, null)
-            )
-        )
-    );
-};
 
 $(document).ready(function() {
     pageOnload();
@@ -939,12 +863,177 @@ const tokenAccessPaymentContractAddress = import.meta.env.VITE_TOKEN_ACCESS_PAYM
 const srkContractAddress = import.meta.env.VITE_SRK_CONTRACT_ADDRESS;
 const paymentPrice = import.meta.env.VITE_PAYMENT_PRICE;
 
+let connectedWallet = null;
 let client = null;
 let tokenAccessPaymentContract = null;
 let srkContract = null;
 let currentAllowance = null;
 let sendTransactionGlobal = null;
+let agents = [];
+let availablePayment = null;
+let loadingTimeout;
 
+const loadWallet = function() {
+    const queryClient = new QueryClient();
+    const clientId = "6ab4691a82f30c256cb603d219cd1531";
+    client = createThirdwebClient({
+        clientId: clientId,
+    });
+
+    function App() {
+        const account = useActiveAccount();
+        const previousAccount = useRef(null);
+
+        useEffect(() => {
+            // Detect connect
+            if (account && !previousAccount.current) {
+                connectedWallet = account;
+
+                getAllowance();
+
+                $("#agents-loading").removeClass("d-none");
+                $(".no-agents-found-container").addClass("d-none");
+                $("#agents-list-container").addClass("d-none");
+                $("#agents-list-side-container").addClass("d-none");
+
+                getAgents(account.address);
+
+                const uuid = $("[name='uuid']").val();
+                if(uuid) {
+                    checkAvailablePayment(account.address, uuid);
+                }
+            }
+
+            // Detect disconnect
+            if (!account && previousAccount.current) {
+                connectedWallet = null;
+
+                $("#agents-loading").addClass("d-none");
+                $(".no-agents-found-container").removeClass("d-none");
+                $("#agents-list-container").addClass("d-none");
+                $("#agents-list-side-container").addClass("d-none");
+
+                if(currentRouteName === "agents.settings") {
+                    window.location.href = "/agents";
+                }
+            }
+
+            clearTimeout(loadingTimeout);
+            loadingTimeout = setTimeout(function() {
+                if(!account) {
+                    $("#agents-loading").addClass("d-none");
+                    $(".no-agents-found-container").removeClass("d-none");
+                    $("#agents-list-container").addClass("d-none");
+                    $("#agents-list-side-container").addClass("d-none");
+
+                    if(currentRouteName === "agents.settings") {
+                        window.location.href = "/agents";
+                    }
+                }
+            }, 5000);
+
+            previousAccount.current = account;
+        }, [account]);
+
+        const { mutate: sendTransaction } = useSendTransaction();
+
+        useEffect(() => {
+            sendTransactionGlobal = sendTransaction;
+        }, [sendTransaction]);
+
+        return React.createElement(
+            'div',
+            { className: 'text-center' },
+            React.createElement(ConnectButton, {
+                client: client,
+                theme: 'light',
+                connectButton: { label: 'Connect Wallet' }
+            })
+        );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('wallet-container'));
+    root.render(
+        React.createElement(
+            QueryClientProvider,
+            { client: queryClient },
+            React.createElement(
+                ThirdwebProvider,
+                {
+                    clientId: clientId,
+                    activeChain: "ethereum"
+                },
+                React.createElement(App, null)
+            )
+        )
+    );
+};
+const getAgents = function(address) {
+    axios.post(appUrl + "/agents/list/" + address)
+        .then((response) => {
+            agents = response.data.agents;
+
+            $("#agents-loading").addClass("d-none");
+
+            if(agents.length > 0) {
+                $(".no-agents-found-container").addClass("d-none");
+                $("#agents-list-container").removeClass("d-none");
+                $("#agents-list-side-container").removeClass("d-none");
+            } else {
+                $(".no-agents-found-container").removeClass("d-none");
+                $("#agents-list-container").addClass("d-none");
+                $("#agents-list-side-container").addClass("d-none");
+            }
+
+            let content = '';
+            let content2 = '';
+
+            for(let i = 0; i < agents.length;i++) {
+                content += '<div class="col-md-6 col-xl-4 px-4">';
+                content += '    <div class="rounded-0 tw-border-[1px] tw-border-[#222222] tw-border-solid px-5 py-4">';
+                content += '        <div class="">';
+                content += '            <img src="/img/home/img-3.webp" class="w-100" />';
+                content += '        </div>';
+                content += '        <div class="d-flex justify-content-center align-items-center px-2 mb-0">';
+                content += '            <div class="text-center font-size-140">' + agents[i].name + '</div>';
+                content += '            <div class="ps-2">';
+                content += '                <i class="fa-solid fa-circle font-size-80 ' + (agents[i].twitter_agent_id || agents[i].telegram_agent_id ? 'text-color-7' : 'text-secondary') + '"></i>';
+                content += '            </div>';
+                content += '        </div>';
+                content += '        <div class="text-center text-secondary fst-italic mb-3 pb-1">' + (agents[i].twitter_agent_id ? 'Twitter / X' : (agents[i].telegram_agent_id ? 'Telegram' : 'Inactive')) + '</div>';
+                content += '        <div class="pb-2">';
+                content += '            <a href="agents/settings/' + agents[i].uuid + '" class="btn btn-custom-2 w-100" style="border-radius:50px">Configure</a>';
+                content += '        </div>';
+                content += '    </div>';
+                content += '</div>';
+
+                const uuid = $("[name='uuid']").val();
+
+                content2 += '<li class="nav-item">';
+                content2 += '    <a class="nav-link ' + (agents[i].uuid === uuid ? 'active' : '') + '" href="agents/settings/' + agents[i].uuid + '">';
+                content2 += '        <img src="/img/home/img-3.webp" style="width:35px" />';
+                content2 += '        <span class="ps-2 !tw-text-[1em] text-white">' + agents[i].name + '</span>';
+                content2 += '    </a>';
+                content2 += '</li>';
+            }
+
+            $("#agents-list-container").html(content);
+            $("#agents-list-side-container").html(content2);
+        });
+};
+const getAllowance = async function () {
+    currentAllowance = await readContract({
+        contract: srkContract,
+        method: "function allowance(address owner, address spender) returns (uint256)",
+        params: [connectedWallet.address, tokenAccessPaymentContract.address],
+    });
+};
+const checkAvailablePayment = function(address, uuid) {
+    axios.post(appUrl + "/agents/check-available-payment/" + uuid + "/" + address)
+        .then((response) => {
+            availablePayment = response.data.availablePayment;
+        });
+};
 const approveTransaction = async () => {
     $("#modal-srk-approval").modal("show");
 
@@ -974,7 +1063,6 @@ const approveTransaction = async () => {
 
     console.log("Approval transaction receipt:", approveReceipt);
 };
-
 const proceedWithPayment = async () => {
     $("#modal-srk-payment").modal("show");
 
@@ -985,15 +1073,15 @@ const proceedWithPayment = async () => {
         value: BigInt(0),
     });
 
-    console.log("Prepared launch transaction:", launchTx);
+    console.log("Prepared payment transaction:", paymentTx);
 
-    const paymentReceipt = sendTransactionGlobal(paymentTx, {
+    const paymentReceipt = await sendTransactionGlobal(paymentTx, {
         onError: (error) => {
-            $("#modal-srk-payment").modal("show");
+            $("#modal-srk-payment").modal("hide");
             console.error(error);
         },
         onSuccess: async (tx) => {
-            $("#modal-srk-payment").modal("show");
+            $("#modal-srk-payment").modal("hide");
 
             $("#modal-success .message").html("Payment successfully received.");
             $("#modal-success").modal("show");
@@ -1004,9 +1092,14 @@ const proceedWithPayment = async () => {
 
     console.log("Payment transaction receipt:", paymentReceipt);
 };
+const getSignature = async function() {
+    return await signMessage({
+        message: "Sparky Agent Request Submission",
+        account: connectedWallet,
+    });
+};
 
 $(document).on("click", "#create-agent-redirect", function() {
-    let connectedWallet = localStorage.getItem('connectedWallet')
     if(connectedWallet) {
         window.location.href = "/agents/settings";
     } else {
@@ -1054,8 +1147,26 @@ $(document).on("click", ".agent-input .remove", function() {
     }
 });
 
-$(document).on("submit", "#agent-form", function(e) {
+$(document).on("change", "[name='client_checkbox']", function() {
+    const client = $(this).val();
+
+    $("[name='client_checkbox']").closest(".card").removeClass("tw-border-[#4f84db]");
+    $("[name='client_checkbox']").closest(".card").addClass("tw-border-[#cccccc]");
+    $("[name='client_checkbox']").closest(".card").removeClass("tw-border-[3px]");
+    $("[name='client_checkbox']").closest(".card").addClass("tw-border-[1px]");
+    $("[name='client_checkbox']").closest(".card").find(".agent-button-section").addClass("d-none");
+
+    $("[name='client_checkbox'][value='" + client + "']").closest(".card").addClass("tw-border-[#4f84db]");
+    $("[name='client_checkbox'][value='" + client + "']").closest(".card").removeClass("tw-border-[#cccccc]");
+    $("[name='client_checkbox'][value='" + client + "']").closest(".card").addClass("tw-border-[3px]");
+    $("[name='client_checkbox'][value='" + client + "']").closest(".card").removeClass("tw-border-[1px]");
+    $("[name='client_checkbox'][value='" + client + "']").closest(".card").find(".agent-button-section").removeClass("d-none");
+});
+
+$(document).on("submit", "#agent-form", async function(e) {
     e.preventDefault();
+
+    const signature = await getSignature();
 
     let form = $(this);
 
@@ -1066,7 +1177,8 @@ $(document).on("submit", "#agent-form", function(e) {
     let data = new FormData(form[0]);
     let url = data.get("url").toString();
 
-    data.append("address", JSON.parse(localStorage.getItem('connectedWallet')).address);
+    data.append("address", connectedWallet.address);
+    data.append("signature", signature);
 
     $(".agent-input").each(function() {
         let variable = $(this).attr("data-input") + "[]";
@@ -1096,9 +1208,13 @@ $(document).on("submit", "#agent-form", function(e) {
         });
 });
 
-$(document).on("click", ".toggle-agent", function() {
-    $("#modal-agent-payment").modal("show");
-    return;
+$(document).on("click", ".toggle-agent", async function() {
+    if(!availablePayment) {
+        $("#modal-agent-payment").modal("show");
+        return;
+    }
+
+    const signature = await getSignature();
 
     let button = $(this);
     let isEnabled = button.html() !== "Start Agent";
@@ -1108,6 +1224,8 @@ $(document).on("click", ".toggle-agent", function() {
 
     let data = new FormData();
     let url = button.attr("data-url");
+
+    data.append("signature", signature)
 
     axios.post(url, data)
         .then((response) => {

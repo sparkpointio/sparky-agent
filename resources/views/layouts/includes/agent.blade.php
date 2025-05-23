@@ -11,13 +11,6 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown no-arrow">
                         <div id="wallet-container"></div>
-
-                        <div class="dropdown-menu dropdown-menu-end shadow animated--grow-in text-color-3" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="{{ route('logout.index') }}">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
-                                Logout
-                            </a>
-                        </div>
                     </li>
                 </ul>
             </nav>

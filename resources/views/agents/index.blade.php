@@ -13,14 +13,23 @@
     </div>
 
     <div class="animated fadeIn pb-5">
-        <div class="px-2 px-sm-4 px-md-5 py-5">
-            <p class="h-custom-2 text-center">You haven’t created any SparkAgents yet.</p>
-            <p class="h-custom-5 text-center">Kickstart your AI journey by creating your first agent — it only takes a few minutes.</p>
-            <p class="h-custom-5 text-center mb-5">Customize its personality, connect your socials, and let it work for you 24/7.</p>
-
-            <div class="text-center">
-                <button class="btn btn-custom-2 px-4 px-sm-5 py-3 h-custom-5 tw-rounded-[50px] tw-w-[100%] sm:tw-w-[initial]" id="create-agent-redirect">Create Agent Now</button>
+        <div class="">
+            <div class="px-2 px-sm-4 px-md-5 py-5 text-center" id="agents-loading">
+                <img src="{{ asset('img/home/img-3.webp') }}" class="tw-w-[200px] mb-4 pulse" />
+                <p class="h-custom-4 text-center">Loading</p>
             </div>
+
+            <div class="px-2 px-sm-4 px-md-5 py-5 d-none no-agents-found-container">
+                <p class="h-custom-2 text-center">You haven’t created any SparkAgents yet.</p>
+                <p class="h-custom-5 text-center">Kickstart your AI journey by creating your first agent — it only takes a few minutes.</p>
+                <p class="h-custom-5 text-center mb-5">Customize its personality, connect your socials, and let it work for you 24/7.</p>
+
+                <div class="text-center">
+                    <button class="btn btn-custom-2 px-4 px-sm-5 py-3 h-custom-5 tw-rounded-[50px] tw-w-[100%] sm:tw-w-[initial]" id="create-agent-redirect">Create Agent Now</button>
+                </div>
+            </div>
+
+            <div class="pt-4 pb-5 row d-none" id="agents-list-container"></div>
         </div>
     </div>
 </main>

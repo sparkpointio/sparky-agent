@@ -6,11 +6,19 @@
 <main class="main">
     <form id="agent-form">
         <input type="hidden" name="url" value="{{ route('agents.update', $agent ? $agent['uuid'] : '') }}" />
+        <input type="hidden" name="uuid" value="{{ $agent ? $agent['uuid'] : '' }}" />
 
         <div class="d-flex justify-content-between flex-wrap tw-mx-[-16px] align-items-center">
             <ol class="breadcrumb align-items-end bg-white py-0 px-3 mb-3">
                 <li class="breadcrumb-item active" aria-current="page">
-                    <h1 class="h-custom-4 mb-2">Agent Settings</h1>
+                    <div class="d-flex align-items-center mb-2">
+                        <div>
+                            <a href="{{ route('agents.index') }}" class="text-decoration-none">
+                                <i class="fa-solid fa-arrow-left text-secondary font-size-130"></i>
+                            </a>
+                        </div>
+                        <h1 class="h-custom-4 ps-3 mb-0">Agent Settings</h1>
+                    </div>
                     <p class="mb-0 text-gray-800">Configure your AI agent's behavior and capabilities</p>
                 </li>
             </ol>
@@ -199,16 +207,23 @@
                 </div>
 
                 <div class="tab-pane fade" id="secret-tab-pane" role="tabpanel" aria-labelledby="secret-tab" tabindex="0">
+                    <p class="mb-3">Select the radio button next to the client where you'd like to activate your AI agent.</p>
+
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="card rounded-0 tw-border-[#cccccc]">
                                 <div class="card-body p-4">
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div class="">
-                                            <p class="font-weight-700 font-size-110 mb-0">X / Twitter Settings</p>
+                                            <div class="form-check d-flex align-items-center">
+                                                <input class="form-check-input tw-w-[30px] tw-h-[30px] tw-border-[2px] tw-border-[#4f84db]" type="radio" name="client_checkbox" id="twitter-checkbox" value="twitter" {{ $agent && $agent['twitter_agent_id'] ? 'checked' : '' }}>
+                                                <label class="form-check-label font-weight-700 font-size-110 tw-ps-[25px] mt-2 mb-0" for="twitter-checkbox">
+                                                    X / Twitter Settings
+                                                </label>
+                                            </div>
                                         </div>
                                         <div class="">
-                                            <button type="button" class="btn btn-custom-2-outline tw-rounded-[25px] font-size-80 px-4 py-1">Instructions</button>
+                                            <button type="button" class="btn btn-custom-2-outline tw-rounded-[25px] font-size-80 px-4 py-1" data-bs-toggle="modal" data-bs-target="#modal-twitter-setup-instructions">Instructions</button>
                                         </div>
                                     </div>
 
@@ -228,15 +243,23 @@
                                     </div>
 
                                     <div class="mb-4 pb-2">
-                                        <label for="twitter_2fa" class="form-label mb-2">2FA <span class="fst-italic font-size-90">(Required if enabled)</span></label>
+                                        <label for="twitter_2fa" class="form-label mb-2">2FA Secret Key <span class="fst-italic font-size-90">(Required if enabled)</span></label>
                                         <input type="text" class="form-control py-4 px-4 tw-border-solid tw-border-[1px] tw-border-[#222222] rounded-0" id="twitter_2fa" name="twitter_2fa" placeholder="2FA" value="{{ $agent['twitter_2fa'] ?? '' }}" />
                                     </div>
 
-                                    @if($agent)
-                                    <div class="">
-                                        <button type="button" class="btn {{ $agent['twitter_agent_id'] ? 'btn-custom-4' : 'btn-custom-2' }} tw-rounded-[25px] px-5 py-2 toggle-agent" data-url="{{ route('agents.toggle', [$agent['uuid'], 'twitter']) }}">{{ $agent['twitter_agent_id'] ? 'Stop' : 'Start' }} Agent</button>
+                                    <div class="agent-button-section {{ !($agent && $agent['twitter_agent_id']) ? 'd-none' : '' }}">
+                                        @if($agent)
+                                        <div class="">
+                                            <button type="button" class="btn {{ $agent['twitter_agent_id'] ? 'btn-custom-4' : 'btn-custom-2' }} tw-rounded-[25px] px-5 py-2 toggle-agent" data-url="{{ route('agents.toggle', [$agent['uuid'], 'twitter']) }}">{{ $agent['twitter_agent_id'] ? 'Stop' : 'Start' }} Agent</button>
+                                        </div>
+                                        @else
+                                        <p class="fst-italic mb-4">Please save your agent before starting it.</p>
+
+                                        <div class="">
+                                            <button type="button" class="btn btn-custom-2 tw-rounded-[25px] px-5 py-2 disabled">Start Agent</button>
+                                        </div>
+                                        @endif
                                     </div>
-                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -246,10 +269,15 @@
                                 <div class="card-body p-4">
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div class="">
-                                            <p class="font-weight-700 font-size-110 mb-0">Telegram Settings</p>
+                                            <div class="form-check d-flex align-items-center">
+                                                <input class="form-check-input tw-w-[30px] tw-h-[30px] tw-border-[2px] tw-border-[#4f84db]" type="radio" name="client_checkbox" id="telegram-checkbox" value="telegram" {{ $agent && $agent['telegram_agent_id'] ? 'checked' : '' }}>
+                                                <label class="form-check-label font-weight-700 font-size-110 tw-ps-[25px] mt-2 mb-0" for="telegram-checkbox">
+                                                    Telegram Settings
+                                                </label>
+                                            </div>
                                         </div>
                                         <div class="">
-                                            <button type="button" class="btn btn-custom-2-outline tw-rounded-[25px] font-size-80 px-4 py-1">Instructions</button>
+                                            <button type="button" class="btn btn-custom-2-outline tw-rounded-[25px] font-size-80 px-4 py-1" data-bs-toggle="modal" data-bs-target="#modal-telegram-setup-instructions">Instructions</button>
                                         </div>
                                     </div>
 
@@ -263,11 +291,19 @@
                                         <input type="text" class="form-control py-4 px-4 tw-border-solid tw-border-[1px] tw-border-[#222222] rounded-0" id="telegram_chat_id" name="telegram_chat_id" placeholder="Chat ID" value="{{ $agent['telegram_chat_id'] ?? '' }}" />
                                     </div>
 
-                                    @if($agent)
-                                    <div class="">
-                                        <button type="button" class="btn {{ $agent['telegram_agent_id'] ? 'btn-custom-4' : 'btn-custom-2' }} tw-rounded-[25px] px-5 py-2 toggle-agent" data-url="{{ route('agents.toggle', [$agent['uuid'], 'telegram']) }}">{{ $agent['telegram_agent_id'] ? 'Stop' : 'Start' }} Agent</button>
+                                    <div class="agent-button-section {{ !($agent && $agent['telegram_agent_id']) ? 'd-none' : '' }}">
+                                        @if($agent)
+                                        <div class="">
+                                            <button type="button" class="btn {{ $agent['telegram_agent_id'] ? 'btn-custom-4' : 'btn-custom-2' }} tw-rounded-[25px] px-5 py-2 toggle-agent" data-url="{{ route('agents.toggle', [$agent['uuid'], 'telegram']) }}">{{ $agent['telegram_agent_id'] ? 'Stop' : 'Start' }} Agent</button>
+                                        </div>
+                                        @else
+                                        <p class="fst-italic mb-4">Please save your agent before starting it.</p>
+
+                                        <div class="">
+                                            <button type="button" class="btn btn-custom-2 tw-rounded-[25px] px-5 py-2 disabled">Start Agent</button>
+                                        </div>
+                                        @endif
                                     </div>
-                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -288,7 +324,7 @@
 
                 <div class="text-center h-custom-4 font-weight-500 mb-3 title">Payment Required</div>
 
-                <div class="text-center font-size-120 mb-3">Starting an agent requires a one-time payment of <strong>100 SRK</strong>.</div>
+                <div class="text-center font-size-120 mb-3">Starting an agent requires a one-time payment of <strong>{{ number_format(config('app.payment_price')) }} SRK</strong>.</div>
                 <div class="text-center mb-3">To start the agent, please complete your payment first.</div>
                 <div class="text-center mb-0">Access to this feature is available only to paid users. Once your payment is confirmed, you’ll be able to start and manage your agent.</div>
             </div>
@@ -309,7 +345,7 @@
 
                 <div class="text-center h-custom-4 font-weight-500 mb-3 title">Approving SRK Token</div>
                 <div class="text-center mb-3">Please confirm the token approval in your wallet.</div>
-                <div class="text-center mb-3">This allows the payment contract to spend 100 SRK on your behalf.</div>
+                <div class="text-center mb-3">This allows the payment contract to spend <strong>{{ number_format(config('app.payment_price')) }} SRK</strong> on your behalf.</div>
                 <div class="text-center font-size-90 fst-italic mb-0">This is a one-time approval. You’ll only need to do this once.</div>
             </div>
         </div>
@@ -325,10 +361,135 @@
                 </div>
 
                 <div class="text-center h-custom-4 font-weight-500 mb-3 title">Confirm SRK Payment</div>
-                <div class="text-center mb-3">Now, please confirm the 100 SRK payment in your wallet.</div>
+                <div class="text-center mb-3">Now, please confirm the <strong>{{ number_format(config('app.payment_price')) }} SRK</strong> payment in your wallet.</div>
                 <div class="text-center mb-3">This will grant you access to the premium agent features.</div>
 
                 <div class="text-center font-size-90 fst-italic mb-0">Almost there! This payment is final and will be processed securely.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-twitter-setup-instructions" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content tw-rounded-[0]">
+            <div class="modal-body px-4 px-sm-5 py-5 position-relative">
+                <div class="position-absolute tw-top-[20px] tw-right-[20px]">
+                    <i class="fa-solid fa-times font-size-130 cursor-pointer" data-bs-dismiss="modal"></i>
+                </div>
+
+                <p class="font-size-120 font-weight-500">How to Provide Your Twitter (X) Credentials</p>
+
+                <p class="font-weight-500 mb-1">1. Email</p>
+                <p>Enter the email address associated with your Twitter account.</p>
+
+                <p class="font-weight-500 mb-1">2. Username</p>
+                <p>Enter your Twitter handle (e.g., yourusername).</p>
+
+                <p class="font-weight-500 mb-1">3. Password</p>
+                <p>Enter your Twitter account password.</p>
+
+                <p class="font-weight-500 mb-1">4. 2FA Secret (if Two-Factor Authentication is Enabled)</p>
+                <p>If your Twitter account has Two-Factor Authentication (2FA) enabled using an authenticator app, you need to provide the 2FA secret key.</p>
+
+                <p class="font-weight-500 mb-1">What is the 2FA Secret?</p>
+                <p>The 2FA Secret is a code like this:<br/> JBSWY3DPEHPK3PXP</p>
+
+                <p class="font-weight-500 mb-1">Where to Find the 2FA Secret?</p>
+                <p>If you did not save it during setup:</p>
+
+                <ul>
+                    <li>Go to your Twitter account settings</li>
+                    <li>Disable 2FA (if already enabled), then re-enable it</li>
+                    <li>During setup, select “Use authentication app”</li>
+                    <li>When prompted with a QR code, click “Can’t scan it?” or “Enter key manually”</li>
+                    <li>Copy the manual entry key (this is your 2FA secret)</li>
+                </ul>
+
+                <p>✅ Important: After copying and saving the secret key, you must still add it to your authenticator app (Google Authenticator, Authy, etc.) by:</p>
+
+                <ul>
+                    <li>Choosing “Enter a setup key” or “Manual entry”</li>
+                    <li>Pasting the secret key</li>
+                    <li>Saving the entry — this will start generating 6-digit codes</li>
+                </ul>
+
+                <p>If you skip this step, your 2FA will not work correctly.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-telegram-setup-instructions" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content tw-rounded-[0]">
+            <div class="modal-body px-4 px-sm-5 py-5 position-relative">
+                <div class="position-absolute tw-top-[20px] tw-right-[20px]">
+                    <i class="fa-solid fa-times font-size-130 cursor-pointer" data-bs-dismiss="modal"></i>
+                </div>
+
+                <p class="font-size-120 font-weight-500">How to Provide Your Telegram Bot Credentials</p>
+
+                <p>Step 1: Create a Telegram Bot</p>
+                <ol>
+                    <li>Open Telegram and search for @BotFather.</li>
+                    <li>Start a chat and send the command: /newbot</li>
+                    <li>
+                        Follow the prompts:
+                        <ul>
+                            <li>Enter a name for your bot.</li>
+                            <li>Enter a username (must end in "bot", e.g., mytestbot).</li>
+                        </ul>
+                    </li>
+                    <li class="tw-break-words">BotFather will send you a Bot Token like this:<br/>123456789:ABCdefGhIJKlmNoPQRstuVwXyZ1234567890</li>
+                </ol>
+
+                <p>Copy and save this token — you'll need it later.</p>
+
+                <p>Step 2: Add Your Bot to a Telegram Group</p>
+
+                <ol>
+                    <li>Create a new group or use an existing one.</li>
+                    <li>Open the group info (tap the group name).</li>
+                    <li>Tap “Add Members”, then search for your bot by its username and add it.</li>
+                </ol>
+
+                <p>Step 3: Disable Bot Privacy (Required)</p>
+
+                <ol>
+                    <li>Go back to @BotFather.</li>
+                    <li>Send the command: /mybots</li>
+                    <li>Select your bot > Bot Settings > Group Privacy.</li>
+                    <li>Set it to OFF so the bot can read group messages.</li>
+                </ol>
+
+                <p>Step 4: Get Your Group Chat ID</p>
+
+                <ol>
+                    <li>Send a message in your group (e.g., "Hello bot!").</li>
+                    <li class="tw-break-words">
+                        Open this link in your browser (replace &lt;YOUR_BOT_TOKEN&gt; with your actual bot token):<br/>
+                        https://api.telegram.org/bot&lt;YOUR_BOT_TOKEN&gt;/getUpdates<br/>
+                        Example:<br/>
+                        https://api.telegram.org/bot123456789:ABCdefGhIJKlmNoPQRstuVwXyZ1234567890/getUpdates
+                    </li>
+                    <li>
+                        Look for a section like this in the response:<br/>
+                        "chat": {<br/>
+                        "id": -1001234567890,<br/>
+                        "title": "Your Group Name"<br/>
+                        }
+                    </li>
+                </ol>
+
+                <p>Your Group Chat ID is: -1001234567890</p>
+                <p>Step 5: Done!</p>
+                <p>You now have:</p>
+
+                <ul>
+                    <li>Bot Token</li>
+                    <li>Group Chat ID</li>
+                </ul>
             </div>
         </div>
     </div>

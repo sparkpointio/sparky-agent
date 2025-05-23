@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('address');
             $table->timestamp('paid_at');
-            $table->dateTime('valid_until');
+            $table->dateTime('valid_until')->nullable();
             $table->timestamps();
         });
     }

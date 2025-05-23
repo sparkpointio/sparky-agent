@@ -12,8 +12,16 @@ contract TokenAccessPayment is Ownable {
 
     event Paid(address indexed user, uint256 paidAt);
     event PriceUpdated(uint256 oldPrice, uint256 newPrice);
+    event PaymentTokenUpdated(address oldToken, address newToken);
 
-    constructor(address initialOwner, address _paymentTokenAddress, uint256 _initialPrice) Ownable(initialOwner) {
+    constructor(address initialOwner) Ownable(initialOwner) {}
+
+    bool private _initialized;
+
+    function initialize(address initialOwner, address _paymentTokenAddress, uint256 _initialPrice) external {
+        require(!_initialized, "Already initialized");
+        _initialized = true;
+        _transferOwnership(initialOwner);
         paymentToken = IERC20(_paymentTokenAddress);
         price = _initialPrice;
     }
@@ -38,6 +46,13 @@ contract TokenAccessPayment is Ownable {
         uint256 oldPrice = price;
         price = newPrice;
         emit PriceUpdated(oldPrice, newPrice);
+    }
+
+    function updatePaymentToken(address newToken) external onlyOwner {
+        require(newToken != address(0), "Invalid token address");
+        address oldToken = address(paymentToken);
+        paymentToken = IERC20(newToken);
+        emit PaymentTokenUpdated(oldToken, newToken);
     }
 
     function withdraw(address to, uint256 amount) external onlyOwner {
