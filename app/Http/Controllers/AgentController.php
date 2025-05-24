@@ -153,9 +153,17 @@ class AgentController extends Controller
 
         abort_if(!$this->validateSignature($agent['address'], $request->signature), 422, "Invalid Signature");
 
-        if(!in_array(strtolower($agent['address']), [strtolower("0xb65d3ae82a75012d2d6f487834534ee34584b7cd")])) {
+        // Start: For staging
+        if(!in_array(strtolower($agent['address']), [
+            strtolower("0xb65d3ae82a75012d2d6f487834534ee34584b7cd"),
+            strtolower("0x7C90A1F026f8d45701b28dCc4fC36c22Eb14C9a0"),
+            strtolower("0xd1dcE60E64986B993170b5b95346afFc56f29CEb"),
+            strtolower("0x0B56606590ea0aa3e8eD60385CBa38f4838F06E4"),
+            strtolower("0x56Ea596c4F06381906F9CcA315333979319B533a"),
+        ])) {
             abort(422, "System is in development. Allowed wallets are currently whitelisted.");
         }
+        // End: For staging
 
         abort_if(!$agent, 422, "Agent not found.");
 
