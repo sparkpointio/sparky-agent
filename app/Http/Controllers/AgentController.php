@@ -127,6 +127,30 @@ class AgentController extends Controller
         $agent = Agent::where('uuid', $id)
             ->first();
 
+        if($client == "twitter") {
+            $request->validate([
+                'twitter_email' => 'nullable|string',
+                'twitter_username' => 'nullable|string',
+                'twitter_password' => 'nullable|string',
+                'twitter_2fa' => 'nullable|string',
+            ]);
+
+            $agent->twitter_email = $request->twitter_email ?? null;
+            $agent->twitter_username = $request->twitter_username ?? null;
+            $agent->twitter_password = $request->twitter_password ?? null;
+            $agent->twitter_2fa = $request->twitter_2fa ?? null;
+        } else if ($client == "telegram") {
+            $request->validate([
+                'telegram_bot_token' => 'nullable|string',
+                'telegram_chat_id' => 'nullable|string',
+            ]);
+
+            $agent->telegram_bot_token = $request->telegram_bot_token ?? null;
+            $agent->telegram_chat_id = $request->telegram_chat_id ?? null;
+        }
+
+        $agent->update();
+
         abort_if(!$this->validateSignature($agent['address'], $request->signature), 422, "Invalid Signature");
 
         if(!in_array(strtolower($agent['address']), [strtolower("0xb65d3ae82a75012d2d6f487834534ee34584b7cd")])) {

@@ -1225,7 +1225,13 @@ $(document).on("click", ".toggle-agent", async function() {
     let data = new FormData();
     let url = button.attr("data-url");
 
-    data.append("signature", signature)
+    data.append("signature", signature);
+    data.append("telegram_bot_token", $("[name='telegram_bot_token']").val());
+    data.append("telegram_chat_id", $("[name='telegram_chat_id']").val());
+    data.append("twitter_email", $("[name='twitter_email']").val());
+    data.append("twitter_username", $("[name='twitter_username']").val());
+    data.append("twitter_password", $("[name='twitter_password']").val());
+    data.append("twitter_2fa", $("[name='twitter_2fa']").val());
 
     axios.post(url, data)
         .then((response) => {
